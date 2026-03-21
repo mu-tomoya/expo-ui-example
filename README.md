@@ -1,56 +1,71 @@
-# Welcome to your Expo app 👋
+# Expo UI Example
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[@expo/ui](https://github.com/expo/expo/tree/main/packages/expo-ui) のコンポーネント一覧を動作確認できるサンプルアプリです。
 
-## Get started
+[expo/native-component-list](https://github.com/expo/expo/tree/main/apps/native-component-list/src/screens/UI) から UI スクリーンを抽出して、一覧形式で閲覧できるようにしています。
 
-1. Install dependencies
+## 注意事項
 
-   ```bash
-   npm install
-   ```
+`@expo/ui` はまだ実験的なパッケージであり、安定版ではありません。一部のコンポーネントで不具合が発生する可能性があります。
 
-2. Start the app
+## セットアップ
 
-   ```bash
-   npx expo start
-   ```
+### 必要な環境
 
-In the output, you'll find options to open the app in a
+- Node.js 18+
+- iOS: Xcode (macOS のみ)
+- Android: Android Studio
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### インストール
 
 ```bash
-npm run reset-project
+# 依存関係をインストール
+bun install
+
+# prebuild (ネイティブコードを生成)
+bun prebuild
+
+# iOS シミュレータで実行
+bun ios
+
+# Android エミュレータで実行
+bun android
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+> `@expo/ui` はネイティブコードを含むため、Expo Go では動作しません。`expo run:ios` または `expo run:android` で development build を使用してください。
 
-### Other setup steps
+## 収録コンポーネント
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+### iOS
 
-## Learn more
+| カテゴリ | コンポーネント |
+|---------|---------------|
+| Input | Button, ColorPicker, DatePicker, Picker, Slider, Stepper, TextInput, Toggle |
+| Display | Chart, Gauge, Image, Link, ProgressView, Shapes, Text |
+| Layout | Form, Grid, List, ScrollView, Section |
+| Overlay | AlertDialog, BottomSheet, ConfirmationDialog, ContextMenu, Menu, Popover |
+| Effect | AnimationModifier, ContentTransition, GlassEffect, MatchedGeometryEffect, Modifiers, Rotation3DEffect |
+| その他 | Carousel, HostingRNViews, RTL, ShareLink |
 
-To learn more about developing your project with Expo, look at the following resources:
+### Android
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+| カテゴリ | コンポーネント |
+|---------|---------------|
+| Input | Button, Checkbox, ColorPicker, DateTimePicker, IconButton, RadioButton, SegmentedControl, Slider, Switch, TextInput, ToggleButton |
+| Display | Card, Chip, Gauge, Progress, Shape |
+| Layout | Form, List |
+| Overlay | AlertDialog, BasicAlertDialog, BottomSheet, DropdownMenu |
+| Effect | AnimatedVisibility, GraphicsLayer, Modifiers |
+| その他 | Carousel, FloatingActionButton, HorizontalFloatingToolbar, HostingRNViews, JetpackComposePrimitives |
 
-## Join the community
+## 技術スタック
 
-Join our community of developers creating universal apps.
+- Expo SDK 55
+- React Native 0.83
+- @expo/ui ~55.0.5
+- Expo Router
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 参考リンク
+
+- [Expo UI GitHub](https://github.com/expo/expo/tree/main/packages/expo-ui)
+- [Native Component List (元ソース)](https://github.com/expo/expo/tree/main/apps/native-component-list/src/screens/UI)
