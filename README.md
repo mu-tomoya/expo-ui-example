@@ -1,9 +1,10 @@
 # Expo UI Example
-<div style="display:flex; justify-content:center; gap:16px; padding:16px;">
-   <img src="./assets/ios-example.gif" alt="iosの画面" width="250px">
-   
-   <img src="./assets/android-example.gif" alt="androidの画面" width="250px">
-</div>
+
+<p>
+  <img src="./assets/ios-example.gif" alt="iosの画面" width="250px">
+  &nbsp;&nbsp;&nbsp;
+  <img src="./assets/android-example.gif" alt="androidの画面" width="250px">
+</p>
 
 [@expo/ui](https://github.com/expo/expo/tree/main/packages/expo-ui) のコンポーネント一覧を動作確認できるサンプルアプリです。
 
