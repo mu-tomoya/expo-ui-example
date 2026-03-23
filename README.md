@@ -44,25 +44,25 @@ bun android
 
 ### iOS
 
-| カテゴリ | コンポーネント |
-|---------|---------------|
-| Input | Button, ColorPicker, DatePicker, Picker, Slider, Stepper, TextInput, Toggle |
-| Display | Chart, Gauge, Image, Link, ProgressView, Shapes, Text |
-| Layout | Form, Grid, List, ScrollView, Section |
-| Overlay | AlertDialog, BottomSheet, ConfirmationDialog, ContextMenu, Menu, Popover |
-| Effect | AnimationModifier, ContentTransition, GlassEffect, MatchedGeometryEffect, Modifiers, Rotation3DEffect |
-| その他 | Carousel, HostingRNViews, RTL, ShareLink |
+| カテゴリ | コンポーネント                                                                                        |
+| -------- | ----------------------------------------------------------------------------------------------------- |
+| Input    | Button, ColorPicker, DatePicker, Picker, Slider, Stepper, TextInput, Toggle                           |
+| Display  | Chart, Gauge, Image, Link, ProgressView, Shapes, Text                                                 |
+| Layout   | Form, Grid, List, ScrollView, Section                                                                 |
+| Overlay  | AlertDialog, BottomSheet, ConfirmationDialog, ContextMenu, Menu, Popover                              |
+| Effect   | AnimationModifier, ContentTransition, GlassEffect, MatchedGeometryEffect, Modifiers, Rotation3DEffect |
+| その他   | Carousel, HostingRNViews, RTL, ShareLink                                                              |
 
 ### Android
 
-| カテゴリ | コンポーネント |
-|---------|---------------|
-| Input | Button, Checkbox, ColorPicker, DateTimePicker, IconButton, RadioButton, SegmentedControl, Slider, Switch, TextInput, ToggleButton |
-| Display | Card, Chip, Gauge, Progress, Shape |
-| Layout | Form, List |
-| Overlay | AlertDialog, BasicAlertDialog, BottomSheet, DropdownMenu |
-| Effect | AnimatedVisibility, GraphicsLayer, Modifiers |
-| その他 | Carousel, FloatingActionButton, HorizontalFloatingToolbar, HostingRNViews, JetpackComposePrimitives |
+| カテゴリ | コンポーネント                                                                                                                    |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Input    | Button, Checkbox, ColorPicker, DateTimePicker, IconButton, RadioButton, SegmentedControl, Slider, Switch, TextInput, ToggleButton |
+| Display  | Card, Chip, Gauge, Progress, Shape                                                                                                |
+| Layout   | Form, List                                                                                                                        |
+| Overlay  | AlertDialog, BasicAlertDialog, BottomSheet, DropdownMenu                                                                          |
+| Effect   | AnimatedVisibility, GraphicsLayer, Modifiers                                                                                      |
+| その他   | Carousel, FloatingActionButton, HorizontalFloatingToolbar, HostingRNViews, JetpackComposePrimitives                               |
 
 ## 技術スタック
 

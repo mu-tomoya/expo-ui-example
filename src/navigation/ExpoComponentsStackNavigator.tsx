@@ -1,298 +1,298 @@
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useTheme } from 'ThemeProvider';
-import * as React from 'react';
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useTheme } from "ThemeProvider";
+import * as React from "react";
 
-import getStackNavWithConfig from './StackConfig';
-import { optionalRequire } from './routeBuilder';
-import { TabBackground } from '../components/TabBackground';
-import TabIcon from '../components/TabIcon';
-import { Layout } from '../constants';
-import { BlurScreens } from '../screens/BlurView/BlurViewScreen';
-import { CameraScreens } from '../screens/Camera/CameraScreen';
-import { componentScreensToListElements } from '../screens/ComponentListScreen';
-import ExpoComponents from '../screens/ExpoComponentsScreen';
-import { MapsScreens } from '../screens/ExpoMaps/MapsScreen';
-import { GLScreens } from '../screens/GL/GLScreen';
-import { ImageScreens } from '../screens/Image/ImageScreen';
-import { SVGScreens } from '../screens/SVG/SVGScreen';
-import { UIScreens } from '../screens/UI/UIScreen';
-import { VideoScreens } from '../screens/Video/VideoScreen';
-import { type ScreenConfig } from '../types/ScreenConfig';
+import getStackNavWithConfig from "./StackConfig";
+import { optionalRequire } from "./routeBuilder";
+import { TabBackground } from "../components/TabBackground";
+import TabIcon from "../components/TabIcon";
+import { Layout } from "../constants";
+import { BlurScreens } from "../screens/BlurView/BlurViewScreen";
+import { CameraScreens } from "../screens/Camera/CameraScreen";
+import { componentScreensToListElements } from "../screens/ComponentListScreen";
+import ExpoComponents from "../screens/ExpoComponentsScreen";
+import { MapsScreens } from "../screens/ExpoMaps/MapsScreen";
+import { GLScreens } from "../screens/GL/GLScreen";
+import { ImageScreens } from "../screens/Image/ImageScreen";
+import { SVGScreens } from "../screens/SVG/SVGScreen";
+import { UIScreens } from "../screens/UI/UIScreen";
+import { VideoScreens } from "../screens/Video/VideoScreen";
+import { type ScreenConfig } from "../types/ScreenConfig";
 
 const Stack = createNativeStackNavigator();
 
 const ScreensList: ScreenConfig[] = [
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/DrawerLayoutAndroidScreen'));
+      return optionalRequire(() => require("../screens/DrawerLayoutAndroidScreen"));
     },
-    name: 'DrawerLayoutAndroid',
+    name: "DrawerLayoutAndroid",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ModalScreen'));
+      return optionalRequire(() => require("../screens/ModalScreen"));
     },
-    name: 'Modal',
+    name: "Modal",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ScrollViewScreen'));
+      return optionalRequire(() => require("../screens/ScrollViewScreen"));
     },
-    name: 'ScrollView',
+    name: "ScrollView",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/MaskedViewScreen'));
+      return optionalRequire(() => require("../screens/MaskedViewScreen"));
     },
-    name: 'MaskedView',
-    options: { title: 'Basic Mask Example' },
+    name: "MaskedView",
+    options: { title: "Basic Mask Example" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/BlurView/BlurViewScreen'));
+      return optionalRequire(() => require("../screens/BlurView/BlurViewScreen"));
     },
-    name: 'BlurView',
-    route: 'blur',
+    name: "BlurView",
+    route: "blur",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/GlassView/GlassViewScreen'));
+      return optionalRequire(() => require("../screens/GlassView/GlassViewScreen"));
     },
-    name: 'GlassView',
+    name: "GlassView",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Camera/CameraScreen'));
+      return optionalRequire(() => require("../screens/Camera/CameraScreen"));
     },
-    name: 'Camera',
+    name: "Camera",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/TextScreen'));
+      return optionalRequire(() => require("../screens/TextScreen"));
     },
-    name: 'Text',
+    name: "Text",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/TextInputScreen'));
+      return optionalRequire(() => require("../screens/TextInputScreen"));
     },
-    name: 'TextInput',
+    name: "TextInput",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/TouchablesScreen'));
+      return optionalRequire(() => require("../screens/TouchablesScreen"));
     },
-    name: 'Touchables',
+    name: "Touchables",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/TouchableBounceScreen'));
+      return optionalRequire(() => require("../screens/TouchableBounceScreen"));
     },
-    name: 'TouchableBounce',
+    name: "TouchableBounce",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SwitchScreen'));
+      return optionalRequire(() => require("../screens/SwitchScreen"));
     },
-    name: 'Switch',
+    name: "Switch",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SliderScreen'));
+      return optionalRequire(() => require("../screens/SliderScreen"));
     },
-    name: 'Slider',
+    name: "Slider",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/PressableScreen'));
+      return optionalRequire(() => require("../screens/PressableScreen"));
     },
-    name: 'Pressable',
+    name: "Pressable",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/PickerScreen'));
+      return optionalRequire(() => require("../screens/PickerScreen"));
     },
-    name: 'Picker',
+    name: "Picker",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/CheckboxScreen'));
+      return optionalRequire(() => require("../screens/CheckboxScreen"));
     },
-    name: 'Checkbox',
+    name: "Checkbox",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ButtonScreen'));
+      return optionalRequire(() => require("../screens/ButtonScreen"));
     },
-    name: 'Button',
+    name: "Button",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ActivityIndicatorScreen'));
+      return optionalRequire(() => require("../screens/ActivityIndicatorScreen"));
     },
-    name: 'ActivityIndicator',
+    name: "ActivityIndicator",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/DateTimePickerScreen'));
+      return optionalRequire(() => require("../screens/DateTimePickerScreen"));
     },
-    name: 'DateTimePicker',
+    name: "DateTimePicker",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/GL/GLScreen'));
+      return optionalRequire(() => require("../screens/GL/GLScreen"));
     },
-    name: 'GL',
-    options: { title: 'Examples of GL use' },
+    name: "GL",
+    options: { title: "Examples of GL use" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/GestureHandlerPinchScreen'));
+      return optionalRequire(() => require("../screens/GestureHandlerPinchScreen"));
     },
-    name: 'GestureHandlerPinch',
-    options: { title: 'Pinch and Rotate' },
+    name: "GestureHandlerPinch",
+    options: { title: "Pinch and Rotate" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/GestureHandlerListScreen'));
+      return optionalRequire(() => require("../screens/GestureHandlerListScreen"));
     },
-    name: 'GestureHandlerList',
-    options: { title: 'Gesture Handler List' },
+    name: "GestureHandlerList",
+    options: { title: "Gesture Handler List" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/GestureHandlerSwipeableScreen'));
+      return optionalRequire(() => require("../screens/GestureHandlerSwipeableScreen"));
     },
-    name: 'GestureHandlerSwipeable',
-    options: { title: 'Swipeable Rows' },
+    name: "GestureHandlerSwipeable",
+    options: { title: "Swipeable Rows" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/HTMLElementsScreen'));
+      return optionalRequire(() => require("../screens/HTMLElementsScreen"));
     },
-    name: 'HTML',
+    name: "HTML",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Image/ImageScreen'));
+      return optionalRequire(() => require("../screens/Image/ImageScreen"));
     },
-    name: 'Image',
+    name: "Image",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Reanimated/ReanimatedScreen'));
+      return optionalRequire(() => require("../screens/Reanimated/ReanimatedScreen"));
     },
-    name: 'Reanimated',
+    name: "Reanimated",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SegmentedControlScreen'));
+      return optionalRequire(() => require("../screens/SegmentedControlScreen"));
     },
-    name: 'SegmentedControl',
+    name: "SegmentedControl",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Skia/SkiaScreen'));
+      return optionalRequire(() => require("../screens/Skia/SkiaScreen"));
     },
-    name: 'Skia',
+    name: "Skia",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SVG/SVGScreen'));
+      return optionalRequire(() => require("../screens/SVG/SVGScreen"));
     },
-    name: 'SVG',
+    name: "SVG",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/LinearGradientScreen'));
+      return optionalRequire(() => require("../screens/LinearGradientScreen"));
     },
-    name: 'LinearGradient',
+    name: "LinearGradient",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/LottieScreen'));
+      return optionalRequire(() => require("../screens/LottieScreen"));
     },
-    name: 'Lottie',
+    name: "Lottie",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/MapsScreen'));
+      return optionalRequire(() => require("../screens/MapsScreen"));
     },
-    name: 'Maps',
+    name: "Maps",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ExpoMaps/MapsScreen'));
+      return optionalRequire(() => require("../screens/ExpoMaps/MapsScreen"));
     },
-    name: 'ExpoMaps',
+    name: "ExpoMaps",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Video/VideoScreen'));
+      return optionalRequire(() => require("../screens/Video/VideoScreen"));
     },
-    name: 'Video (expo-video)',
+    name: "Video (expo-video)",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/UI/UIScreen'));
+      return optionalRequire(() => require("../screens/UI/UIScreen"));
     },
-    name: 'Expo UI',
+    name: "Expo UI",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Screens'));
+      return optionalRequire(() => require("../screens/Screens"));
     },
-    name: 'Screens',
+    name: "Screens",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SymbolImageScreen'));
+      return optionalRequire(() => require("../screens/SymbolImageScreen"));
     },
-    name: 'Symbols',
+    name: "Symbols",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/WebViewScreen'));
+      return optionalRequire(() => require("../screens/WebViewScreen"));
     },
-    name: 'WebView',
+    name: "WebView",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/PagerViewScreen'));
+      return optionalRequire(() => require("../screens/PagerViewScreen"));
     },
-    name: 'PagerView',
-    options: { gesturesEnabled: false, title: 'PagerView Example' },
+    name: "PagerView",
+    options: { gesturesEnabled: false, title: "PagerView Example" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/FlashListScreen'));
+      return optionalRequire(() => require("../screens/FlashListScreen"));
     },
-    name: 'FlashList',
+    name: "FlashList",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/KeyboardControllerScreen'));
+      return optionalRequire(() => require("../screens/KeyboardControllerScreen"));
     },
-    name: 'KeyboardController',
+    name: "KeyboardController",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ClipboardPasteButtonScreen'));
+      return optionalRequire(() => require("../screens/ClipboardPasteButtonScreen"));
     },
-    name: 'ClipboardPasteButton',
+    name: "ClipboardPasteButton",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/LivePhotoScreen'));
+      return optionalRequire(() => require("../screens/LivePhotoScreen"));
     },
-    name: 'LivePhoto',
+    name: "LivePhoto",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/MeshGradientScreen'));
+      return optionalRequire(() => require("../screens/MeshGradientScreen"));
     },
-    name: 'MeshGradient',
+    name: "MeshGradient",
   },
 ];
 
@@ -318,8 +318,9 @@ function ExpoComponentsStackNavigator(props: { navigation: BottomTabNavigationPr
       <Stack.Screen
         name="ExpoComponents"
         options={{
-          title: Layout.isSmallDevice ? 'Expo SDK Components' : 'Components in Expo SDK',
-        }}>
+          title: Layout.isSmallDevice ? "Expo SDK Components" : "Components in Expo SDK",
+        }}
+      >
         {() => <ExpoComponents apis={screenApiItems} />}
       </Stack.Screen>
       {Screens.map(({ name, getComponent, options }) => (
@@ -330,8 +331,8 @@ function ExpoComponentsStackNavigator(props: { navigation: BottomTabNavigationPr
 }
 
 ExpoComponentsStackNavigator.navigationOptions = {
-  title: 'Components',
-  tabBarLabel: 'Components',
+  title: "Components",
+  tabBarLabel: "Components",
   tabBarIcon: ({ focused }: { focused: boolean }) => {
     return <TabIcon name="react" focused={focused} />;
   },

@@ -6,16 +6,13 @@ function HostIgnoreSafeAreaKeyboardScreen() {
   const bottomOffset = useBottomTabBarHeight();
   return (
     <View style={{ flex: 1, backgroundColor: "black" }}>
-
-        <Host matchContents ignoreSafeArea="keyboard" style={{ backgroundColor: "red" }}>
-          <Text>This is a test</Text>
-        </Host>
+      <Host matchContents ignoreSafeArea="keyboard" style={{ backgroundColor: "red" }}>
+        <Text>This is a test</Text>
+      </Host>
     </View>
   );
 }
 
 export default function HostIgnoreSafeAreaKeyboardScreenWrapper() {
-  return (
-      <HostIgnoreSafeAreaKeyboardScreen />
-  );
+  return <HostIgnoreSafeAreaKeyboardScreen />;
 }

@@ -1,10 +1,10 @@
-import { Dimensions } from 'react-native';
+import { Dimensions } from "react-native";
 
 export default {
   window: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
-  isSmallDevice: Dimensions.get('window').width < 375,
+  isSmallDevice: Dimensions.get("window").width < 375,
   tabBarHeight: 65,
 };

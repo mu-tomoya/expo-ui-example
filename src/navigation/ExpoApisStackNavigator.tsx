@@ -1,79 +1,79 @@
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useTheme } from 'ThemeProvider';
-import * as React from 'react';
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useTheme } from "ThemeProvider";
+import * as React from "react";
 
-import { optionalRequire } from './routeBuilder';
-import { TabBackground } from '../components/TabBackground';
-import TabIcon from '../components/TabIcon';
-import getStackNavWithConfig from '../navigation/StackConfig';
-import { AudioScreens } from '../screens/Audio/AudioScreen';
-import { BlobScreens } from '../screens/Blob/BlobScreen';
-import { CalendarsNextScreens } from '../screens/CalendarsNextScreen';
-import { CalendarsScreens } from '../screens/CalendarsScreen';
-import { apiScreensToListElements } from '../screens/ComponentListScreen';
-import { ContactsScreens } from '../screens/Contacts/ContactsScreen';
-import { ContactsNextScreens } from '../screens/Contacts@Next/ContactsNextScreen';
-import { CryptoScreens } from '../screens/Crypto/CryptoScreen';
-import ExpoApis from '../screens/ExpoApisScreen';
-import { MediaLibraryScreens } from '../screens/MediaLibrary@Next/MediaLibraryScreens';
-import { ModulesCoreScreens } from '../screens/ModulesCore/ModulesCoreScreen';
-import { WorkletsScreens } from '../screens/Worklets/WorkletsScreen';
-import { type ScreenConfig } from '../types/ScreenConfig';
+import { optionalRequire } from "./routeBuilder";
+import { TabBackground } from "../components/TabBackground";
+import TabIcon from "../components/TabIcon";
+import getStackNavWithConfig from "../navigation/StackConfig";
+import { AudioScreens } from "../screens/Audio/AudioScreen";
+import { BlobScreens } from "../screens/Blob/BlobScreen";
+import { CalendarsNextScreens } from "../screens/CalendarsNextScreen";
+import { CalendarsScreens } from "../screens/CalendarsScreen";
+import { apiScreensToListElements } from "../screens/ComponentListScreen";
+import { ContactsScreens } from "../screens/Contacts/ContactsScreen";
+import { ContactsNextScreens } from "../screens/Contacts@Next/ContactsNextScreen";
+import { CryptoScreens } from "../screens/Crypto/CryptoScreen";
+import ExpoApis from "../screens/ExpoApisScreen";
+import { MediaLibraryScreens } from "../screens/MediaLibrary@Next/MediaLibraryScreens";
+import { ModulesCoreScreens } from "../screens/ModulesCore/ModulesCoreScreen";
+import { WorkletsScreens } from "../screens/Worklets/WorkletsScreen";
+import { type ScreenConfig } from "../types/ScreenConfig";
 
 const Stack = createNativeStackNavigator();
 
 export const ScreensList: ScreenConfig[] = [
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ModulesCore/ModulesCoreScreen'));
+      return optionalRequire(() => require("../screens/ModulesCore/ModulesCoreScreen"));
     },
-    name: 'ModulesCore',
-    options: { title: 'Expo Modules Core' },
+    name: "ModulesCore",
+    options: { title: "Expo Modules Core" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/MediaLibrary@Next/MediaLibraryScreens'));
+      return optionalRequire(() => require("../screens/MediaLibrary@Next/MediaLibraryScreens"));
     },
-    name: 'MediaLibrary@Next',
-    options: { title: 'MediaLibrary@Next' },
+    name: "MediaLibrary@Next",
+    options: { title: "MediaLibrary@Next" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/StatusBarScreen'));
+      return optionalRequire(() => require("../screens/StatusBarScreen"));
     },
-    name: 'StatusBar',
+    name: "StatusBar",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/AlertScreen'));
+      return optionalRequire(() => require("../screens/AlertScreen"));
     },
-    name: 'Alert',
+    name: "Alert",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Clipboard/ClipboardScreen'));
+      return optionalRequire(() => require("../screens/Clipboard/ClipboardScreen"));
     },
-    name: 'Clipboard',
+    name: "Clipboard",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/CellularScreen'));
+      return optionalRequire(() => require("../screens/CellularScreen"));
     },
-    name: 'Cellular (device-only)',
+    name: "Cellular (device-only)",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/AccelerometerScreen'));
+      return optionalRequire(() => require("../screens/AccelerometerScreen"));
     },
-    name: 'Accelerometer',
+    name: "Accelerometer",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ActionSheetScreen'));
+      return optionalRequire(() => require("../screens/ActionSheetScreen"));
     },
-    name: 'ActionSheet',
-    options: { title: 'Action Sheet' },
+    name: "ActionSheet",
+    options: { title: "Action Sheet" },
   },
   // TODO: fix this, module not available in Expo Go
   // {
@@ -85,9 +85,9 @@ export const ScreensList: ScreenConfig[] = [
   // },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/AppearanceScreen'));
+      return optionalRequire(() => require("../screens/AppearanceScreen"));
     },
-    name: 'Appearance',
+    name: "Appearance",
   },
   // TODO: fix this, erroring in release in Expo Go
   // {
@@ -98,22 +98,22 @@ export const ScreensList: ScreenConfig[] = [
   // },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/AppleAuthenticationScreen'));
+      return optionalRequire(() => require("../screens/AppleAuthenticationScreen"));
     },
-    name: 'AppleAuthentication',
-    options: { title: 'Apple Authentication' },
+    name: "AppleAuthentication",
+    options: { title: "Apple Authentication" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/AsyncStorageScreen'));
+      return optionalRequire(() => require("../screens/AsyncStorageScreen"));
     },
-    name: 'AsyncStorage',
+    name: "AsyncStorage",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Audio/AudioScreen'));
+      return optionalRequire(() => require("../screens/Audio/AudioScreen"));
     },
-    name: 'Audio',
+    name: "Audio",
   },
   // TODO: fix this, erroring in release in Expo Go
   // {
@@ -124,370 +124,370 @@ export const ScreensList: ScreenConfig[] = [
   // },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Location/BackgroundLocationMapScreen'));
+      return optionalRequire(() => require("../screens/Location/BackgroundLocationMapScreen"));
     },
-    name: 'BackgroundLocation',
-    options: { title: 'Background location' },
+    name: "BackgroundLocation",
+    options: { title: "Background location" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/BackgroundFetchScreen'));
+      return optionalRequire(() => require("../screens/BackgroundFetchScreen"));
     },
-    name: 'BackgroundFetch',
-    options: { title: 'Background Fetch' },
+    name: "BackgroundFetch",
+    options: { title: "Background Fetch" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/BackgroundTaskScreen'));
+      return optionalRequire(() => require("../screens/BackgroundTaskScreen"));
     },
-    name: 'BackgroundTask',
-    options: { title: 'Background Task' },
+    name: "BackgroundTask",
+    options: { title: "Background Task" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/BatteryScreen'));
+      return optionalRequire(() => require("../screens/BatteryScreen"));
     },
-    name: 'Battery',
+    name: "Battery",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/inlineModules/InlineModulesScreen'));
+      return optionalRequire(() => require("../screens/inlineModules/InlineModulesScreen"));
     },
-    name: 'InlineModules',
+    name: "InlineModules",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Blob/BlobScreen'));
+      return optionalRequire(() => require("../screens/Blob/BlobScreen"));
     },
-    name: 'Blob',
+    name: "Blob",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/BrightnessScreen'));
+      return optionalRequire(() => require("../screens/BrightnessScreen"));
     },
-    name: 'Brightness (device-only)',
+    name: "Brightness (device-only)",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/DeviceScreen'));
+      return optionalRequire(() => require("../screens/DeviceScreen"));
     },
-    name: 'Device',
+    name: "Device",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/DocumentPickerScreen'));
+      return optionalRequire(() => require("../screens/DocumentPickerScreen"));
     },
-    name: 'DocumentPicker',
+    name: "DocumentPicker",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/LocalizationScreen'));
+      return optionalRequire(() => require("../screens/LocalizationScreen"));
     },
-    name: 'Localization',
+    name: "Localization",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/FileSystemScreen'));
+      return optionalRequire(() => require("../screens/FileSystemScreen"));
     },
-    name: 'FileSystem',
+    name: "FileSystem",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/FileSystemLegacyScreen'));
+      return optionalRequire(() => require("../screens/FileSystemLegacyScreen"));
     },
-    name: 'FileSystem@legacy',
+    name: "FileSystem@legacy",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/FontScreen'));
+      return optionalRequire(() => require("../screens/FontScreen"));
     },
-    name: 'Font',
+    name: "Font",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/HapticsScreen'));
+      return optionalRequire(() => require("../screens/HapticsScreen"));
     },
-    name: 'Haptics',
-    options: { title: 'Haptics Feedback' },
+    name: "Haptics",
+    options: { title: "Haptics Feedback" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/CalendarsScreen'));
+      return optionalRequire(() => require("../screens/CalendarsScreen"));
     },
-    name: 'Calendars',
+    name: "Calendars",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/CalendarsNextScreen'));
+      return optionalRequire(() => require("../screens/CalendarsNextScreen"));
     },
-    name: 'Calendars@next',
+    name: "Calendars@next",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ConstantsScreen'));
+      return optionalRequire(() => require("../screens/ConstantsScreen"));
     },
-    name: 'Constants',
+    name: "Constants",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Contacts/ContactsScreen'));
+      return optionalRequire(() => require("../screens/Contacts/ContactsScreen"));
     },
-    name: 'Contacts',
+    name: "Contacts",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Contacts@Next/ContactsNextScreen'));
+      return optionalRequire(() => require("../screens/Contacts@Next/ContactsNextScreen"));
     },
-    name: 'Contacts@Next',
-    options: { title: 'Contacts@Next' },
+    name: "Contacts@Next",
+    options: { title: "Contacts@Next" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ErrorScreen'));
+      return optionalRequire(() => require("../screens/ErrorScreen"));
     },
-    name: 'Errors',
+    name: "Errors",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ImageManipulatorScreen'));
+      return optionalRequire(() => require("../screens/ImageManipulatorScreen"));
     },
-    name: 'ImageManipulator',
+    name: "ImageManipulator",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ImageManipulatorScreenLegacy'));
+      return optionalRequire(() => require("../screens/ImageManipulatorScreenLegacy"));
     },
-    name: 'ImageManipulator (legacy)',
-    route: 'image-manipulator-legacy',
+    name: "ImageManipulator (legacy)",
+    route: "image-manipulator-legacy",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ImagePicker/ImagePickerScreen'));
+      return optionalRequire(() => require("../screens/ImagePicker/ImagePickerScreen"));
     },
-    name: 'ImagePicker',
+    name: "ImagePicker",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/IntentLauncherScreen'));
+      return optionalRequire(() => require("../screens/IntentLauncherScreen"));
     },
-    name: 'IntentLauncher',
+    name: "IntentLauncher",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/KeepAwakeScreen'));
+      return optionalRequire(() => require("../screens/KeepAwakeScreen"));
     },
-    name: 'KeepAwake',
+    name: "KeepAwake",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/LinkingScreen'));
+      return optionalRequire(() => require("../screens/LinkingScreen"));
     },
-    name: 'Linking',
+    name: "Linking",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/MailComposerScreen'));
+      return optionalRequire(() => require("../screens/MailComposerScreen"));
     },
-    name: 'MailComposer',
+    name: "MailComposer",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/MediaLibrary/MediaLibraryScreen'));
+      return optionalRequire(() => require("../screens/MediaLibrary/MediaLibraryScreen"));
     },
-    name: 'MediaLibrary',
+    name: "MediaLibrary",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/MediaLibrary/MediaAlbumsScreen'));
+      return optionalRequire(() => require("../screens/MediaLibrary/MediaAlbumsScreen"));
     },
-    name: 'MediaAlbums',
-    options: { title: 'MediaLibrary Albums' },
+    name: "MediaAlbums",
+    options: { title: "MediaLibrary Albums" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/MediaLibrary/MediaDetailsScreen'));
+      return optionalRequire(() => require("../screens/MediaLibrary/MediaDetailsScreen"));
     },
-    name: 'MediaDetails',
-    options: { title: 'MediaLibrary Asset' },
+    name: "MediaDetails",
+    options: { title: "MediaLibrary Asset" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/NetInfoScreen'));
+      return optionalRequire(() => require("../screens/NetInfoScreen"));
     },
-    name: 'NetInfo',
+    name: "NetInfo",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/NetworkScreen'));
+      return optionalRequire(() => require("../screens/NetworkScreen"));
     },
-    name: 'Network',
+    name: "Network",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Crypto/CryptoScreen'));
+      return optionalRequire(() => require("../screens/Crypto/CryptoScreen"));
     },
-    name: 'Crypto',
+    name: "Crypto",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/NotificationScreen'));
+      return optionalRequire(() => require("../screens/NotificationScreen"));
     },
-    name: 'Notification',
+    name: "Notification",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/LocalAuthenticationScreen'));
+      return optionalRequire(() => require("../screens/LocalAuthenticationScreen"));
     },
-    name: 'LocalAuthentication',
+    name: "LocalAuthentication",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Location/LocationScreen'));
+      return optionalRequire(() => require("../screens/Location/LocationScreen"));
     },
-    name: 'Location',
+    name: "Location",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Location/GeocodingScreen'));
+      return optionalRequire(() => require("../screens/Location/GeocodingScreen"));
     },
-    name: 'Geocoding',
+    name: "Geocoding",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Location/GeofencingScreen'));
+      return optionalRequire(() => require("../screens/Location/GeofencingScreen"));
     },
-    name: 'Geofencing',
-    options: { title: 'Geofencing Map' },
+    name: "Geofencing",
+    options: { title: "Geofencing Map" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/PedometerScreen'));
+      return optionalRequire(() => require("../screens/PedometerScreen"));
     },
-    name: 'Pedometer',
+    name: "Pedometer",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/PrintScreen'));
+      return optionalRequire(() => require("../screens/PrintScreen"));
     },
-    name: 'Print',
+    name: "Print",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/RemindersScreen'));
+      return optionalRequire(() => require("../screens/RemindersScreen"));
     },
-    name: 'Reminders',
+    name: "Reminders",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SafeAreaContextScreen'));
+      return optionalRequire(() => require("../screens/SafeAreaContextScreen"));
     },
-    name: 'SafeAreaContext',
+    name: "SafeAreaContext",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ScreenOrientationScreen'));
+      return optionalRequire(() => require("../screens/ScreenOrientationScreen"));
     },
-    name: 'ScreenOrientation',
+    name: "ScreenOrientation",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SecureStoreScreen'));
+      return optionalRequire(() => require("../screens/SecureStoreScreen"));
     },
-    name: 'SecureStore',
+    name: "SecureStore",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ScreenCaptureScreen'));
+      return optionalRequire(() => require("../screens/ScreenCaptureScreen"));
     },
-    name: 'ScreenCapture',
+    name: "ScreenCapture",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SensorScreen'));
+      return optionalRequire(() => require("../screens/SensorScreen"));
     },
-    name: 'Sensor',
+    name: "Sensor",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SharingScreen'));
+      return optionalRequire(() => require("../screens/SharingScreen"));
     },
-    name: 'Sharing',
+    name: "Sharing",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/NavigationBarScreen'));
+      return optionalRequire(() => require("../screens/NavigationBarScreen"));
     },
-    name: 'NavigationBar',
+    name: "NavigationBar",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SystemUIScreen'));
+      return optionalRequire(() => require("../screens/SystemUIScreen"));
     },
-    name: 'SystemUI',
+    name: "SystemUI",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/SMSScreen'));
+      return optionalRequire(() => require("../screens/SMSScreen"));
     },
-    name: 'SMS',
+    name: "SMS",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/StoreReview'));
+      return optionalRequire(() => require("../screens/StoreReview"));
     },
-    name: 'StoreReview',
-    options: { title: 'Store Review' },
+    name: "StoreReview",
+    options: { title: "Store Review" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/TaskManagerScreen'));
+      return optionalRequire(() => require("../screens/TaskManagerScreen"));
     },
-    name: 'TaskManager',
+    name: "TaskManager",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/TextToSpeechScreen'));
+      return optionalRequire(() => require("../screens/TextToSpeechScreen"));
     },
-    name: 'TextToSpeech',
-    options: { title: 'Speech' },
+    name: "TextToSpeech",
+    options: { title: "Speech" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/TrackingTransparencyScreen'));
+      return optionalRequire(() => require("../screens/TrackingTransparencyScreen"));
     },
-    name: 'TrackingTransparency',
-    options: { title: 'TrackingTransparency' },
+    name: "TrackingTransparency",
+    options: { title: "TrackingTransparency" },
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/UpdatesScreen'));
+      return optionalRequire(() => require("../screens/UpdatesScreen"));
     },
-    name: 'Updates Reload Screen',
+    name: "Updates Reload Screen",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/Worklets/WorkletsScreen'));
+      return optionalRequire(() => require("../screens/Worklets/WorkletsScreen"));
     },
-    name: 'Worklets integration',
-    route: 'worklets',
+    name: "Worklets integration",
+    route: "worklets",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/WebBrowser/WebBrowserScreen'));
+      return optionalRequire(() => require("../screens/WebBrowser/WebBrowserScreen"));
     },
-    name: 'WebBrowser',
+    name: "WebBrowser",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/VideoThumbnailsScreen'));
+      return optionalRequire(() => require("../screens/VideoThumbnailsScreen"));
     },
-    name: 'Video Thumbnails',
+    name: "Video Thumbnails",
   },
   {
     getComponent() {
-      return optionalRequire(() => require('../screens/ViewShotScreen'));
+      return optionalRequire(() => require("../screens/ViewShotScreen"));
     },
-    name: 'ViewShot',
+    name: "ViewShot",
   },
 ];
 
@@ -512,7 +512,7 @@ function ExpoApisStackNavigator(props: { navigation: BottomTabNavigationProp<any
 
   return (
     <Stack.Navigator {...props} {...getStackNavWithConfig(props.navigation, theme)}>
-      <Stack.Screen name="ExpoApis" options={{ title: 'APIs in Expo SDK' }}>
+      <Stack.Screen name="ExpoApis" options={{ title: "APIs in Expo SDK" }}>
         {() => <ExpoApis apis={screenApiItems} />}
       </Stack.Screen>
       {Screens.map(({ name, options, getComponent }) => (
@@ -523,8 +523,8 @@ function ExpoApisStackNavigator(props: { navigation: BottomTabNavigationProp<any
 }
 
 ExpoApisStackNavigator.navigationOptions = {
-  title: 'APIs',
-  tabBarLabel: 'APIs',
+  title: "APIs",
+  tabBarLabel: "APIs",
   tabBarIcon: ({ focused }: { focused: boolean }) => {
     return <TabIcon name="code-tags" focused={focused} />;
   },

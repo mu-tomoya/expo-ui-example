@@ -1,11 +1,11 @@
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import * as React from 'react';
-import { Platform, StyleSheet, useWindowDimensions } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import * as React from "react";
+import { Platform, StyleSheet, useWindowDimensions } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import Screens from './MainNavigators';
-import createTabNavigator from './createTabNavigator';
-import { Colors } from '../constants';
+import Screens from "./MainNavigators";
+import createTabNavigator from "./createTabNavigator";
+import { Colors } from "../constants";
 
 const Tab = createTabNavigator();
 
@@ -23,7 +23,7 @@ export default function MainTabbedNavigator(props: any) {
   // browser such that the navigator changes from tab to drawer or drawer to tab
   // then it will reset to the list because the navigator has changed and the state
   // of its children will be reset.
-  if (Platform.OS !== 'web' || isMobile) {
+  if (Platform.OS !== "web" || isMobile) {
     return (
       <Tab.Navigator
         // @ts-ignore: Tab.Navigator can be either bottom-tabs navigator
@@ -47,7 +47,8 @@ export default function MainTabbedNavigator(props: any) {
               backgroundColor: Colors.tabBar,
             },
           ],
-        }}>
+        }}
+      >
         {Object.entries(Screens).map(([name, Screen]) => (
           <Tab.Screen
             name={name}
@@ -71,7 +72,8 @@ export default function MainTabbedNavigator(props: any) {
           : {}
       }
       drawerStyle={{ width: isLargeScreen ? undefined : 64 + left }}
-      drawerType="permanent">
+      drawerType="permanent"
+    >
       {Object.entries(Screens).map(([name, Screen]) => (
         <Tab.Screen
           name={name}
