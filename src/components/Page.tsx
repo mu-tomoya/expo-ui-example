@@ -1,7 +1,5 @@
-import { H4 } from "@expo/html-elements";
-import * as React from "react";
 import { PropsWithChildren } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export function Page({ children }: PropsWithChildren) {
   return <View style={styles.page}>{children}</View>;
@@ -19,7 +17,7 @@ type SectionProps = PropsWithChildren<{
 
 const Section = ({ title, children, row, gap }: SectionProps) => (
   <View style={styles.section}>
-    <H4 style={styles.sectionHeader}>{title}</H4>
+    <Text style={styles.sectionHeader}>{title}</Text>
     <View style={{ flexDirection: row ? "row" : "column", gap }}>{children}</View>
   </View>
 );
