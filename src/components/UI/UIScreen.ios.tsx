@@ -1,5 +1,4 @@
 import { optionalRequire } from '../../navigation/routeBuilder';
-import ComponentListScreen, { componentScreensToListElements } from '../ComponentListScreen';
 
 export const UIScreens = [
   {
@@ -459,12 +458,3 @@ export const UIScreens = [
     },
   },
 ];
-
-export default function UIScreen() {
-  const apis = componentScreensToListElements(UIScreens);
-  return <ComponentListScreen apis={apis} sort />;
-}
-
-UIScreen.navigationOptions = {
-  title: 'Expo UI',
-};

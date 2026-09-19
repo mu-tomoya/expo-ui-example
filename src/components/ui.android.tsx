@@ -9,7 +9,7 @@ const universalScreens: ExampleScreen[] = UIUniversalScreens.map((screen) => ({
   universal: true,
 }));
 
-export const screens: ExampleScreen[] = [...UIScreens, ...universalScreens];
+const screens: ExampleScreen[] = [...UIScreens, ...universalScreens];
 
 export function UIScreen() {
   return <UIBrowser screens={screens} title="Expo UI Components" />;

@@ -1,8 +1,4 @@
 import { optionalRequire } from '../../navigation/routeBuilder';
-import ComponentListScreen, {
-  componentScreensToListElements,
-  type ListElement,
-} from '../ComponentListScreen';
 
 const SCREEN_NAME_PREFIX = 'UI Universal ';
 
@@ -144,19 +140,3 @@ export const UIUniversalScreens = [
     },
   },
 ];
-
-function stripPrefix(elements: ListElement[]): ListElement[] {
-  return elements.map((el) => ({
-    ...el,
-    name: el.name.replace(SCREEN_NAME_PREFIX, ''),
-  }));
-}
-
-export default function UIUniversalScreen() {
-  const apis = stripPrefix(componentScreensToListElements(UIUniversalScreens));
-  return <ComponentListScreen apis={apis} sort />;
-}
-
-UIUniversalScreen.navigationOptions = {
-  title: 'Expo UI (Universal)',
-};
