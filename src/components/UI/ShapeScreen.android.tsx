@@ -1,27 +1,27 @@
-import { Host, Row, Shape } from "@expo/ui/jetpack-compose";
-import { rotate, size } from "@expo/ui/jetpack-compose/modifiers";
-import { useEffect } from "react";
-import { View } from "react-native";
+import { Host, Shape, Row } from '@expo/ui/jetpack-compose';
+import { rotate, size } from '@expo/ui/jetpack-compose/modifiers';
+import { useEffect } from 'react';
+import { View } from 'react-native';
 import Animated, {
   Easing,
   useSharedValue,
   withRepeat,
   withSequence,
   withTiming,
-} from "react-native-reanimated";
+} from 'react-native-reanimated';
 
-import { Page } from "../Page";
+import { Page } from '../../components/Page';
 
 const AnimatedPolygon = Animated.createAnimatedComponent(Shape.Polygon);
 const AnimatedRectangle = Animated.createAnimatedComponent(Shape.Rectangle);
 const AnimatedStar = Animated.createAnimatedComponent(Shape.Star);
 
 const pastelPalette = {
-  color1: "#541388",
-  color2: "#d1d646",
-  color3: "#d90368",
-  color4: "#2e294e",
-  color5: "#ffd400",
+  color1: '#541388',
+  color2: '#d1d646',
+  color3: '#d90368',
+  color4: '#2e294e',
+  color5: '#ffd400',
 };
 
 export default function UIScreen() {
@@ -32,11 +32,11 @@ export default function UIScreen() {
       withRepeat(
         withSequence(
           withTiming(1, { duration: 1000, easing: Easing.cubic }),
-          withTiming(0, { duration: 1000, easing: Easing.cubic }),
+          withTiming(0, { duration: 1000, easing: Easing.cubic })
         ),
         -1,
-        true,
-      ),
+        true
+      )
     );
   }, []);
 
@@ -47,11 +47,11 @@ export default function UIScreen() {
       withRepeat(
         withSequence(
           withTiming(0, { duration: 1000, easing: Easing.cubic }),
-          withTiming(0.2, { duration: 1000, easing: Easing.cubic }),
+          withTiming(0.2, { duration: 1000, easing: Easing.cubic })
         ),
         -1,
-        true,
-      ),
+        true
+      )
     );
   }, []);
 
@@ -62,11 +62,11 @@ export default function UIScreen() {
       withRepeat(
         withSequence(
           withTiming(0.8, { duration: 1000, easing: Easing.cubic }),
-          withTiming(0.6, { duration: 1000, easing: Easing.cubic }),
+          withTiming(0.6, { duration: 1000, easing: Easing.cubic })
         ),
         -1,
-        true,
-      ),
+        true
+      )
     );
   }, []);
 
@@ -74,11 +74,10 @@ export default function UIScreen() {
     <Page>
       <View
         style={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
-      >
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+        }}>
         <Host style={{ width: 140 * 3, height: 140 }}>
           <Row>
             <AnimatedPolygon

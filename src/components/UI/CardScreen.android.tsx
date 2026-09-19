@@ -6,8 +6,8 @@ import {
   Text as ComposeText,
   Column,
   LazyColumn,
-} from "@expo/ui/jetpack-compose";
-import { fillMaxWidth, padding } from "@expo/ui/jetpack-compose/modifiers";
+} from '@expo/ui/jetpack-compose';
+import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers';
 
 export default function CardScreen() {
   return (
@@ -37,7 +37,7 @@ export default function CardScreen() {
             <ComposeText>Elevated card with 8dp shadow.</ComposeText>
           </Column>
         </ElevatedCard>
-        <OutlinedCard modifiers={[fillMaxWidth()]} border={{ width: 2, color: "#6200EE" }}>
+        <OutlinedCard modifiers={[fillMaxWidth()]} border={{ width: 2, color: '#6200EE' }}>
           <Column modifiers={[padding(16, 16, 16, 16)]}>
             <ComposeText>Custom border</ComposeText>
             <ComposeText>Outlined card with 2dp purple border.</ComposeText>
@@ -45,8 +45,7 @@ export default function CardScreen() {
         </OutlinedCard>
         <Card
           modifiers={[fillMaxWidth()]}
-          colors={{ containerColor: "#EDE9FE", contentColor: "#4C1D95" }}
-        >
+          colors={{ containerColor: '#EDE9FE', contentColor: '#4C1D95' }}>
           <Column modifiers={[padding(16, 16, 16, 16)]}>
             <ComposeText>Custom colors</ComposeText>
             <ComposeText>Card with custom container and content colors.</ComposeText>
@@ -58,5 +57,5 @@ export default function CardScreen() {
 }
 
 CardScreen.navigationOptions = {
-  title: "Card",
+  title: 'Card',
 };

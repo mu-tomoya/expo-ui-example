@@ -1,6 +1,6 @@
-import { Button, Host, Form, ProgressView, Section, Text } from "@expo/ui/swift-ui";
-import { progressViewStyle, tint } from "@expo/ui/swift-ui/modifiers";
-import { useState } from "react";
+import { Button, Host, Form, ProgressView, Section, Text } from '@expo/ui/swift-ui';
+import { progressViewStyle, tint } from '@expo/ui/swift-ui/modifiers';
+import { useState } from 'react';
 
 export default function ProgressViewScreen() {
   const [progress, setProgress] = useState(0.5);
@@ -21,13 +21,13 @@ export default function ProgressViewScreen() {
           <ProgressView value={progress}>
             <Text>Loading...</Text>
           </ProgressView>
-          <ProgressView value={progress} modifiers={[progressViewStyle("circular")]}>
+          <ProgressView value={progress} modifiers={[progressViewStyle('circular')]}>
             <Text>{Math.round(progress * 40)}%</Text>
           </ProgressView>
         </Section>
         <Section title="With Tint">
-          <ProgressView value={progress} modifiers={[tint("red")]} />
-          <ProgressView modifiers={[tint("red")]} />
+          <ProgressView value={progress} modifiers={[tint('red')]} />
+          <ProgressView modifiers={[tint('red')]} />
         </Section>
         <Section title="Timer (iOS 16+)">
           <ProgressView
@@ -41,8 +41,7 @@ export default function ProgressViewScreen() {
               lower: new Date(),
               upper: new Date(Date.now() + 100000),
             }}
-            countsDown={false}
-          >
+            countsDown={false}>
             <Text>Countdown</Text>
           </ProgressView>
         </Section>
@@ -52,5 +51,5 @@ export default function ProgressViewScreen() {
 }
 
 ProgressViewScreen.navigationOptions = {
-  title: "ProgressView",
+  title: 'ProgressView',
 };

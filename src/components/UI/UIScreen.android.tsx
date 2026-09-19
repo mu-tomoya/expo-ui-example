@@ -1,245 +1,445 @@
-import { optionalRequire } from "../../navigation/routeBuilder";
-import ComponentListScreen, { componentScreensToListElements } from "../ComponentListScreen";
+import { optionalRequire } from '../../navigation/routeBuilder';
+import ComponentListScreen, { componentScreensToListElements } from '../ComponentListScreen';
 
 export const UIScreens = [
   {
-    name: "AnimatedVisibility component",
-    route: "ui/animated-visibility",
+    name: 'AnimatedVisibility component',
+    route: 'ui/animated-visibility',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./AnimatedVisibilityScreen"));
+      return optionalRequire(() => require('./AnimatedVisibilityScreen'));
     },
   },
   {
-    name: "AlertDialog component",
-    route: "ui/alert-dialog",
+    name: 'Badge component',
+    route: 'ui/badge',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./AlertDialogScreen"));
+      return optionalRequire(() => require('./BadgeScreen'));
     },
   },
   {
-    name: "BasicAlertDialog component",
-    route: "ui/basic-alert-dialog",
+    name: 'AlertDialog component',
+    route: 'ui/alert-dialog',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./BasicAlertDialogScreen"));
+      return optionalRequire(() => require('./AlertDialogScreen'));
     },
   },
   {
-    name: "Card component",
-    route: "ui/card",
+    name: 'BasicAlertDialog component',
+    route: 'ui/basic-alert-dialog',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./CardScreen"));
+      return optionalRequire(() => require('./BasicAlertDialogScreen'));
     },
   },
   {
-    name: "Button component",
-    route: "ui/button",
+    name: 'Card component',
+    route: 'ui/card',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./ButtonScreen"));
+      return optionalRequire(() => require('./CardScreen'));
     },
   },
   {
-    name: "Checkbox component",
-    route: "ui/checkbox",
+    name: 'Button component',
+    route: 'ui/button',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./CheckboxScreen"));
+      return optionalRequire(() => require('./ButtonScreen'));
     },
   },
   {
-    name: "IconButton component",
-    route: "ui/icon-button",
+    name: 'Checkbox component',
+    route: 'ui/checkbox',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./IconButtonScreen"));
+      return optionalRequire(() => require('./CheckboxScreen'));
     },
   },
   {
-    name: "Radio Button component",
-    route: "ui/radio-button",
+    name: 'IconButton component',
+    route: 'ui/icon-button',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./RadioButtonScreen"));
+      return optionalRequire(() => require('./IconButtonScreen'));
     },
   },
   {
-    name: "Segmented Control component",
-    route: "ui/segmented-control",
+    name: 'Image component',
+    route: 'ui/image',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./SegmentedControlScreen"));
+      return optionalRequire(() => require('./ImageScreen'));
     },
   },
   {
-    name: "Date Time Picker component",
-    route: "ui/date-picker",
+    name: 'Radio Button component',
+    route: 'ui/radio-button',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./DateTimePickerScreen"));
+      return optionalRequire(() => require('./RadioButtonScreen'));
     },
   },
   {
-    name: "Community DateTimePicker replacement",
-    route: "ui/community-datetimepicker",
+    name: 'Segmented Control component',
+    route: 'ui/segmented-control',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./CommunityDateTimePickerScreen"));
+      return optionalRequire(() => require('./SegmentedControlScreen'));
     },
   },
   {
-    name: "Switch component",
-    route: "ui/switch",
+    name: 'Date Time Picker component',
+    route: 'ui/date-picker',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./SwitchScreen"));
+      return optionalRequire(() => require('./DateTimePickerScreen'));
     },
   },
   {
-    name: "Shape component",
-    route: "ui/shape",
+    name: 'Date Range Picker component',
+    route: 'ui/date-range-picker',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./ShapeScreen"));
+      return optionalRequire(() => require('./DateRangePickerScreen'));
     },
   },
   {
-    name: "Form component",
-    route: "ui/form",
+    name: 'ExposedDropdownMenuBox component',
+    route: 'ui/exposed-dropdown-menu-box',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./FormScreen"));
+      return optionalRequire(() => require('./ExposedDropdownMenuBoxScreen'));
     },
   },
   {
-    name: "Slider component",
-    route: "ui/slider",
+    name: 'Community BottomSheet replacement',
+    route: 'ui/community-bottomsheet',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./SliderScreen"));
+      return optionalRequire(() => require('./CommunityBottomSheetScreen'));
     },
   },
   {
-    name: "DropdownMenu component",
-    route: "ui/dropdown-menu",
+    name: 'Community Picker replacement',
+    route: 'ui/community-picker',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./DropdownMenuScreen"));
+      return optionalRequire(() => require('./CommunityPickerScreen'));
     },
   },
   {
-    name: "Color Picker component",
-    route: "ui/color-picker",
+    name: 'Community DateTimePicker replacement',
+    route: 'ui/community-datetimepicker',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./ColorPickerScreen"));
+      return optionalRequire(() => require('./CommunityDateTimePickerScreen'));
     },
   },
   {
-    name: "TextInput component",
-    route: "ui/textInput",
+    name: 'Community SegmentedControl replacement',
+    route: 'ui/community-segmented-control',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./TextInputScreen"));
+      return optionalRequire(() => require('./CommunitySegmentedControlScreen'));
     },
   },
   {
-    name: "Progress component",
-    route: "ui/progress",
+    name: 'Community Slider replacement',
+    route: 'ui/community-slider',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./ProgressScreen"));
+      return optionalRequire(() => require('./CommunitySliderScreen'));
     },
   },
   {
-    name: "List component",
-    route: "ui/list",
+    name: 'Community MaskedView replacement',
+    route: 'ui/community-masked-view',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./ListScreen"));
+      return optionalRequire(() => require('./CommunityMaskedViewScreen'));
     },
   },
   {
-    name: "BottomSheet component",
-    route: "ui/bottomsheet",
+    name: 'Community Menu replacement',
+    route: 'ui/community-menu',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./BottomSheetScreen"));
+      return optionalRequire(() => require('./CommunityMenuScreen'));
     },
   },
   {
-    name: "Chip component",
-    route: "ui/assist-chip",
+    name: 'Community PagerView replacement',
+    route: 'ui/community-pager-view',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./ChipScreen"));
+      return optionalRequire(() => require('./CommunityPagerViewScreen'));
     },
   },
   {
-    name: "Carousel component",
-    route: "ui/carousel",
+    name: 'Switch component',
+    route: 'ui/switch',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./CarouselScreen"));
+      return optionalRequire(() => require('./SwitchScreen'));
     },
   },
   {
-    name: "Jetpack Compose primitives",
-    route: "ui/jetpack-compose-primitives",
+    name: 'SyncSwitch component',
+    route: 'ui/sync-switch',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./JetpackComposePrimitivesScreen"));
+      return optionalRequire(() => require('./SyncSwitchScreen'));
     },
   },
   {
-    name: "Hosting RN Views",
-    route: "ui/hosting-rn-views",
+    name: 'Shape component',
+    route: 'ui/shape',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./HostingRNViewsScreen"));
+      return optionalRequire(() => require('./ShapeScreen'));
     },
   },
   {
-    name: "ToggleButton component",
-    route: "ui/toggle-button",
+    name: 'Form component',
+    route: 'ui/form',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./ToggleButtonScreen"));
+      return optionalRequire(() => require('./FormScreen'));
     },
   },
   {
-    name: "FloatingActionButton component",
-    route: "ui/floating-action-button",
+    name: 'Divider component',
+    route: 'ui/divider',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./FloatingActionButtonScreen"));
+      return optionalRequire(() => require('./DividerScreen'));
     },
   },
   {
-    name: "graphicsLayer modifier",
-    route: "ui/graphics-layer",
+    name: 'Slider component',
+    route: 'ui/slider',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./GraphicsLayerScreen"));
+      return optionalRequire(() => require('./SliderScreen'));
     },
   },
   {
-    name: "HorizontalFloatingToolbar component",
-    route: "ui/horizontal-floating-toolbar",
+    name: 'DropdownMenu component',
+    route: 'ui/dropdown-menu',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./HorizontalFloatingToolbarScreen"));
+      return optionalRequire(() => require('./DropdownMenuScreen'));
     },
   },
   {
-    name: "Modifiers",
-    route: "ui/modifiers",
+    name: 'Color Picker component',
+    route: 'ui/color-picker',
     options: {},
     getComponent() {
-      return optionalRequire(() => require("./ModifiersScreen"));
+      return optionalRequire(() => require('./ColorPickerScreen'));
+    },
+  },
+  {
+    name: 'Material Colors',
+    route: 'ui/material-colors',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./MaterialColorsScreen'));
+    },
+  },
+  {
+    name: 'Text component',
+    route: 'ui/text',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./TextScreen'));
+    },
+  },
+  {
+    name: 'TextField component',
+    route: 'ui/textField',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./TextFieldScreen'));
+    },
+  },
+  {
+    name: 'BasicTextField component',
+    route: 'ui/basicTextField',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./BasicTextFieldScreen'));
+    },
+  },
+  {
+    name: 'Progress component',
+    route: 'ui/progress',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./ProgressScreen'));
+    },
+  },
+  {
+    name: 'List component',
+    route: 'ui/list',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./ListScreen'));
+    },
+  },
+  {
+    name: 'NavigationBar component',
+    route: 'ui/navigation-bar',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./NavigationBarScreen'));
+    },
+  },
+  {
+    name: 'BottomSheet component',
+    route: 'ui/bottomsheet',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./BottomSheetScreen'));
+    },
+  },
+  {
+    name: 'Chip component',
+    route: 'ui/assist-chip',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./ChipScreen'));
+    },
+  },
+  {
+    name: 'HorizontalPager component',
+    route: 'ui/horizontal-pager',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./HorizontalPagerScreen'));
+    },
+  },
+  {
+    name: 'Carousel component',
+    route: 'ui/carousel',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./CarouselScreen'));
+    },
+  },
+  {
+    name: 'LazyColumn / LazyRow',
+    route: 'ui/lazy-column-row',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./LazyColumnRowScreen'));
+    },
+  },
+  {
+    name: 'Jetpack Compose primitives',
+    route: 'ui/jetpack-compose-primitives',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./JetpackComposePrimitivesScreen'));
+    },
+  },
+  {
+    name: 'Hosting RN Views',
+    route: 'ui/hosting-rn-views',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./HostingRNViewsScreen'));
+    },
+  },
+  {
+    name: 'ToggleButton component',
+    route: 'ui/toggle-button',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./ToggleButtonScreen'));
+    },
+  },
+  {
+    name: 'FloatingActionButton component',
+    route: 'ui/floating-action-button',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./FloatingActionButtonScreen'));
+    },
+  },
+  {
+    name: 'graphicsLayer modifier',
+    route: 'ui/graphics-layer',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./GraphicsLayerScreen'));
+    },
+  },
+  {
+    name: 'HorizontalFloatingToolbar component',
+    route: 'ui/horizontal-floating-toolbar',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./HorizontalFloatingToolbarScreen'));
+    },
+  },
+  {
+    name: 'Modifiers',
+    route: 'ui/modifiers',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./ModifiersScreen'));
+    },
+  },
+  {
+    name: 'PullToRefreshBox component',
+    route: 'ui/pull-to-refresh-box',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./PullToRefreshBoxScreen'));
+    },
+  },
+  {
+    name: 'Surface component',
+    route: 'ui/surface',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./SurfaceScreen'));
+    },
+  },
+  {
+    name: 'Snackbar component',
+    route: 'ui/snackbar',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./SnackbarScreen'));
+    },
+  },
+  {
+    name: 'Tooltip component',
+    route: 'ui/tooltip',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./TooltipScreen'));
+    },
+  },
+  {
+    name: 'Extending Expo UI',
+    route: 'ui/extending',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./ExtendingExpoUIScreen'));
+    },
+  },
+  {
+    name: 'Loading Indicator component',
+    route: 'ui/loading-indicator',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./LoadingIndicatorScreen'));
     },
   },
 ];
@@ -250,5 +450,5 @@ export default function UIScreen() {
 }
 
 UIScreen.navigationOptions = {
-  title: "Expo UI",
+  title: 'Expo UI',
 };

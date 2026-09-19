@@ -1,19 +1,19 @@
-import { Column, Text as ComposeText, Host, RadioButton, Row } from "@expo/ui/jetpack-compose";
+import { RadioButton, Column, Row, Text as ComposeText, Host } from '@expo/ui/jetpack-compose';
 import {
+  selectable,
+  selectableGroup,
   fillMaxWidth,
   height,
   padding,
-  selectable,
-  selectableGroup,
-} from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
-import { ScrollView, Text } from "react-native";
+} from '@expo/ui/jetpack-compose/modifiers';
+import * as React from 'react';
+import { ScrollView, Text } from 'react-native';
 
-import { Page, Section } from "../Page";
+import { Page, Section } from '../../components/Page';
 
 export default function RadioButtonScreen() {
-  const [selectedOption, setSelectedOption] = React.useState("Calls");
-  const groupOptions = ["Calls", "Missed", "Friends"];
+  const [selectedOption, setSelectedOption] = React.useState('Calls');
+  const groupOptions = ['Calls', 'Missed', 'Friends'];
 
   return (
     <ScrollView>
@@ -32,16 +32,49 @@ export default function RadioButtonScreen() {
                     selectable(
                       label === selectedOption,
                       () => setSelectedOption(label),
-                      "radioButton",
+                      'radioButton'
                     ),
                     padding(16, 0, 16, 0),
-                  ]}
-                >
+                  ]}>
                   <RadioButton selected={label === selectedOption} />
                   <ComposeText modifiers={[padding(16, 0, 0, 0)]}>{label}</ComposeText>
                 </Row>
               ))}
             </Column>
+          </Host>
+        </Section>
+        <Section title="Custom Colors">
+          <Host matchContents>
+            <Row horizontalArrangement={{ spacedBy: 16 }}>
+              <RadioButton
+                selected
+                colors={{
+                  selectedColor: '#6200EE',
+                  unselectedColor: '#9CA3AF',
+                }}
+              />
+              <RadioButton
+                selected={false}
+                colors={{
+                  selectedColor: '#6200EE',
+                  unselectedColor: '#9CA3AF',
+                }}
+              />
+            </Row>
+          </Host>
+        </Section>
+        <Section title="Disabled">
+          <Host matchContents>
+            <Row horizontalArrangement={{ spacedBy: 16 }}>
+              <RadioButton selected enabled={false} />
+              <RadioButton selected={false} enabled={false} />
+              <RadioButton selected enabled={false} colors={{ disabledSelectedColor: '#E91E63' }} />
+              <RadioButton
+                selected={false}
+                enabled={false}
+                colors={{ disabledUnselectedColor: '#FF9800' }}
+              />
+            </Row>
           </Host>
         </Section>
       </Page>
@@ -50,5 +83,5 @@ export default function RadioButtonScreen() {
 }
 
 RadioButtonScreen.navigationOptions = {
-  title: "Radio Button",
+  title: 'Radio Button',
 };

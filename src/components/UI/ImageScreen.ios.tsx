@@ -1,8 +1,8 @@
-import { Host, HStack, Image, Slider, VStack } from "@expo/ui/swift-ui";
-import * as React from "react";
-import { useState } from "react";
+import { Host, HStack, Image, Slider, VStack } from '@expo/ui/swift-ui';
+import * as React from 'react';
+import { useState } from 'react';
 
-import { ScrollPage, Section } from "../Page";
+import { ScrollPage, Section } from '../../components/Page';
 
 export default function ImageScreen() {
   const [variableValue, setVariableValue] = useState(0.5);
@@ -52,5 +52,5 @@ export default function ImageScreen() {
 }
 
 ImageScreen.navigationOptions = {
-  title: "Image (SwiftUI)",
+  title: 'Image (SwiftUI)',
 };

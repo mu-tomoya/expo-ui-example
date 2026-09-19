@@ -1,6 +1,7 @@
 import {
   Host,
   Slider,
+  VerticalSlider,
   Shape,
   Row,
   Text as ComposeText,
@@ -8,7 +9,7 @@ import {
   Card,
   LazyColumn,
   Box,
-} from "@expo/ui/jetpack-compose";
+} from '@expo/ui/jetpack-compose';
 import {
   background,
   clip,
@@ -18,14 +19,16 @@ import {
   Shapes,
   size,
   weight,
-} from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
+} from '@expo/ui/jetpack-compose/modifiers';
+import * as React from 'react';
 
 export default function SliderScreen() {
   const [steppedValue, setSteppedValue] = React.useState(0.5);
   const [rangeValue, setRangeValue] = React.useState(2);
   const [colorsValue, setColorsValue] = React.useState(0.5);
   const [fullCustomValue, setFullCustomValue] = React.useState(0.5);
+  const [verticalValue, setVerticalValue] = React.useState(0.25);
+  const [reversedVerticalValue, setReversedVerticalValue] = React.useState(0.75);
   return (
     <Host style={{ flex: 1 }}>
       <LazyColumn verticalArrangement={{ spacedBy: 16 }} modifiers={[padding(16, 16, 16, 16)]}>
@@ -34,6 +37,27 @@ export default function SliderScreen() {
             <ComposeText>Default</ComposeText>
             <ComposeText>Default Material3 slider with no customization.</ComposeText>
             <Slider />
+          </Column>
+        </Card>
+        <Card modifiers={[fillMaxWidth()]}>
+          <Column verticalArrangement={{ spacedBy: 12 }} modifiers={[padding(16, 16, 16, 16)]}>
+            <ComposeText>Vertical</ComposeText>
+            <ComposeText>
+              Default direction on the left and reversed direction on the right.
+            </ComposeText>
+            <Row horizontalArrangement={{ spacedBy: 32 }}>
+              <VerticalSlider
+                value={verticalValue}
+                onValueChange={setVerticalValue}
+                modifiers={[height(200)]}
+              />
+              <VerticalSlider
+                value={reversedVerticalValue}
+                reverseDirection
+                onValueChange={setReversedVerticalValue}
+                modifiers={[height(200)]}
+              />
+            </Row>
           </Column>
         </Card>
         <Card modifiers={[fillMaxWidth()]}>
@@ -70,11 +94,11 @@ export default function SliderScreen() {
             <Slider
               value={colorsValue}
               colors={{
-                thumbColor: "#ff0000",
-                activeTrackColor: "#ffff00",
-                inactiveTrackColor: "#ff00ff",
-                activeTickColor: "#ff0000",
-                inactiveTickColor: "#00ff00",
+                thumbColor: '#ff0000',
+                activeTrackColor: '#ffff00',
+                inactiveTrackColor: '#ff00ff',
+                activeTickColor: '#ff0000',
+                inactiveTickColor: '#00ff00',
               }}
               onValueChange={(v) => {
                 setColorsValue(v);
@@ -99,10 +123,9 @@ export default function SliderScreen() {
               value={fullCustomValue}
               onValueChange={(v) => {
                 setFullCustomValue(v);
-              }}
-            >
+              }}>
               <Slider.Thumb>
-                <Box modifiers={[size(24, 24), clip(Shapes.Circle), background("#6200EE")]} />
+                <Box modifiers={[size(24, 24), clip(Shapes.Circle), background('#6200EE')]} />
               </Slider.Thumb>
               <Slider.Track>
                 <Row modifiers={[fillMaxWidth(), height(8)]}>
@@ -127,5 +150,5 @@ export default function SliderScreen() {
 }
 
 SliderScreen.navigationOptions = {
-  title: "Slider",
+  title: 'Slider',
 };

@@ -1,18 +1,18 @@
 import {
-  Column,
-  Text as ComposeText,
-  DatePickerDialog,
   DateTimePicker,
   DateTimePickerProps,
-  Host,
-  SegmentedButton,
   SingleChoiceSegmentedButtonRow,
+  SegmentedButton,
+  Text as ComposeText,
+  DatePickerDialog,
   TimePickerDialog,
-} from "@expo/ui/jetpack-compose";
-import * as React from "react";
-import { Alert, Button, ScrollView, Switch, Text } from "react-native";
+  Column,
+  Host,
+} from '@expo/ui/jetpack-compose';
+import * as React from 'react';
+import { Alert, Button, ScrollView, Switch, Text } from 'react-native';
 
-import { Page, Section } from "../Page";
+import { Page, Section } from '../../components/Page';
 
 const today = new Date();
 const fiveDaysAgo = new Date(today.getTime() - 5 * 24 * 60 * 60 * 1000);
@@ -21,10 +21,10 @@ const thirtyDaysFromNow = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
 export default function DatePickerScreen() {
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
-  const displayOptions = ["picker", "input"];
+  const displayOptions = ['picker', 'input'];
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const typeOptions = ["hourAndMinute", "date", "dateAndTime"];
+  const typeOptions = ['hourAndMinute', 'date', 'dateAndTime'];
   const [typeIndex, setTypeIndex] = React.useState(0);
 
   const [showDateDialog, setShowDateDialog] = React.useState(false);
@@ -54,7 +54,7 @@ export default function DatePickerScreen() {
 
         <Section title="Auto-advance">
           <Button
-            title={ticking ? "Stop" : "Start (+1 min/s)"}
+            title={ticking ? 'Stop' : 'Start (+1 min/s)'}
             onPress={() => setTicking((t) => !t)}
           />
         </Section>
@@ -72,8 +72,7 @@ export default function DatePickerScreen() {
                   <SegmentedButton
                     key={label}
                     selected={index === selectedIndex}
-                    onClick={() => setSelectedIndex(index)}
-                  >
+                    onClick={() => setSelectedIndex(index)}>
                     <SegmentedButton.Label>
                       <ComposeText>{label}</ComposeText>
                     </SegmentedButton.Label>
@@ -86,8 +85,7 @@ export default function DatePickerScreen() {
                   <SegmentedButton
                     key={label}
                     selected={index === typeIndex}
-                    onClick={() => setTypeIndex(index)}
-                  >
+                    onClick={() => setTypeIndex(index)}>
                     <SegmentedButton.Label>
                       <ComposeText>{label}</ComposeText>
                     </SegmentedButton.Label>
@@ -100,10 +98,10 @@ export default function DatePickerScreen() {
                   setSelectedDate(date);
                 }}
                 displayedComponents={
-                  typeOptions[typeIndex] as DateTimePickerProps["displayedComponents"]
+                  typeOptions[typeIndex] as DateTimePickerProps['displayedComponents']
                 }
                 initialDate={selectedDate.toISOString()}
-                variant={displayOptions[selectedIndex] as DateTimePickerProps["variant"]}
+                variant={displayOptions[selectedIndex] as DateTimePickerProps['variant']}
                 showVariantToggle
                 is24Hour={is24Hour}
               />
@@ -137,7 +135,7 @@ export default function DatePickerScreen() {
                 }}
                 onDismissRequest={() => {
                   setShowDateDialog(false);
-                  Alert.alert("Dismissed", "Date picker dialog was dismissed", [{ text: "OK" }], {
+                  Alert.alert('Dismissed', 'Date picker dialog was dismissed', [{ text: 'OK' }], {
                     cancelable: true,
                   });
                 }}
@@ -161,7 +159,7 @@ export default function DatePickerScreen() {
                 }}
                 onDismissRequest={() => {
                   setShowTimeDialog(false);
-                  Alert.alert("Dismissed", "Time picker dialog was dismissed", [{ text: "OK" }], {
+                  Alert.alert('Dismissed', 'Time picker dialog was dismissed', [{ text: 'OK' }], {
                     cancelable: true,
                   });
                 }}
@@ -186,5 +184,5 @@ export default function DatePickerScreen() {
 }
 
 DatePickerScreen.navigationOptions = {
-  title: "DatePicker",
+  title: 'DatePicker',
 };

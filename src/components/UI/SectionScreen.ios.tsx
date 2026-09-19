@@ -1,6 +1,6 @@
-import { Host, List, Section, Text, Toggle } from "@expo/ui/swift-ui";
-import { headerProminence, listStyle } from "@expo/ui/swift-ui/modifiers";
-import { useState } from "react";
+import { Host, List, Section, Text, Toggle } from '@expo/ui/swift-ui';
+import { headerProminence, listStyle } from '@expo/ui/swift-ui/modifiers';
+import { useState } from 'react';
 
 export default function SectionScreen() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -10,10 +10,9 @@ export default function SectionScreen() {
     <Host style={{ flex: 1 }}>
       <List
         modifiers={[
-          listStyle("sidebar"),
-          headerProminence(increasedHeader ? "increased" : "standard"),
-        ]}
-      >
+          listStyle('sidebar'),
+          headerProminence(increasedHeader ? 'increased' : 'standard'),
+        ]}>
         <Section title="Controls">
           <Toggle
             label="Increased header prominence"
@@ -24,8 +23,7 @@ export default function SectionScreen() {
         <Section
           title="Section with Title"
           isExpanded={isExpanded}
-          onIsExpandedChange={setIsExpanded}
-        >
+          onIsExpandedChange={setIsExpanded}>
           <Text>This section uses the title prop</Text>
           <Text>Simple and clean</Text>
         </Section>
@@ -34,8 +32,7 @@ export default function SectionScreen() {
         </Section>
         <Section
           header={<Text>Header with Footer</Text>}
-          footer={<Text>Footer with custom header</Text>}
-        >
+          footer={<Text>Footer with custom header</Text>}>
           <Text>This section uses header and footer props</Text>
         </Section>
         <Section footer={<Text>Footer without header</Text>}>

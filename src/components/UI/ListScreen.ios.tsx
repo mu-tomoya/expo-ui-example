@@ -1,4 +1,4 @@
-import { Button, Host, Label, List, Picker, Section, Text, Toggle } from "@expo/ui/swift-ui";
+import { Button, Host, Label, List, Picker, Section, Text, Toggle } from '@expo/ui/swift-ui';
 import {
   animation,
   foregroundStyle,
@@ -9,9 +9,9 @@ import {
   refreshable,
   tag,
   environment,
-} from "@expo/ui/swift-ui/modifiers";
-import type { SFSymbol } from "expo-symbols";
-import * as React from "react";
+} from '@expo/ui/swift-ui/modifiers';
+import type { SFSymbol } from 'expo-symbols';
+import * as React from 'react';
 
 type ListItem = {
   id: string;
@@ -20,20 +20,20 @@ type ListItem = {
 };
 
 const INITIAL_ITEMS: ListItem[] = [
-  { id: "1", title: "Sun", icon: "sun.max.fill" },
-  { id: "2", title: "Moon", icon: "moon.fill" },
-  { id: "3", title: "Star", icon: "star.fill" },
-  { id: "4", title: "Cloud", icon: "cloud.fill" },
-  { id: "5", title: "Rain", icon: "cloud.rain.fill" },
+  { id: '1', title: 'Sun', icon: 'sun.max.fill' },
+  { id: '2', title: 'Moon', icon: 'moon.fill' },
+  { id: '3', title: 'Star', icon: 'star.fill' },
+  { id: '4', title: 'Cloud', icon: 'cloud.fill' },
+  { id: '5', title: 'Rain', icon: 'cloud.rain.fill' },
 ];
 
 const LIST_STYLES: ListStyle[] = [
-  "automatic",
-  "plain",
-  "inset",
-  "insetGrouped",
-  "grouped",
-  "sidebar",
+  'automatic',
+  'plain',
+  'inset',
+  'insetGrouped',
+  'grouped',
+  'sidebar',
 ];
 
 export default function ListScreen() {
@@ -73,17 +73,15 @@ export default function ListScreen() {
           listStyle(LIST_STYLES[listStyleIndex]),
           refreshable(handleRefresh),
           animation(Animation.default, editMode),
-          environment("editMode", editMode ? "active" : "inactive"),
-        ]}
-      >
+          environment('editMode', editMode ? 'active' : 'inactive'),
+        ]}>
         <Section title="Settings">
           <Toggle label="Edit Mode" isOn={editMode} onIsOnChange={setEditMode} />
           <Picker
             label="List Style"
             selection={listStyleIndex}
             onSelectionChange={setListStyleIndex}
-            modifiers={[pickerStyle("menu")]}
-          >
+            modifiers={[pickerStyle('menu')]}>
             {LIST_STYLES.map((style, i) => (
               <Text key={style} modifiers={[tag(i)]}>
                 {style}
@@ -97,9 +95,9 @@ export default function ListScreen() {
         <Section title="Info">
           <Label title={`${items.length} items`} systemImage="number" />
           <Label
-            title={selectedIds.length > 0 ? `Selected: ${selectedIds.join(", ")}` : "None selected"}
+            title={selectedIds.length > 0 ? `Selected: ${selectedIds.join(', ')}` : 'None selected'}
             systemImage="checkmark.circle"
-            modifiers={[foregroundStyle(selectedIds.length > 0 ? "blue" : "gray")]}
+            modifiers={[foregroundStyle(selectedIds.length > 0 ? 'blue' : 'gray')]}
           />
         </Section>
 
@@ -107,8 +105,7 @@ export default function ListScreen() {
           <List.ForEach
             onDelete={handleDelete}
             onMove={handleMove}
-            modifiers={[animation(Animation.default, editMode)]}
-          >
+            modifiers={[animation(Animation.default, editMode)]}>
             {items.map((item) => (
               <Label
                 key={item.id}

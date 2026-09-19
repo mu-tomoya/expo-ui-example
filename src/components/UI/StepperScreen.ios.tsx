@@ -1,14 +1,14 @@
-import { Host, Stepper } from "@expo/ui/swift-ui";
-import { background, padding, border } from "@expo/ui/swift-ui/modifiers";
-import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Host, Stepper } from '@expo/ui/swift-ui';
+import { background, padding, border } from '@expo/ui/swift-ui/modifiers';
+import React, { useState } from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import HeadingText from "../../components/HeadingText";
+import HeadingText from '../../components/HeadingText';
 
 const modifiers = [
   padding({ all: 16 }),
-  background("#f8f9fa"),
-  border({ color: "#e1e5e9", width: 1 }),
+  background('#f8f9fa'),
+  border({ content: '#e1e5e9', width: 1 }),
 ];
 
 export default function StepperScreen() {
@@ -24,7 +24,7 @@ export default function StepperScreen() {
       <HeadingText style={styles.heading}>Native SwiftUI Stepper Component</HeadingText>
       <Text style={styles.description}>
         Interactive stepper controls for incrementing and decrementing values
-        {"\n"}Styled with SwiftUI modifiers for consistent appearance
+        {'\n'}Styled with SwiftUI modifiers for consistent appearance
       </Text>
       <View style={styles.section}>
         <HeadingText style={styles.sectionTitle}>Basic Steppers</HeadingText>
@@ -133,18 +133,17 @@ export default function StepperScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
   },
   contentContainer: {
     padding: 16,
   },
   heading: {
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: 8,
   },
   description: {
-    textAlign: "center",
-    color: "#666",
+    textAlign: 'center',
+    color: '#666',
     marginBottom: 24,
     lineHeight: 20,
   },
@@ -152,13 +151,12 @@ const styles = StyleSheet.create({
     marginBottom: 32,
     paddingBottom: 16,
     borderBottomWidth: 1,
-    borderBottomColor: "#e1e5e9",
+    borderBottomColor: '#e1e5e9',
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "600",
+    fontWeight: '600',
     marginBottom: 16,
-    color: "#333",
   },
   stepperContainer: {
     marginBottom: 12,
@@ -166,5 +164,5 @@ const styles = StyleSheet.create({
 });
 
 StepperScreen.navigationOptions = {
-  title: "Stepper",
+  title: 'Stepper',
 };

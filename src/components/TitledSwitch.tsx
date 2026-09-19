@@ -1,6 +1,5 @@
-import { B } from "@expo/html-elements";
 import React from "react";
-import { StyleSheet, Switch, View, TextStyle, ViewStyle } from "react-native";
+import { StyleSheet, Switch, Text, View, TextStyle, ViewStyle } from "react-native";
 
 type Props = {
   style?: ViewStyle;
@@ -16,7 +15,7 @@ const TitleSwitch = ({ style, titleStyle, title, value, setValue, disabled, test
   const outputTitle = disabled ? `${title} (Disabled)` : title;
   return (
     <View style={[styles.container, style]}>
-      <B style={[styles.title, titleStyle]}>{outputTitle}</B>
+      <Text style={[styles.title, titleStyle]}>{outputTitle}</Text>
       <Switch
         testID={testID}
         disabled={disabled}
@@ -35,6 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   title: {
+    fontWeight: "bold",
     marginRight: 12,
   },
   text: {

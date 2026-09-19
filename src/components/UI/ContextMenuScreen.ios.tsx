@@ -11,14 +11,20 @@ import {
   Section,
   Divider,
   RNHostView,
-} from "@expo/ui/swift-ui";
-import { buttonStyle, foregroundStyle, pickerStyle, tag } from "@expo/ui/swift-ui/modifiers";
-import { useVideoPlayer, VideoView } from "expo-video";
-import * as React from "react";
-import { View, StyleSheet, Text as RNText } from "react-native";
+} from '@expo/ui/swift-ui';
+import {
+  buttonStyle,
+  disabled,
+  foregroundStyle,
+  pickerStyle,
+  tag,
+} from '@expo/ui/swift-ui/modifiers';
+import { useVideoPlayer, VideoView } from 'expo-video';
+import * as React from 'react';
+import { View, StyleSheet, Text as RNText } from 'react-native';
 
 const videoLink =
-  "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_2MB.mp4";
+  'https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_2MB.mp4';
 
 export default function ContextMenuScreen() {
   const [selectedIndex, setSelectedIndex] = React.useState<number | undefined>(1);
@@ -40,41 +46,46 @@ export default function ContextMenuScreen() {
               <Button
                 label="Hello"
                 systemImage="person.crop.circle.badge.xmark"
-                onPress={() => console.log("Pressed1")}
+                onPress={() => console.log('Pressed1')}
               />
               <Button
                 label="I love"
                 systemImage="heart"
-                modifiers={[buttonStyle("bordered")]}
-                onPress={() => console.log("Pressed2")}
+                modifiers={[buttonStyle('bordered')]}
+                onPress={() => console.log('Pressed2')}
+              />
+              <Button
+                label="Disabled action"
+                systemImage="nosign"
+                modifiers={[disabled(true)]}
+                onPress={() => console.log('This should not fire')}
               />
             </ContextMenu.Items>
             <ContextMenu.Trigger>
-              <Text modifiers={[foregroundStyle("accentColor")]}>Show menu</Text>
+              <Text modifiers={[foregroundStyle('accentColor')]}>Show menu</Text>
             </ContextMenu.Trigger>
           </ContextMenu>
         </Section>
         <Section title="Context Menu with Picker">
-          <ContextMenu modifiers={[buttonStyle("bordered")]}>
+          <ContextMenu modifiers={[buttonStyle('bordered')]}>
             <ContextMenu.Items>
               <Button
                 label="Hello"
                 systemImage="person.crop.circle.badge.xmark"
-                onPress={() => console.log("Pressed1")}
+                onPress={() => console.log('Pressed1')}
               />
               <Button
                 label="I love"
                 systemImage="heart"
-                modifiers={[buttonStyle("bordered")]}
-                onPress={() => console.log("Pressed2")}
+                modifiers={[buttonStyle('bordered')]}
+                onPress={() => console.log('Pressed2')}
               />
               <Picker
                 label="Doggos"
-                modifiers={[pickerStyle("menu")]}
+                modifiers={[pickerStyle('menu')]}
                 selection={selectedIndex}
-                onSelectionChange={setSelectedIndex}
-              >
-                {["very", "veery", "veeery", "much"].map((option, index) => (
+                onSelectionChange={setSelectedIndex}>
+                {['very', 'veery', 'veeery', 'much'].map((option, index) => (
                   <Text key={index} modifiers={[tag(index)]}>
                     {option}
                   </Text>
@@ -82,7 +93,7 @@ export default function ContextMenuScreen() {
               </Picker>
             </ContextMenu.Items>
             <ContextMenu.Trigger>
-              <Text modifiers={[foregroundStyle("accentColor")]}>Show Menu</Text>
+              <Text modifiers={[foregroundStyle('accentColor')]}>Show Menu</Text>
             </ContextMenu.Trigger>
           </ContextMenu>
         </Section>
@@ -139,23 +150,23 @@ export default function ContextMenuScreen() {
           </ContextMenu>
         </Section>
         <Section title="SwiftUI Section and Divider Components">
-          <ContextMenu modifiers={[buttonStyle("glass")]}>
+          <ContextMenu modifiers={[buttonStyle('glass')]}>
             <ContextMenu.Items>
               <Button role="destructive" label="Delete" />
               <Divider />
-              <Button onPress={() => console.log("Pressed3")} label="Add to favorites" />
+              <Button onPress={() => console.log('Pressed3')} label="Add to favorites" />
               <SwiftUISection title="Primary actions">
-                <Button onPress={() => console.log("Pressed1")} label="First" />
-                <Button onPress={() => console.log("Pressed2")} label="Second" />
+                <Button onPress={() => console.log('Pressed1')} label="First" />
+                <Button onPress={() => console.log('Pressed2')} label="Second" />
               </SwiftUISection>
             </ContextMenu.Items>
             <ContextMenu.Trigger>
-              <Text modifiers={[foregroundStyle("accentColor")]}>Show menu</Text>
+              <Text modifiers={[foregroundStyle('accentColor')]}>Show menu</Text>
             </ContextMenu.Trigger>
           </ContextMenu>
         </Section>
         <Section title="Menu item with title and subtitle">
-          <ContextMenu modifiers={[buttonStyle("glass")]}>
+          <ContextMenu modifiers={[buttonStyle('glass')]}>
             <ContextMenu.Items>
               <Button role="destructive">
                 <Image systemName="trash" />
@@ -174,7 +185,7 @@ export default function ContextMenuScreen() {
 }
 
 ContextMenuScreen.navigationOptions = {
-  title: "Context Menu",
+  title: 'Context Menu',
 };
 
 const styles = StyleSheet.create({
@@ -190,6 +201,6 @@ const styles = StyleSheet.create({
     width: 300,
     height: 200,
     padding: 20,
-    backgroundColor: "#ffeeee",
+    backgroundColor: '#ffeeee',
   },
 });

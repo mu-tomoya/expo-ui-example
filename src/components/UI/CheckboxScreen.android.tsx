@@ -7,9 +7,9 @@ import {
   Row,
   Card,
   LazyColumn,
-} from "@expo/ui/jetpack-compose";
-import { fillMaxWidth, padding, toggleable } from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
+} from '@expo/ui/jetpack-compose';
+import { fillMaxWidth, padding, toggleable } from '@expo/ui/jetpack-compose/modifiers';
+import * as React from 'react';
 
 export default function CheckboxScreen() {
   const [checked, setChecked] = React.useState<boolean>(true);
@@ -19,7 +19,7 @@ export default function CheckboxScreen() {
   const [child3, setChild3] = React.useState(false);
 
   const parentState =
-    child1 && child2 && child3 ? "on" : !child1 && !child2 && !child3 ? "off" : "indeterminate";
+    child1 && child2 && child3 ? 'on' : !child1 && !child2 && !child3 ? 'off' : 'indeterminate';
 
   return (
     <Host style={{ flex: 1 }}>
@@ -39,9 +39,9 @@ export default function CheckboxScreen() {
               value={checked}
               onCheckedChange={setChecked}
               colors={{
-                checkedColor: "#6200EE",
-                checkmarkColor: "#FFFFFF",
-                uncheckedColor: "#9CA3AF",
+                checkedColor: '#6200EE',
+                checkmarkColor: '#FFFFFF',
+                uncheckedColor: '#9CA3AF',
               }}
             />
           </Column>
@@ -65,41 +65,37 @@ export default function CheckboxScreen() {
               horizontalArrangement={{ spacedBy: 8 }}
               modifiers={[
                 toggleable(
-                  parentState === "on",
+                  parentState === 'on',
                   () => {
-                    const newState = parentState !== "on";
+                    const newState = parentState !== 'on';
                     setChild1(newState);
                     setChild2(newState);
                     setChild3(newState);
                   },
-                  { role: "checkbox" },
+                  { role: 'checkbox' }
                 ),
-              ]}
-            >
+              ]}>
               <TriStateCheckbox state={parentState} />
               <ComposeText>Select all</ComposeText>
             </Row>
             <Row
               verticalAlignment="center"
               horizontalArrangement={{ spacedBy: 8 }}
-              modifiers={[toggleable(child1, () => setChild1(!child1), { role: "checkbox" })]}
-            >
+              modifiers={[toggleable(child1, () => setChild1(!child1), { role: 'checkbox' })]}>
               <Checkbox value={child1} />
               <ComposeText>Option 1</ComposeText>
             </Row>
             <Row
               verticalAlignment="center"
               horizontalArrangement={{ spacedBy: 8 }}
-              modifiers={[toggleable(child2, () => setChild2(!child2), { role: "checkbox" })]}
-            >
+              modifiers={[toggleable(child2, () => setChild2(!child2), { role: 'checkbox' })]}>
               <Checkbox value={child2} />
               <ComposeText>Option 2</ComposeText>
             </Row>
             <Row
               verticalAlignment="center"
               horizontalArrangement={{ spacedBy: 8 }}
-              modifiers={[toggleable(child3, () => setChild3(!child3), { role: "checkbox" })]}
-            >
+              modifiers={[toggleable(child3, () => setChild3(!child3), { role: 'checkbox' })]}>
               <Checkbox value={child3} />
               <ComposeText>Option 3</ComposeText>
             </Row>
@@ -111,5 +107,5 @@ export default function CheckboxScreen() {
 }
 
 CheckboxScreen.navigationOptions = {
-  title: "Checkbox",
+  title: 'Checkbox',
 };

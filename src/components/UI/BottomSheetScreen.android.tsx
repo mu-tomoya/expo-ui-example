@@ -10,20 +10,24 @@ import {
   Row,
   Switch,
   Text as ComposeText,
-} from "@expo/ui/jetpack-compose";
-import type { ModalBottomSheetRef } from "@expo/ui/jetpack-compose";
+} from '@expo/ui/jetpack-compose';
+import type { ModalBottomSheetRef } from '@expo/ui/jetpack-compose';
 import {
   background,
   clip,
+  fillMaxHeight,
   fillMaxWidth,
   height,
   padding,
   Shapes,
   weight,
   width,
-} from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
-import { Pressable, Text as RNText, View } from "react-native";
+} from '@expo/ui/jetpack-compose/modifiers';
+import { FlashList } from '@shopify/flash-list';
+import * as React from 'react';
+import { Pressable, StyleSheet, Text as RNText, View } from 'react-native';
+
+const LIST_DATA = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
 
 export default function BottomSheetScreen() {
   const [showSheet, setShowSheet] = React.useState(false);
@@ -31,12 +35,16 @@ export default function BottomSheetScreen() {
   const [showRNContentWithFlex, setShowRNContentWithFlex] = React.useState(false);
   const [counter, setCounter] = React.useState(0);
 
+  const [showScrollableList, setShowScrollableList] = React.useState(false);
+
   const sheetRef = React.useRef<ModalBottomSheetRef>(null);
   const rnContentSheetRef = React.useRef<ModalBottomSheetRef>(null);
   const flexSheetRef = React.useRef<ModalBottomSheetRef>(null);
+  const scrollableListSheetRef = React.useRef<ModalBottomSheetRef>(null);
 
   // Configurable props
   const [skipPartiallyExpanded, setSkipPartiallyExpanded] = React.useState(false);
+  const [initialFullyExpanded, setInitialFullyExpanded] = React.useState(false);
   const [showDragHandle, setShowDragHandle] = React.useState(true);
   const [useCustomDragHandle, setUseCustomDragHandle] = React.useState(false);
   const [sheetGesturesEnabled, setSheetGesturesEnabled] = React.useState(true);
@@ -59,13 +67,18 @@ export default function BottomSheetScreen() {
     setShowRNContentWithFlex(false);
   };
 
+  const hideScrollableListSheet = async () => {
+    await scrollableListSheetRef.current?.hide();
+    setShowScrollableList(false);
+  };
+
   return (
     <Host style={{ flex: 1 }}>
       <LazyColumn verticalArrangement={{ spacedBy: 16 }} modifiers={[padding(16, 16, 16, 16)]}>
         <Card modifiers={[fillMaxWidth()]}>
           <Column verticalArrangement={{ spacedBy: 4 }} modifiers={[padding(16, 16, 16, 16)]}>
-            <ComposeText style={{ typography: "titleMedium" }}>Configurable Sheet</ComposeText>
-            <ComposeText style={{ typography: "bodySmall" }} color="#666666">
+            <ComposeText style={{ typography: 'titleMedium' }}>Configurable Sheet</ComposeText>
+            <ComposeText style={{ typography: 'bodySmall' }} color="#666666">
               Toggle props below, then open the sheet.
             </ComposeText>
 
@@ -73,9 +86,8 @@ export default function BottomSheetScreen() {
               <Row
                 modifiers={[fillMaxWidth()]}
                 horizontalArrangement="spaceBetween"
-                verticalAlignment="center"
-              >
-                <ComposeText style={{ typography: "bodyMedium" }}>
+                verticalAlignment="center">
+                <ComposeText style={{ typography: 'bodyMedium' }}>
                   Skip partially expanded
                 </ComposeText>
                 <Switch value={skipPartiallyExpanded} onCheckedChange={setSkipPartiallyExpanded} />
@@ -83,17 +95,24 @@ export default function BottomSheetScreen() {
               <Row
                 modifiers={[fillMaxWidth()]}
                 horizontalArrangement="spaceBetween"
-                verticalAlignment="center"
-              >
-                <ComposeText style={{ typography: "bodyMedium" }}>Show drag handle</ComposeText>
+                verticalAlignment="center">
+                <ComposeText style={{ typography: 'bodyMedium' }}>
+                  Initial fully expanded
+                </ComposeText>
+                <Switch value={initialFullyExpanded} onCheckedChange={setInitialFullyExpanded} />
+              </Row>
+              <Row
+                modifiers={[fillMaxWidth()]}
+                horizontalArrangement="spaceBetween"
+                verticalAlignment="center">
+                <ComposeText style={{ typography: 'bodyMedium' }}>Show drag handle</ComposeText>
                 <Switch value={showDragHandle} onCheckedChange={setShowDragHandle} />
               </Row>
               <Row
                 modifiers={[fillMaxWidth()]}
                 horizontalArrangement="spaceBetween"
-                verticalAlignment="center"
-              >
-                <ComposeText style={{ typography: "bodyMedium" }}>
+                verticalAlignment="center">
+                <ComposeText style={{ typography: 'bodyMedium' }}>
                   Use custom drag handle
                 </ComposeText>
                 <Switch value={useCustomDragHandle} onCheckedChange={setUseCustomDragHandle} />
@@ -101,9 +120,8 @@ export default function BottomSheetScreen() {
               <Row
                 modifiers={[fillMaxWidth()]}
                 horizontalArrangement="spaceBetween"
-                verticalAlignment="center"
-              >
-                <ComposeText style={{ typography: "bodyMedium" }}>
+                verticalAlignment="center">
+                <ComposeText style={{ typography: 'bodyMedium' }}>
                   Sheet gestures enabled
                 </ComposeText>
                 <Switch value={sheetGesturesEnabled} onCheckedChange={setSheetGesturesEnabled} />
@@ -111,9 +129,8 @@ export default function BottomSheetScreen() {
               <Row
                 modifiers={[fillMaxWidth()]}
                 horizontalArrangement="spaceBetween"
-                verticalAlignment="center"
-              >
-                <ComposeText style={{ typography: "bodyMedium" }}>
+                verticalAlignment="center">
+                <ComposeText style={{ typography: 'bodyMedium' }}>
                   Dismiss on back press
                 </ComposeText>
                 <Switch
@@ -124,9 +141,8 @@ export default function BottomSheetScreen() {
               <Row
                 modifiers={[fillMaxWidth()]}
                 horizontalArrangement="spaceBetween"
-                verticalAlignment="center"
-              >
-                <ComposeText style={{ typography: "bodyMedium" }}>
+                verticalAlignment="center">
+                <ComposeText style={{ typography: 'bodyMedium' }}>
                   Dismiss on click outside
                 </ComposeText>
                 <Switch
@@ -137,9 +153,8 @@ export default function BottomSheetScreen() {
               <Row
                 modifiers={[fillMaxWidth()]}
                 horizontalArrangement="spaceBetween"
-                verticalAlignment="center"
-              >
-                <ComposeText style={{ typography: "bodyMedium" }}>Use custom colors</ComposeText>
+                verticalAlignment="center">
+                <ComposeText style={{ typography: 'bodyMedium' }}>Use custom colors</ComposeText>
                 <Switch value={useCustomColors} onCheckedChange={setUseCustomColors} />
               </Row>
             </Column>
@@ -152,8 +167,8 @@ export default function BottomSheetScreen() {
 
         <Card modifiers={[fillMaxWidth()]}>
           <Column verticalArrangement={{ spacedBy: 4 }} modifiers={[padding(16, 16, 16, 16)]}>
-            <ComposeText style={{ typography: "titleMedium" }}>React Native Content</ComposeText>
-            <ComposeText style={{ typography: "bodySmall" }} color="#666666">
+            <ComposeText style={{ typography: 'titleMedium' }}>React Native Content</ComposeText>
+            <ComposeText style={{ typography: 'bodySmall' }} color="#666666">
               Sheet with interactive RN views inside.
             </ComposeText>
             <Button onClick={() => setShowRNContent(true)} modifiers={[fillMaxWidth()]}>
@@ -164,14 +179,28 @@ export default function BottomSheetScreen() {
 
         <Card modifiers={[fillMaxWidth()]}>
           <Column verticalArrangement={{ spacedBy: 4 }} modifiers={[padding(16, 16, 16, 16)]}>
-            <ComposeText style={{ typography: "titleMedium" }}>
+            <ComposeText style={{ typography: 'titleMedium' }}>
               React Native Content with flex: 1
             </ComposeText>
-            <ComposeText style={{ typography: "bodySmall" }} color="#666666">
+            <ComposeText style={{ typography: 'bodySmall' }} color="#666666">
               Sheet with RN views that fill available space.
             </ComposeText>
             <Button onClick={() => setShowRNContentWithFlex(true)} modifiers={[fillMaxWidth()]}>
               <ComposeText>Open Flex Content Sheet</ComposeText>
+            </Button>
+          </Column>
+        </Card>
+
+        <Card modifiers={[fillMaxWidth()]}>
+          <Column verticalArrangement={{ spacedBy: 4 }} modifiers={[padding(16, 16, 16, 16)]}>
+            <ComposeText style={{ typography: 'titleMedium' }}>
+              Scrollable List (FlashList)
+            </ComposeText>
+            <ComposeText style={{ typography: 'bodySmall' }} color="#666666">
+              A nested RN FlashList. Scroll to the top, then keep dragging down to move the sheet.
+            </ComposeText>
+            <Button onClick={() => setShowScrollableList(true)} modifiers={[fillMaxWidth()]}>
+              <ComposeText>Open Scrollable List Sheet</ComposeText>
             </Button>
           </Column>
         </Card>
@@ -182,6 +211,7 @@ export default function BottomSheetScreen() {
           ref={sheetRef}
           onDismissRequest={() => setShowSheet(false)}
           skipPartiallyExpanded={skipPartiallyExpanded}
+          initialFullyExpanded={initialFullyExpanded}
           showDragHandle={showDragHandle}
           sheetGesturesEnabled={sheetGesturesEnabled}
           properties={{
@@ -189,19 +219,17 @@ export default function BottomSheetScreen() {
             shouldDismissOnClickOutside,
           }}
           {...(useCustomColors && {
-            containerColor: "#1a1a2e",
-            contentColor: "#e0e0e0",
-            scrimColor: "#806200EE",
-          })}
-        >
+            containerColor: '#1a1a2e',
+            contentColor: '#e0e0e0',
+            scrimColor: '#806200EE',
+          })}>
           {useCustomDragHandle && (
             <ModalBottomSheet.DragHandle>
               <Column
                 horizontalAlignment="center"
-                modifiers={[fillMaxWidth(), padding(0, 12, 0, 8)]}
-              >
+                modifiers={[fillMaxWidth(), padding(0, 12, 0, 8)]}>
                 <Box
-                  modifiers={[width(60), height(6), clip(Shapes.Circle), background("#6200EE")]}
+                  modifiers={[width(60), height(6), clip(Shapes.Circle), background('#6200EE')]}
                 />
               </Column>
             </ModalBottomSheet.DragHandle>
@@ -215,7 +243,7 @@ export default function BottomSheetScreen() {
             </Row>
             <ComposeText>This sheet reflects the toggled props above.</ComposeText>
             <ComposeText>When skipPartiallyExpanded is off, drag up to expand.</ComposeText>
-            <ComposeText>{"\n"}Additional content to allow full expansion:</ComposeText>
+            <ComposeText>{'\n'}Additional content to allow full expansion:</ComposeText>
             <ComposeText>Item 1</ComposeText>
             <ComposeText>Item 2</ComposeText>
             <ComposeText>Item 3</ComposeText>
@@ -242,8 +270,7 @@ export default function BottomSheetScreen() {
         <ModalBottomSheet
           ref={rnContentSheetRef}
           onDismissRequest={() => setShowRNContent(false)}
-          skipPartiallyExpanded={false}
-        >
+          skipPartiallyExpanded={false}>
           <Column verticalArrangement={{ spacedBy: 16 }} modifiers={[padding(16, 16, 16, 16)]}>
             <ComposeText>Mixing Compose + RN in a Bottom Sheet</ComposeText>
             <Row horizontalArrangement={{ spacedBy: 24 }} verticalAlignment="center">
@@ -254,12 +281,11 @@ export default function BottomSheetScreen() {
                     height: 50,
                     width: 50,
                     borderRadius: 100,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#9B59B6",
-                  }}
-                >
-                  <RNText style={{ color: "white", fontSize: 24 }}>-</RNText>
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#9B59B6',
+                  }}>
+                  <RNText style={{ color: 'white', fontSize: 24 }}>-</RNText>
                 </Pressable>
               </RNHostView>
               <ComposeText>{counter}</ComposeText>
@@ -270,43 +296,40 @@ export default function BottomSheetScreen() {
                     height: 50,
                     width: 50,
                     borderRadius: 100,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#9B59B6",
-                  }}
-                >
-                  <RNText style={{ color: "white", fontSize: 24 }}>+</RNText>
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#9B59B6',
+                  }}>
+                  <RNText style={{ color: 'white', fontSize: 24 }}>+</RNText>
                 </Pressable>
               </RNHostView>
             </Row>
             <RNHostView matchContents>
               <View style={{ padding: 24 }}>
-                <RNText style={{ fontSize: 18, fontWeight: "bold", marginBottom: 8 }}>
+                <RNText style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>
                   React Native Content
                 </RNText>
-                <RNText style={{ color: "#666", marginBottom: 16 }}>Counter: {counter}</RNText>
+                <RNText style={{ color: '#666', marginBottom: 16 }}>Counter: {counter}</RNText>
                 <Pressable
                   style={{
-                    backgroundColor: "#007AFF",
+                    backgroundColor: '#007AFF',
                     padding: 12,
                     borderRadius: 8,
-                    alignItems: "center",
+                    alignItems: 'center',
                     marginBottom: 12,
                   }}
-                  onPress={() => setCounter((prev) => prev + 1)}
-                >
-                  <RNText style={{ color: "white", fontWeight: "600" }}>Increment</RNText>
+                  onPress={() => setCounter((prev) => prev + 1)}>
+                  <RNText style={{ color: 'white', fontWeight: '600' }}>Increment</RNText>
                 </Pressable>
                 <Pressable
                   style={{
-                    backgroundColor: "#FF3B30",
+                    backgroundColor: '#FF3B30',
                     padding: 12,
                     borderRadius: 8,
-                    alignItems: "center",
+                    alignItems: 'center',
                   }}
-                  onPress={hideRNContentSheet}
-                >
-                  <RNText style={{ color: "white", fontWeight: "600" }}>Close</RNText>
+                  onPress={hideRNContentSheet}>
+                  <RNText style={{ color: 'white', fontWeight: '600' }}>Close</RNText>
                 </Pressable>
               </View>
             </RNHostView>
@@ -318,35 +341,64 @@ export default function BottomSheetScreen() {
         <ModalBottomSheet
           ref={flexSheetRef}
           onDismissRequest={() => setShowRNContentWithFlex(false)}
-          skipPartiallyExpanded
-        >
+          skipPartiallyExpanded>
           <Column modifiers={[height(400), padding(16, 16, 16, 16)]}>
             <ComposeText>RN View with flex: 1</ComposeText>
             <RNHostView>
-              <View style={{ flex: 1, backgroundColor: "#9B59B6", borderRadius: 10 }}>
+              <View style={{ flex: 1, backgroundColor: '#9B59B6', borderRadius: 10 }}>
                 <RNText
                   style={{
-                    color: "white",
+                    color: 'white',
                     fontSize: 18,
-                    fontWeight: "bold",
+                    fontWeight: 'bold',
                     padding: 16,
-                  }}
-                >
+                  }}>
                   React Native Content (flex: 1)
                 </RNText>
                 <Pressable
                   style={{
-                    backgroundColor: "#FF3B30",
+                    backgroundColor: '#FF3B30',
                     padding: 12,
                     borderRadius: 8,
-                    alignItems: "center",
+                    alignItems: 'center',
                     margin: 16,
                   }}
-                  onPress={hideFlexSheet}
-                >
-                  <RNText style={{ color: "white", fontWeight: "600" }}>Close</RNText>
+                  onPress={hideFlexSheet}>
+                  <RNText style={{ color: 'white', fontWeight: '600' }}>Close</RNText>
                 </Pressable>
               </View>
+            </RNHostView>
+          </Column>
+        </ModalBottomSheet>
+      )}
+
+      {showScrollableList && (
+        <ModalBottomSheet
+          ref={scrollableListSheetRef}
+          onDismissRequest={() => setShowScrollableList(false)}>
+          {/*
+            fillMaxHeight gives the list a bounded viewport to scroll within. The FlashList sets
+            nestedScrollEnabled so, once it reaches the top, the leftover drag is handed to the sheet.
+          */}
+          <Column modifiers={[fillMaxHeight(), padding(16, 16, 16, 16)]}>
+            <Row horizontalArrangement={{ spacedBy: 12 }} verticalAlignment="center">
+              <ComposeText modifiers={[weight(1)]}>Scrollable list</ComposeText>
+              <Button onClick={hideScrollableListSheet}>
+                <ComposeText>✕</ComposeText>
+              </Button>
+            </Row>
+            <RNHostView>
+              <FlashList
+                nestedScrollEnabled
+                style={styles.list}
+                data={LIST_DATA}
+                keyExtractor={(item) => item}
+                renderItem={({ item }) => (
+                  <View style={styles.listRow}>
+                    <RNText style={styles.listRowText}>{item}</RNText>
+                  </View>
+                )}
+              />
             </RNHostView>
           </Column>
         </ModalBottomSheet>
@@ -355,6 +407,16 @@ export default function BottomSheetScreen() {
   );
 }
 
+const styles = StyleSheet.create({
+  list: { flex: 1 },
+  listRow: {
+    paddingVertical: 16,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#cccccc',
+  },
+  listRowText: { fontSize: 16 },
+});
+
 BottomSheetScreen.navigationOptions = {
-  title: "BottomSheet",
+  title: 'BottomSheet',
 };

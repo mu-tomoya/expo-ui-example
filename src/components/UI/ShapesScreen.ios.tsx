@@ -14,7 +14,7 @@ import {
   ZStack,
   ConcentricRectangle,
   EdgeCornerStyle,
-} from "@expo/ui/swift-ui";
+} from '@expo/ui/swift-ui';
 import {
   frame,
   shadow,
@@ -22,8 +22,8 @@ import {
   containerShape,
   padding,
   shapes,
-} from "@expo/ui/swift-ui/modifiers";
-import React from "react";
+} from '@expo/ui/swift-ui/modifiers';
+import React from 'react';
 
 export default function ShapesScreen() {
   return (
@@ -33,7 +33,7 @@ export default function ShapesScreen() {
           <VStack spacing={16}>
             <Text>Rectangle shape</Text>
             <Rectangle
-              modifiers={[frame({ width: 200, height: 100 }), foregroundStyle("#007AFF")]}
+              modifiers={[frame({ width: 200, height: 100 }), foregroundStyle('#007AFF')]}
             />
           </VStack>
         </Section>
@@ -43,14 +43,14 @@ export default function ShapesScreen() {
             <Text>Rectangle with corner radius</Text>
             <RoundedRectangle
               cornerRadius={20}
-              modifiers={[frame({ width: 200, height: 100 }), foregroundStyle("#FF9500")]}
+              modifiers={[frame({ width: 200, height: 100 }), foregroundStyle('#FF9500')]}
             />
             <RoundedRectangle
               cornerRadius={10}
               modifiers={[
                 frame({ width: 150, height: 75 }),
-                foregroundStyle("#FF2D92"),
-                shadow({ color: "#000000", radius: 5, x: 0, y: 2 }),
+                foregroundStyle('#FF2D92'),
+                shadow({ color: '#000000', radius: 5, x: 0, y: 2 }),
               ]}
             />
           </VStack>
@@ -60,12 +60,12 @@ export default function ShapesScreen() {
           <VStack spacing={16}>
             <Text>Circle shape</Text>
             <HStack spacing={16}>
-              <Circle modifiers={[frame({ width: 80, height: 80 }), foregroundStyle("#5856D6")]} />
+              <Circle modifiers={[frame({ width: 80, height: 80 }), foregroundStyle('#5856D6')]} />
               <Circle
                 modifiers={[
                   frame({ width: 100, height: 100 }),
-                  foregroundStyle("#FF3B30"),
-                  shadow({ color: "#FF3B30", radius: 10, x: 0, y: 0 }),
+                  foregroundStyle('#FF3B30'),
+                  shadow({ color: '#FF3B30', radius: 10, x: 0, y: 0 }),
                 ]}
               />
             </HStack>
@@ -75,7 +75,7 @@ export default function ShapesScreen() {
         <Section title="Ellipse">
           <VStack spacing={16}>
             <Text>Ellipse shape</Text>
-            <Ellipse modifiers={[frame({ width: 200, height: 100 }), foregroundStyle("#30D158")]} />
+            <Ellipse modifiers={[frame({ width: 200, height: 100 }), foregroundStyle('#30D158')]} />
           </VStack>
         </Section>
 
@@ -88,14 +88,14 @@ export default function ShapesScreen() {
                   <Text>Continuous</Text>
                   <Capsule
                     cornerStyle="continuous"
-                    modifiers={[frame({ width: 120, height: 40 }), foregroundStyle("#5AC8FA")]}
+                    modifiers={[frame({ width: 120, height: 40 }), foregroundStyle('#5AC8FA')]}
                   />
                 </VStack>
                 <VStack spacing={8}>
                   <Text>Circular</Text>
                   <Capsule
                     cornerStyle="circular"
-                    modifiers={[frame({ width: 120, height: 40 }), foregroundStyle("#FF9F0A")]}
+                    modifiers={[frame({ width: 120, height: 40 }), foregroundStyle('#FF9F0A')]}
                   />
                 </VStack>
               </HStack>
@@ -111,7 +111,7 @@ export default function ShapesScreen() {
               topTrailingRadius={5}
               bottomLeadingRadius={5}
               bottomTrailingRadius={20}
-              modifiers={[frame({ width: 200, height: 100 }), foregroundStyle("#BF5AF2")]}
+              modifiers={[frame({ width: 200, height: 100 }), foregroundStyle('#BF5AF2')]}
             />
           </VStack>
         </Section>
@@ -127,18 +127,17 @@ export default function ShapesScreen() {
                     shapes.roundedRectangle({
                       cornerRadius: 10,
                       cornerSize: { width: 50, height: 50 },
-                    }),
+                    })
                   ),
-                ]}
-              >
-                <ConcentricRectangle modifiers={[foregroundStyle("#000")]} />
+                ]}>
+                <ConcentricRectangle modifiers={[foregroundStyle('#000')]} />
                 <ConcentricRectangle
-                  modifiers={[foregroundStyle("#007AFF"), padding({ all: 20 })]}
+                  modifiers={[foregroundStyle('#007AFF'), padding({ all: 20 })]}
                 />
               </ZStack>
               <ZStack modifiers={[frame({ width: 120, height: 120 })]}>
                 <ConcentricRectangle
-                  modifiers={[foregroundStyle("#000")]}
+                  modifiers={[foregroundStyle('#000')]}
                   corners={{
                     topTrailingCorner: EdgeCornerStyle.fixed(28),
                     bottomLeadingCorner: EdgeCornerStyle.concentric(),
@@ -146,7 +145,7 @@ export default function ShapesScreen() {
                   }}
                 />
                 <ConcentricRectangle
-                  modifiers={[foregroundStyle("#007AFF"), padding({ all: 20 })]}
+                  modifiers={[foregroundStyle('#007AFF'), padding({ all: 20 })]}
                 />
               </ZStack>
             </HStack>
@@ -158,5 +157,5 @@ export default function ShapesScreen() {
 }
 
 ShapesScreen.navigationOptions = {
-  title: "Shapes",
+  title: 'Shapes',
 };

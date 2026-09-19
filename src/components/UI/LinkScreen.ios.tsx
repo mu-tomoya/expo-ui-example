@@ -1,6 +1,6 @@
-import { Host, Label, Link, List, Section } from "@expo/ui/swift-ui";
-import { background, font, foregroundStyle, padding, shapes } from "@expo/ui/swift-ui/modifiers";
-import * as React from "react";
+import { Host, Label, Link, List, Section } from '@expo/ui/swift-ui';
+import { background, font, foregroundStyle, padding, shapes } from '@expo/ui/swift-ui/modifiers';
+import * as React from 'react';
 
 export default function LinkScreen() {
   return (
@@ -14,8 +14,8 @@ export default function LinkScreen() {
             label="Expo website"
             destination="https://expo.dev"
             modifiers={[
-              font({ weight: "black", design: "monospaced", size: 20 }),
-              foregroundStyle("red"),
+              font({ weight: 'black', design: 'monospaced', size: 20 }),
+              foregroundStyle('red'),
             ]}
           />
         </Section>
@@ -25,9 +25,9 @@ export default function LinkScreen() {
               title="Expo website"
               systemImage="gear"
               modifiers={[
-                foregroundStyle("black"),
+                foregroundStyle('black'),
                 padding(),
-                background("yellow", shapes.capsule()),
+                background('yellow', shapes.capsule()),
               ]}
             />
           </Link>
@@ -35,16 +35,16 @@ export default function LinkScreen() {
             <Label
               title="No Padding"
               systemImage="gear"
-              modifiers={[foregroundStyle("black"), padding({ all: 0 }), background("yellow")]}
+              modifiers={[foregroundStyle('black'), padding({ all: 0 }), background('yellow')]}
             />
           </Link>
           <Link destination="https://expo.dev">
             <Label
               title="Custom Padding"
               modifiers={[
-                foregroundStyle("black"),
+                foregroundStyle('black'),
                 padding({ horizontal: 20, vertical: 8 }),
-                background("yellow"),
+                background('yellow'),
               ]}
             />
           </Link>

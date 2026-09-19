@@ -6,10 +6,10 @@ import {
   List,
   Section,
   RNHostView,
-} from "@expo/ui/swift-ui";
-import { frame, padding } from "@expo/ui/swift-ui/modifiers";
-import { useState } from "react";
-import { Text as RNText, View, Pressable } from "react-native";
+} from '@expo/ui/swift-ui';
+import { frame, padding } from '@expo/ui/swift-ui/modifiers';
+import { useState } from 'react';
+import { Text as RNText, View, Pressable } from 'react-native';
 
 export default function HostingRNViewsScreen() {
   const [counter, setCounter] = useState(0);
@@ -28,17 +28,15 @@ export default function HostingRNViewsScreen() {
                     height: 50,
                     width: 50,
                     borderRadius: 100,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#9B59B6",
-                  }}
-                >
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#9B59B6',
+                  }}>
                   <RNText
                     style={{
-                      color: "white",
+                      color: 'white',
                       fontSize: 24,
-                    }}
-                  >
+                    }}>
                     -
                   </RNText>
                 </Pressable>
@@ -51,12 +49,11 @@ export default function HostingRNViewsScreen() {
                     height: 50,
                     width: 50,
                     borderRadius: 100,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#9B59B6",
-                  }}
-                >
-                  <RNText style={{ color: "white", fontSize: 24 }}>+</RNText>
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#9B59B6',
+                  }}>
+                  <RNText style={{ color: 'white', fontSize: 24 }}>+</RNText>
                 </Pressable>
               </RNHostView>
             </HStack>
@@ -71,16 +68,15 @@ export default function HostingRNViewsScreen() {
                   style={{
                     height: boxSize,
                     width: boxSize,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#9B59B6",
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#9B59B6',
                     gap: 10,
                   }}
-                  onLongPress={() => setBoxSize(200)}
-                >
-                  <RNText style={{ color: "white" }}>Tap to increase size</RNText>
-                  <View style={{ height: 1, width: "100%", backgroundColor: "white" }} />
-                  <RNText style={{ color: "white" }}>Long press to reset size</RNText>
+                  onLongPress={() => setBoxSize(200)}>
+                  <RNText style={{ color: 'white' }}>Tap to increase size</RNText>
+                  <View style={{ height: 1, width: '100%', backgroundColor: 'white' }} />
+                  <RNText style={{ color: 'white' }}>Long press to reset size</RNText>
                 </Pressable>
               </RNHostView>
             </HStack>
@@ -93,9 +89,9 @@ export default function HostingRNViewsScreen() {
                 <View
                   style={{
                     padding: 20,
-                    backgroundColor: "#9B59B6",
+                    backgroundColor: '#9B59B6',
                     borderRadius: 10,
-                    alignSelf: "flex-start",
+                    alignSelf: 'flex-start',
                   }}
                 />
               </RNHostView>
@@ -103,9 +99,9 @@ export default function HostingRNViewsScreen() {
                 <View
                   style={{
                     padding: 20,
-                    backgroundColor: "#9B59B6",
+                    backgroundColor: '#9B59B6',
                     borderRadius: 10,
-                    alignSelf: "flex-start",
+                    alignSelf: 'flex-start',
                   }}
                 />
               </RNHostView>
@@ -118,7 +114,7 @@ export default function HostingRNViewsScreen() {
               <View
                 style={{
                   flex: 1,
-                  backgroundColor: "#9B59B6",
+                  backgroundColor: '#9B59B6',
                   borderRadius: 10,
                 }}
               />
@@ -128,7 +124,7 @@ export default function HostingRNViewsScreen() {
         <Section title="RN Text inside SwiftUI">
           <VStack spacing={12} modifiers={[padding({ all: 12 })]}>
             <RNHostView matchContents>
-              <RNText style={{ textAlign: "center" }}>RN Text inside SwiftUI</RNText>
+              <RNText style={{ textAlign: 'center' }}>RN Text inside SwiftUI</RNText>
             </RNHostView>
           </VStack>
         </Section>
@@ -138,5 +134,5 @@ export default function HostingRNViewsScreen() {
 }
 
 HostingRNViewsScreen.navigationOptions = {
-  title: "Hosting RN Views",
+  title: 'Hosting RN Views',
 };

@@ -1,6 +1,5 @@
-import { Code } from "@expo/html-elements";
 import React, { PropsWithChildren } from "react";
-import { StyleSheet, View, ViewStyle, TextStyle } from "react-native";
+import { StyleSheet, Text, View, ViewStyle, TextStyle } from "react-native";
 
 type Props = PropsWithChildren<{
   containerStyle?: ViewStyle;
@@ -9,7 +8,7 @@ type Props = PropsWithChildren<{
 
 const MonoText = ({ children, containerStyle, textStyle }: Props) => (
   <View style={[styles.container, containerStyle]}>
-    <Code style={[styles.monoText, textStyle]}>{children}</Code>
+    <Text style={[styles.monoText, textStyle]}>{children}</Text>
   </View>
 );
 

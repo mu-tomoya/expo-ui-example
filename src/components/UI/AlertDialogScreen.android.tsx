@@ -1,21 +1,21 @@
 import {
   AlertDialog,
   Button,
-  Card,
-  Column,
-  Text as ComposeText,
-  Host,
-  Icon,
-  LazyColumn,
   TextButton,
-} from "@expo/ui/jetpack-compose";
-import { fillMaxWidth, padding } from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
+  Host,
+  Text as ComposeText,
+  Icon,
+  Column,
+  Card,
+  LazyColumn,
+} from '@expo/ui/jetpack-compose';
+import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers';
+import * as React from 'react';
 
-const infoIcon = require("../../../assets/icons/api/Camera.png");
+const infoIcon = require('../../../assets/icons/api/Camera.png');
 
 const longText =
-  "We are in the alert dialog, this is a very long text that should be wrapped in the alert dialog. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  'We are in the alert dialog, this is a very long text that should be wrapped in the alert dialog. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
 export default function AlertDialogScreen() {
   const [largeDialogVisible, setLargeDialogVisible] = React.useState(false);
@@ -113,11 +113,10 @@ export default function AlertDialogScreen() {
         <AlertDialog
           onDismissRequest={() => setColorDialogVisible(false)}
           colors={{
-            containerColor: "#1E1E2E",
-            titleContentColor: "#CDD6F4",
-            textContentColor: "#BAC2DE",
-          }}
-        >
+            containerColor: '#1E1E2E',
+            titleContentColor: '#CDD6F4',
+            textContentColor: '#BAC2DE',
+          }}>
           <AlertDialog.Title>
             <ComposeText>Custom Colors</ComposeText>
           </AlertDialog.Title>
@@ -160,5 +159,5 @@ export default function AlertDialogScreen() {
 }
 
 AlertDialogScreen.navigationOptions = {
-  title: "AlertDialog",
+  title: 'AlertDialog',
 };

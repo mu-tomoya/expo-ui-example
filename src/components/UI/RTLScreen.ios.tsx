@@ -3,32 +3,31 @@ import {
   Host,
   HStack,
   Image,
-  Picker,
   ProgressView,
+  Picker,
   Slider,
-  Text,
   Toggle,
+  Text,
   VStack,
-} from "@expo/ui/swift-ui";
-import { frame, pickerStyle, progressViewStyle, tag } from "@expo/ui/swift-ui/modifiers";
-import * as React from "react";
+} from '@expo/ui/swift-ui';
+import { frame, pickerStyle, progressViewStyle, tag } from '@expo/ui/swift-ui/modifiers';
+import * as React from 'react';
 
-import { ScrollPage, Section } from "../Page";
+import { ScrollPage, Section } from '../../components/Page';
 
 export default function RTLTestScreen() {
   const [isRTL, setIsRTL] = React.useState(true);
   const [toggleValue, setToggleValue] = React.useState(true);
   const [pickerSelection, setPickerSelection] = React.useState<string | number>(0);
   const [sliderValue, setSliderValue] = React.useState(0.5);
-  const options = ["אפשרות 1", "אפשרות 2", "خيار ١", "خيار ٢"];
+  const options = ['אפשרות 1', 'אפשרות 2', 'خيار ١', 'خيار ٢'];
 
   return (
     <ScrollPage>
       <Section title="Toggle">
         <Host
           matchContents={{ vertical: true }}
-          layoutDirection={isRTL ? "rightToLeft" : "leftToRight"}
-        >
+          layoutDirection={isRTL ? 'rightToLeft' : 'leftToRight'}>
           <VStack spacing={12} alignment="center">
             <Toggle isOn={isRTL} onIsOnChange={setIsRTL} label="Enable RTL" />
             <Toggle
@@ -43,8 +42,7 @@ export default function RTLTestScreen() {
       <Section title="HStack">
         <Host
           matchContents={{ vertical: true }}
-          layoutDirection={isRTL ? "rightToLeft" : "leftToRight"}
-        >
+          layoutDirection={isRTL ? 'rightToLeft' : 'leftToRight'}>
           <VStack spacing={12}>
             <HStack spacing={12}>
               <Text>1. ראשון</Text>
@@ -62,8 +60,7 @@ export default function RTLTestScreen() {
       <Section title="Button with System Image">
         <Host
           matchContents={{ vertical: true }}
-          layoutDirection={isRTL ? "rightToLeft" : "leftToRight"}
-        >
+          layoutDirection={isRTL ? 'rightToLeft' : 'leftToRight'}>
           <HStack spacing={12}>
             <Button systemImage="house" label="בית" />
             <Button systemImage="arrow.forward.square" label="קדימה" />
@@ -73,13 +70,12 @@ export default function RTLTestScreen() {
       </Section>
 
       <Section title="Picker">
-        <Host matchContents layoutDirection={isRTL ? "rightToLeft" : "leftToRight"}>
+        <Host matchContents layoutDirection={isRTL ? 'rightToLeft' : 'leftToRight'}>
           <VStack spacing={12}>
             <Picker
-              modifiers={[pickerStyle("segmented")]}
+              modifiers={[pickerStyle('segmented')]}
               selection={pickerSelection}
-              onSelectionChange={setPickerSelection}
-            >
+              onSelectionChange={setPickerSelection}>
               {options.map((option, index) => (
                 <Text key={index} modifiers={[tag(index)]}>
                   {option}
@@ -87,10 +83,9 @@ export default function RTLTestScreen() {
               ))}
             </Picker>
             <Picker
-              modifiers={[pickerStyle("menu")]}
+              modifiers={[pickerStyle('menu')]}
               selection={pickerSelection}
-              onSelectionChange={setPickerSelection}
-            >
+              onSelectionChange={setPickerSelection}>
               {options.map((option, index) => (
                 <Text key={index} modifiers={[tag(index)]}>
                   {option}
@@ -102,7 +97,7 @@ export default function RTLTestScreen() {
       </Section>
 
       <Section title="Slider">
-        <Host matchContents layoutDirection={isRTL ? "rightToLeft" : "leftToRight"}>
+        <Host matchContents layoutDirection={isRTL ? 'rightToLeft' : 'leftToRight'}>
           <HStack spacing={8}>
             <Text>مستوى الصوت:</Text>
             <Slider value={sliderValue} onValueChange={setSliderValue} />
@@ -112,10 +107,10 @@ export default function RTLTestScreen() {
       </Section>
 
       <Section title="LinearProgress">
-        <Host matchContents layoutDirection={isRTL ? "rightToLeft" : "leftToRight"}>
+        <Host matchContents layoutDirection={isRTL ? 'rightToLeft' : 'leftToRight'}>
           <HStack spacing={8}>
             <Text>20%</Text>
-            <ProgressView value={0.2} modifiers={[progressViewStyle("linear")]} />
+            <ProgressView value={0.2} modifiers={[progressViewStyle('linear')]} />
           </HStack>
         </Host>
       </Section>
@@ -124,5 +119,5 @@ export default function RTLTestScreen() {
 }
 
 RTLTestScreen.navigationOptions = {
-  title: "RTL Layout",
+  title: 'RTL Layout',
 };

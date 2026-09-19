@@ -1,21 +1,21 @@
 import {
-  Host,
+  SingleChoiceSegmentedButtonRow,
   MultiChoiceSegmentedButtonRow,
   SegmentedButton,
-  SingleChoiceSegmentedButtonRow,
   Text,
-} from "@expo/ui/jetpack-compose";
-import * as React from "react";
-import { Text as RNText, ScrollView } from "react-native";
+  Host,
+} from '@expo/ui/jetpack-compose';
+import * as React from 'react';
+import { ScrollView, Text as RNText } from 'react-native';
 
-import { Page, Section } from "../Page";
+import { Page, Section } from '../../components/Page';
 
 export default function SegmentedControlScreen() {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
-  const options = ["$", "$$", "$$$", "$$$$"];
+  const options = ['$', '$$', '$$$', '$$$$'];
 
   const [checkedItems, setCheckedItems] = React.useState<boolean[]>([false, false, false, false]);
-  const multiOptions = ["Wi-Fi", "Bluetooth", "NFC", "GPS"];
+  const multiOptions = ['Wi-Fi', 'Bluetooth', 'NFC', 'GPS'];
 
   return (
     <ScrollView>
@@ -30,8 +30,7 @@ export default function SegmentedControlScreen() {
                 <SegmentedButton
                   key={label}
                   selected={index === selectedIndex}
-                  onClick={() => setSelectedIndex(index)}
-                >
+                  onClick={() => setSelectedIndex(index)}>
                   <SegmentedButton.Label>
                     <Text>{label}</Text>
                   </SegmentedButton.Label>
@@ -48,8 +47,7 @@ export default function SegmentedControlScreen() {
                   key={label}
                   selected={index === selectedIndex}
                   onClick={() => setSelectedIndex(index)}
-                  colors={{ activeContainerColor: "#ff5500" }}
-                >
+                  colors={{ activeContainerColor: '#ff5500' }}>
                   <SegmentedButton.Label>
                     <Text>{label}</Text>
                   </SegmentedButton.Label>
@@ -59,7 +57,7 @@ export default function SegmentedControlScreen() {
           </Host>
         </Section>
         <Section title="Checked items">
-          <RNText>{multiOptions.filter((_, i) => checkedItems[i]).join(", ") || "None"}</RNText>
+          <RNText>{multiOptions.filter((_, i) => checkedItems[i]).join(', ') || 'None'}</RNText>
         </Section>
         <Section title="MultiChoiceSegmentedButtonRow">
           <Host matchContents={{ vertical: true }}>
@@ -74,8 +72,7 @@ export default function SegmentedControlScreen() {
                       next[index] = checked;
                       return next;
                     });
-                  }}
-                >
+                  }}>
                   <SegmentedButton.Label>
                     <Text>{label}</Text>
                   </SegmentedButton.Label>
@@ -90,5 +87,5 @@ export default function SegmentedControlScreen() {
 }
 
 SegmentedControlScreen.navigationOptions = {
-  title: "Segmented Control",
+  title: 'Segmented Control',
 };
