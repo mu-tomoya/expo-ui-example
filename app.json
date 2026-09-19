@@ -53,6 +53,12 @@
         "projectId": "2ee1accb-0ea2-4de1-aa65-ad82521052e8"
       }
     },
-    "owner": "mu_tomoya"
+    "owner": "mu_tomoya",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/2ee1accb-0ea2-4de1-aa65-ad82521052e8"
+    }
   }
 }
