@@ -12,12 +12,12 @@ import {
   Shape,
   Icon,
   Spacer,
-} from "@expo/ui/jetpack-compose";
-import { fillMaxWidth, padding, width } from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
+} from '@expo/ui/jetpack-compose';
+import { fillMaxWidth, padding, width } from '@expo/ui/jetpack-compose/modifiers';
+import * as React from 'react';
 
-const addIcon = require("../../../assets/icons/api/Camera.png");
-const sendIcon = require("../../../assets/icons/api/Notification.png");
+const addIcon = require('../../../assets/icons/api/Camera.png');
+const sendIcon = require('../../../assets/icons/api/Notification.png');
 
 export default function ButtonScreen() {
   return (
@@ -27,7 +27,7 @@ export default function ButtonScreen() {
           <Column verticalArrangement={{ spacedBy: 12 }} modifiers={[padding(16, 16, 16, 16)]}>
             <ComposeText>Filled Button</ComposeText>
             <ComposeText>Default Material3 filled button.</ComposeText>
-            <Button onClick={() => console.log("Filled clicked")}>
+            <Button onClick={() => console.log('Filled clicked')}>
               <ComposeText>Filled</ComposeText>
             </Button>
           </Column>
@@ -36,7 +36,7 @@ export default function ButtonScreen() {
           <Column verticalArrangement={{ spacedBy: 12 }} modifiers={[padding(16, 16, 16, 16)]}>
             <ComposeText>Filled Tonal Button</ComposeText>
             <ComposeText>A softer alternative to a filled button.</ComposeText>
-            <FilledTonalButton onClick={() => console.log("Tonal clicked")}>
+            <FilledTonalButton onClick={() => console.log('Tonal clicked')}>
               <ComposeText>Filled Tonal</ComposeText>
             </FilledTonalButton>
           </Column>
@@ -45,7 +45,7 @@ export default function ButtonScreen() {
           <Column verticalArrangement={{ spacedBy: 12 }} modifiers={[padding(16, 16, 16, 16)]}>
             <ComposeText>Outlined Button</ComposeText>
             <ComposeText>A medium-emphasis button with a border.</ComposeText>
-            <OutlinedButton onClick={() => console.log("Outlined clicked")}>
+            <OutlinedButton onClick={() => console.log('Outlined clicked')}>
               <ComposeText>Outlined</ComposeText>
             </OutlinedButton>
           </Column>
@@ -54,7 +54,7 @@ export default function ButtonScreen() {
           <Column verticalArrangement={{ spacedBy: 12 }} modifiers={[padding(16, 16, 16, 16)]}>
             <ComposeText>Elevated Button</ComposeText>
             <ComposeText>A tonal button with a shadow for more emphasis.</ComposeText>
-            <ElevatedButton onClick={() => console.log("Elevated clicked")}>
+            <ElevatedButton onClick={() => console.log('Elevated clicked')}>
               <ComposeText>Elevated</ComposeText>
             </ElevatedButton>
           </Column>
@@ -63,7 +63,7 @@ export default function ButtonScreen() {
           <Column verticalArrangement={{ spacedBy: 12 }} modifiers={[padding(16, 16, 16, 16)]}>
             <ComposeText>Text Button</ComposeText>
             <ComposeText>A low-emphasis button without a container.</ComposeText>
-            <TextButton onClick={() => console.log("Text clicked")}>
+            <TextButton onClick={() => console.log('Text clicked')}>
               <ComposeText>Text</ComposeText>
             </TextButton>
           </Column>
@@ -84,10 +84,10 @@ export default function ButtonScreen() {
           <Column verticalArrangement={{ spacedBy: 12 }} modifiers={[padding(16, 16, 16, 16)]}>
             <ComposeText>Custom Colors</ComposeText>
             <ComposeText>Override container and content colors.</ComposeText>
-            <Button colors={{ containerColor: "#6200EE", contentColor: "#FFFFFF" }}>
+            <Button colors={{ containerColor: '#6200EE', contentColor: '#FFFFFF' }}>
               <ComposeText>Purple</ComposeText>
             </Button>
-            <FilledTonalButton colors={{ containerColor: "#FF6347", contentColor: "#FFFFFF" }}>
+            <FilledTonalButton colors={{ containerColor: '#FF6347', contentColor: '#FFFFFF' }}>
               <ComposeText>Tomato</ComposeText>
             </FilledTonalButton>
           </Column>
@@ -96,17 +96,17 @@ export default function ButtonScreen() {
           <Column verticalArrangement={{ spacedBy: 12 }} modifiers={[padding(16, 16, 16, 16)]}>
             <ComposeText>Leading & Trailing Icons</ComposeText>
             <ComposeText>Use Icon as a child to add leading or trailing icons.</ComposeText>
-            <Button onClick={() => console.log("Add clicked")}>
-              <Icon source={addIcon} size={18} tintColor="#FFFFFF" />
+            <Button onClick={() => console.log('Add clicked')}>
+              <Icon source={addIcon} size={18} tint="#FFFFFF" />
               <Spacer modifiers={[width(8)]} />
               <ComposeText>Add Item</ComposeText>
             </Button>
-            <OutlinedButton onClick={() => console.log("Send clicked")}>
+            <OutlinedButton onClick={() => console.log('Send clicked')}>
               <ComposeText>Send</ComposeText>
               <Spacer modifiers={[width(8)]} />
               <Icon source={sendIcon} size={18} />
             </OutlinedButton>
-            <FilledTonalButton onClick={() => console.log("Both icons clicked")}>
+            <FilledTonalButton onClick={() => console.log('Both icons clicked')}>
               <Icon source={addIcon} size={18} />
               <Spacer modifiers={[width(8)]} />
               <ComposeText>Create & Send</ComposeText>
@@ -128,8 +128,7 @@ export default function ButtonScreen() {
                 radius: 1,
                 verticesCount: 20,
                 smoothing: 1,
-              })}
-            >
+              })}>
               <ComposeText>Star</ComposeText>
             </ElevatedButton>
           </Column>
@@ -140,5 +139,5 @@ export default function ButtonScreen() {
 }
 
 ButtonScreen.navigationOptions = {
-  title: "Button",
+  title: 'Button',
 };

@@ -9,9 +9,9 @@ import {
   Row,
   Card,
   LazyColumn,
-} from "@expo/ui/jetpack-compose";
-import { fillMaxWidth, padding } from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
+} from '@expo/ui/jetpack-compose';
+import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers';
+import * as React from 'react';
 
 export default function IconButtonScreen() {
   return (
@@ -22,16 +22,16 @@ export default function IconButtonScreen() {
             <ComposeText>Icon Button Variants</ComposeText>
             <ComposeText>Standard, filled, filled tonal, and outlined icon buttons.</ComposeText>
             <Row horizontalArrangement={{ spacedBy: 8 }}>
-              <IconButton onClick={() => console.log("Standard")}>
+              <IconButton onClick={() => console.log('Standard')}>
                 <ComposeText>S</ComposeText>
               </IconButton>
-              <FilledIconButton onClick={() => console.log("Filled")}>
+              <FilledIconButton onClick={() => console.log('Filled')}>
                 <ComposeText>F</ComposeText>
               </FilledIconButton>
-              <FilledTonalIconButton onClick={() => console.log("Tonal")}>
+              <FilledTonalIconButton onClick={() => console.log('Tonal')}>
                 <ComposeText>T</ComposeText>
               </FilledTonalIconButton>
-              <OutlinedIconButton onClick={() => console.log("Outlined")}>
+              <OutlinedIconButton onClick={() => console.log('Outlined')}>
                 <ComposeText>O</ComposeText>
               </OutlinedIconButton>
             </Row>
@@ -64,14 +64,12 @@ export default function IconButtonScreen() {
             <Row horizontalArrangement={{ spacedBy: 8 }}>
               <FilledIconButton
                 onClick={() => {}}
-                colors={{ containerColor: "#6200EE", contentColor: "#FFFFFF" }}
-              >
+                colors={{ containerColor: '#6200EE', contentColor: '#FFFFFF' }}>
                 <ComposeText>P</ComposeText>
               </FilledIconButton>
               <FilledIconButton
                 onClick={() => {}}
-                colors={{ containerColor: "#FF6347", contentColor: "#FFFFFF" }}
-              >
+                colors={{ containerColor: '#FF6347', contentColor: '#FFFFFF' }}>
                 <ComposeText>R</ComposeText>
               </FilledIconButton>
             </Row>
@@ -83,5 +81,5 @@ export default function IconButtonScreen() {
 }
 
 IconButtonScreen.navigationOptions = {
-  title: "IconButton",
+  title: 'IconButton',
 };

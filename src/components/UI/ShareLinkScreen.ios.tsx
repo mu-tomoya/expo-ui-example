@@ -1,12 +1,12 @@
-import { Host, Label, ShareLink as ShareLinkPrimitive } from "@expo/ui/swift-ui";
-import { useAssets } from "expo-asset";
-import * as React from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Host, Label, ShareLink as ShareLinkPrimitive } from '@expo/ui/swift-ui';
+import { useAssets } from 'expo-asset';
+import * as React from 'react';
+import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
 
-import { Page, Section } from "../Page";
+import { Page, Section } from '../../components/Page';
 
 export default function ShareLinkScreen() {
-  const [assets] = useAssets([require("../../../assets/images/example1.jpg")]);
+  const [assets] = useAssets([require('../../../assets/images/example1.jpg')]);
 
   return (
     <Page>
@@ -19,11 +19,10 @@ export default function ShareLinkScreen() {
             }}
             subject="Expo UI docs"
             preview={{
-              title: "Expo UI docs",
+              title: 'Expo UI docs',
               image:
-                "https://pbs.twimg.com/profile_images/1940486720190820352/7gl2X1b2_400x400.jpg",
-            }}
-          >
+                'https://pbs.twimg.com/profile_images/1940486720190820352/7gl2X1b2_400x400.jpg',
+            }}>
             <Label title="Async Share" systemImage="clock" />
           </ShareLink>
         </Section>
@@ -46,19 +45,17 @@ export default function ShareLinkScreen() {
           <ShareLink
             item="https://docs.expo.dev/versions/latest/sdk/ui/"
             preview={{
-              title: "Expo Splash Screen Logo",
-              image: "SplashScreenLogo",
-            }}
-          >
+              title: 'Expo Splash Screen Logo',
+              image: 'SplashScreenLogo',
+            }}>
             <Label title="Expo Splash Screen Logo" />
           </ShareLink>
         </Section>
         <Section title="Share Image">
           <ShareLink
-            item={assets?.[0].localUri ?? ""}
+            item={assets?.[0].localUri ?? ''}
             subject="Share Image Example"
-            message="A set of components that allow you to build UIs directly with SwiftUI and Jetpack Compose from React."
-          >
+            message="A set of components that allow you to build UIs directly with SwiftUI and Jetpack Compose from React.">
             <Label title="Share Image" systemImage="photo" />
           </ShareLink>
         </Section>
@@ -66,8 +63,7 @@ export default function ShareLinkScreen() {
           <ShareLink
             item="https://docs.expo.dev/versions/latest/sdk/ui/"
             subject="Expo UI"
-            message="A set of components that allow you to build UIs directly with SwiftUI and Jetpack Compose from React."
-          >
+            message="A set of components that allow you to build UIs directly with SwiftUI and Jetpack Compose from React.">
             <View style={styles.row}>
               <Image
                 src="https://raw.githubusercontent.com/expo/expo/main/.github/resources/banner.png"
@@ -93,12 +89,12 @@ function ShareLink(props: React.ComponentProps<typeof ShareLinkPrimitive>) {
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     columnGap: 10,
   },
   link: {
     fontSize: 21,
-    color: "blue",
+    color: 'blue',
   },
 });

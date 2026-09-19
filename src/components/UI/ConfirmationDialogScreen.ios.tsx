@@ -1,19 +1,19 @@
-import { Button, ConfirmationDialog, Form, Host, Section, Text } from "@expo/ui/swift-ui";
-import { foregroundStyle } from "@expo/ui/swift-ui/modifiers";
-import React, { useState } from "react";
+import { Button, ConfirmationDialog, Form, Host, Section, Text } from '@expo/ui/swift-ui';
+import { foregroundStyle } from '@expo/ui/swift-ui/modifiers';
+import React, { useState } from 'react';
 
 export default function ConfirmationDialogScreen() {
   const [showBasic, setShowBasic] = useState(false);
   const [showDestructive, setShowDestructive] = useState(false);
   const [showWithMessage, setShowWithMessage] = useState(false);
   const [showHiddenTitle, setShowHiddenTitle] = useState(false);
-  const [lastAction, setLastAction] = useState<string>("None");
+  const [lastAction, setLastAction] = useState<string>('None');
 
   return (
     <Host style={{ flex: 1 }}>
       <Form>
         <Section title="Last Action">
-          <Text modifiers={[foregroundStyle("secondaryLabel")]}>{lastAction}</Text>
+          <Text modifiers={[foregroundStyle('secondaryLabel')]}>{lastAction}</Text>
         </Section>
 
         <Section title="Basic">
@@ -21,8 +21,7 @@ export default function ConfirmationDialogScreen() {
             title="Are you sure?"
             isPresented={showBasic}
             onIsPresentedChange={setShowBasic}
-            titleVisibility="visible"
-          >
+            titleVisibility="visible">
             <ConfirmationDialog.Trigger>
               <Button label="Show Basic Dialog" onPress={() => setShowBasic(true)} />
             </ConfirmationDialog.Trigger>
@@ -30,7 +29,7 @@ export default function ConfirmationDialogScreen() {
               <Button
                 label="Confirm"
                 onPress={() => {
-                  setLastAction("Basic: Confirmed");
+                  setLastAction('Basic: Confirmed');
                   setShowBasic(false);
                 }}
               />
@@ -44,8 +43,7 @@ export default function ConfirmationDialogScreen() {
             title="Delete Item?"
             isPresented={showDestructive}
             onIsPresentedChange={setShowDestructive}
-            titleVisibility="visible"
-          >
+            titleVisibility="visible">
             <ConfirmationDialog.Trigger>
               <Button
                 label="Delete Item"
@@ -58,7 +56,7 @@ export default function ConfirmationDialogScreen() {
                 label="Delete"
                 role="destructive"
                 onPress={() => {
-                  setLastAction("Destructive: Deleted");
+                  setLastAction('Destructive: Deleted');
                   setShowDestructive(false);
                 }}
               />
@@ -75,8 +73,7 @@ export default function ConfirmationDialogScreen() {
             title="Save Changes?"
             isPresented={showWithMessage}
             onIsPresentedChange={setShowWithMessage}
-            titleVisibility="visible"
-          >
+            titleVisibility="visible">
             <ConfirmationDialog.Trigger>
               <Button label="Show Dialog with Message" onPress={() => setShowWithMessage(true)} />
             </ConfirmationDialog.Trigger>
@@ -84,7 +81,7 @@ export default function ConfirmationDialogScreen() {
               <Button
                 label="Save"
                 onPress={() => {
-                  setLastAction("With Message: Saved");
+                  setLastAction('With Message: Saved');
                   setShowWithMessage(false);
                 }}
               />
@@ -92,7 +89,7 @@ export default function ConfirmationDialogScreen() {
                 label="Discard"
                 role="destructive"
                 onPress={() => {
-                  setLastAction("With Message: Discarded");
+                  setLastAction('With Message: Discarded');
                   setShowWithMessage(false);
                 }}
               />
@@ -109,8 +106,7 @@ export default function ConfirmationDialogScreen() {
             title="This title is hidden"
             isPresented={showHiddenTitle}
             onIsPresentedChange={setShowHiddenTitle}
-            titleVisibility="hidden"
-          >
+            titleVisibility="hidden">
             <ConfirmationDialog.Trigger>
               <Button label="Show Dialog (Hidden Title)" onPress={() => setShowHiddenTitle(true)} />
             </ConfirmationDialog.Trigger>
@@ -118,7 +114,7 @@ export default function ConfirmationDialogScreen() {
               <Button
                 label="OK"
                 onPress={() => {
-                  setLastAction("Hidden Title: OK");
+                  setLastAction('Hidden Title: OK');
                   setShowHiddenTitle(false);
                 }}
               />
@@ -135,5 +131,5 @@ export default function ConfirmationDialogScreen() {
 }
 
 ConfirmationDialogScreen.navigationOptions = {
-  title: "ConfirmationDialog",
+  title: 'ConfirmationDialog',
 };

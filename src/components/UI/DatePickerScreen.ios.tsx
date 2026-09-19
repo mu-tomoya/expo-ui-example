@@ -9,7 +9,7 @@ import {
   Section,
   Toggle,
   Text,
-} from "@expo/ui/swift-ui";
+} from '@expo/ui/swift-ui';
 import {
   animation,
   datePickerStyle,
@@ -20,30 +20,30 @@ import {
   tint,
   Animation,
   foregroundStyle,
-} from "@expo/ui/swift-ui/modifiers";
-import { useState } from "react";
+} from '@expo/ui/swift-ui/modifiers';
+import { useState } from 'react';
 
 const displayedComponentsOptions = [
   {
-    value: ["date"],
-    label: "Date",
+    value: ['date'],
+    label: 'Date',
   },
   {
-    value: ["hourAndMinute"],
-    label: "Time",
+    value: ['hourAndMinute'],
+    label: 'Time',
   },
   {
-    value: ["date", "hourAndMinute"],
-    label: "Both",
+    value: ['date', 'hourAndMinute'],
+    label: 'Both',
   },
 ];
-const styleOptions = ["automatic", "compact", "graphical", "wheel"] as const;
+const styleOptions = ['automatic', 'compact', 'graphical', 'wheel'] as const;
 export default function DatePickerScreen() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [styleIndex, setStyleIndex] = useState(0);
   const [displayedComponentsIndex, setDisplayedComponentsIndex] = useState(0);
   const [useRange, setUseRange] = useState(false);
-  const [tintColor, setTintColor] = useState<string | null>("#007AFF");
+  const [tintColor, setTintColor] = useState<string | null>('#007AFF');
   const today = new Date();
   const thirtyDaysFromNow = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
   const [animate, setAnimate] = useState(false);
@@ -79,13 +79,12 @@ export default function DatePickerScreen() {
         <Section title="Configuration">
           <Picker
             label="Style"
-            modifiers={[pickerStyle("menu")]}
+            modifiers={[pickerStyle('menu')]}
             selection={styleIndex}
             onSelectionChange={(selection) => {
               setStyleIndex(selection);
               setAnimate(!animate);
-            }}
-          >
+            }}>
             {styleOptions.map((option, index) => (
               <Text key={index} modifiers={[tag(index)]}>
                 {option}
@@ -94,13 +93,12 @@ export default function DatePickerScreen() {
           </Picker>
           <Picker
             label="Components"
-            modifiers={[pickerStyle("menu")]}
+            modifiers={[pickerStyle('menu')]}
             selection={displayedComponentsIndex}
             onSelectionChange={(selection) => {
               setDisplayedComponentsIndex(selection);
               setAnimate(!animate);
-            }}
-          >
+            }}>
             {displayedComponentsOptions.map((option, index) => (
               <Text key={index} modifiers={[tag(index)]}>
                 {option.label}
@@ -124,16 +122,16 @@ export default function DatePickerScreen() {
             title="Sélectionner la date"
             selection={selectedDate}
             onDateChange={(date) => setSelectedDate(date)}
-            modifiers={[environment("locale", "fr_FR")]}
+            modifiers={[environment('locale', 'fr_FR')]}
           />
         </Section>
         <Section title='timeZone="Asia/Tokyo"'>
           <DatePicker
             title="Tokyo time"
             selection={selectedDate}
-            displayedComponents={["date", "hourAndMinute"]}
+            displayedComponents={['date', 'hourAndMinute']}
             onDateChange={(date) => setSelectedDate(date)}
-            modifiers={[environment("timeZone", "Asia/Tokyo")]}
+            modifiers={[environment('timeZone', 'Asia/Tokyo')]}
           />
         </Section>
         <Section title="Date Picker with custom label">
@@ -145,9 +143,8 @@ export default function DatePickerScreen() {
             }
             range={useRange ? { start: today, end: thirtyDaysFromNow } : undefined}
             onDateChange={(date) => setSelectedDate(date)}
-            modifiers={[datePickerStyle(styleOptions[styleIndex])]}
-          >
-            <Text modifiers={[foregroundStyle({ type: "color", color: "#007AFF" })]}>
+            modifiers={[datePickerStyle(styleOptions[styleIndex])]}>
+            <Text modifiers={[foregroundStyle({ type: 'color', color: '#007AFF' })]}>
               Select date
             </Text>
             <Text>{selectedDate.toDateString()}</Text>
@@ -159,5 +156,5 @@ export default function DatePickerScreen() {
 }
 
 DatePickerScreen.navigationOptions = {
-  title: "DatePicker",
+  title: 'DatePicker',
 };

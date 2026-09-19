@@ -9,7 +9,7 @@ import {
   Card,
   LazyColumn,
   Surface,
-} from "@expo/ui/jetpack-compose";
+} from '@expo/ui/jetpack-compose';
 import {
   fillMaxWidth,
   padding,
@@ -19,8 +19,8 @@ import {
   height,
   align,
   Shapes,
-} from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
+} from '@expo/ui/jetpack-compose/modifiers';
+import * as React from 'react';
 
 export default function BasicAlertDialogScreen() {
   const [dialogVisible, setDialogVisible] = React.useState(false);
@@ -46,15 +46,14 @@ export default function BasicAlertDialogScreen() {
         <BasicAlertDialog onDismissRequest={() => setDialogVisible(false)}>
           <Surface
             tonalElevation={6}
-            modifiers={[wrapContentWidth(), wrapContentHeight(), clip(Shapes.RoundedCorner(28))]}
-          >
+            modifiers={[wrapContentWidth(), wrapContentHeight(), clip(Shapes.RoundedCorner(28))]}>
             <Column modifiers={[padding(16, 16, 16, 16)]}>
               <ComposeText>
                 This area typically contains the supportive text which presents the details
                 regarding the Dialog's purpose.
               </ComposeText>
               <Spacer modifiers={[height(24)]} />
-              <TextButton onClick={() => setDialogVisible(false)} modifiers={[align("centerEnd")]}>
+              <TextButton onClick={() => setDialogVisible(false)} modifiers={[align('centerEnd')]}>
                 <ComposeText>Confirm</ComposeText>
               </TextButton>
             </Column>
@@ -66,5 +65,5 @@ export default function BasicAlertDialogScreen() {
 }
 
 BasicAlertDialogScreen.navigationOptions = {
-  title: "BasicAlertDialog",
+  title: 'BasicAlertDialog',
 };

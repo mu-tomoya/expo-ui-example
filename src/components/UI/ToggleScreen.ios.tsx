@@ -1,6 +1,16 @@
-import { Button, Host, List, Section, Text, Toggle } from "@expo/ui/swift-ui";
-import { labelsHidden, tint, toggleStyle } from "@expo/ui/swift-ui/modifiers";
-import { useState } from "react";
+import {
+  Button,
+  Host,
+  List,
+  Section,
+  SyncToggle,
+  Text,
+  Toggle,
+  useNativeState,
+} from '@expo/ui/swift-ui';
+import { labelsHidden, tint, toggleStyle } from '@expo/ui/swift-ui/modifiers';
+import { useState } from 'react';
+import { scheduleOnUI } from 'react-native-worklets';
 
 export default function ToggleScreen() {
   const [airplaneMode, setAirplaneMode] = useState(false);
@@ -25,7 +35,7 @@ export default function ToggleScreen() {
             isOn={buttonStyleOn}
             onIsOnChange={setButtonStyleOn}
             label="Button Toggle"
-            modifiers={[toggleStyle("button"), tint("#ff9500")]}
+            modifiers={[toggleStyle('button'), tint('#ff9500')]}
           />
         </Section>
         <Section title="Custom Label">
@@ -41,12 +51,41 @@ export default function ToggleScreen() {
         </Section>
         <Section title="Uncontrolled">
           <Toggle onIsOnChange={setLastValue} label="Uncontrolled Toggle" />
-          <Text>Last value: {lastValue === null ? "" : String(lastValue)}</Text>
+          <Text>Last value: {lastValue === null ? '' : String(lastValue)}</Text>
         </Section>
         <Section title="Hidden Label">
           <Toggle label="Hidden Label" modifiers={[labelsHidden()]} />
         </Section>
+        <Section title="Shared State">
+          <SharedStateToggle />
+        </Section>
       </List>
     </Host>
+  );
+}
+
+function SharedStateToggle() {
+  const isOn = useNativeState(false);
+
+  const toggleFromWorklet = () => {
+    scheduleOnUI(() => {
+      'worklet';
+      isOn.value = !isOn.value;
+    });
+  };
+
+  return (
+    <>
+      <SyncToggle
+        isOn={isOn}
+        label="Shared State Toggle"
+        onIsOnChangeSync={(value) => {
+          'worklet';
+          console.log('[UI thread] isOn:', value);
+        }}
+      />
+      <Button label="Toggle from JS" onPress={() => (isOn.value = !isOn.value)} />
+      <Button label="Toggle from Worklet" onPress={toggleFromWorklet} />
+    </>
   );
 }

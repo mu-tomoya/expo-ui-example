@@ -1,8 +1,8 @@
 import DateTimePicker, {
   type DateTimePickerEvent,
   type DateTimePickerProps,
-} from "@expo/ui/datetimepicker";
-import React, { useState } from "react";
+} from '@expo/ui/community/datetime-picker';
+import React, { useState } from 'react';
 import {
   Alert,
   Button,
@@ -14,16 +14,16 @@ import {
   TextInput,
   View,
   useColorScheme,
-} from "react-native";
+} from 'react-native';
 
 // Constants matching @react-native-community/datetimepicker
-const IOS_MODES = ["date", "time", "datetime"] as const;
-const ANDROID_MODES = ["date", "time"] as const;
-const IOS_DISPLAYS = ["default", "spinner", "compact", "inline"] as const;
-const ANDROID_DISPLAYS = ["default", "spinner", "calendar", "clock"] as const;
+const IOS_MODES = ['date', 'time', 'datetime'] as const;
+const ANDROID_MODES = ['date', 'time'] as const;
+const IOS_DISPLAYS = ['default', 'spinner', 'compact', 'inline'] as const;
+const ANDROID_DISPLAYS = ['default', 'spinner', 'calendar', 'clock'] as const;
 
-type DisplayProp = Exclude<DateTimePickerProps["display"], undefined>;
-type ModeProp = Exclude<DateTimePickerProps["mode"], undefined>;
+type DisplayProp = Exclude<DateTimePickerProps['display'], undefined>;
+type ModeProp = Exclude<DateTimePickerProps['mode'], undefined>;
 
 const MODE_VALUES = Platform.select<readonly ModeProp[]>({
   ios: IOS_MODES,
@@ -37,21 +37,21 @@ const DISPLAY_VALUES = Platform.select<readonly DisplayProp[]>({
 });
 
 const TIMEZONE_NAMES = [
-  "America/New_York",
-  "America/Vancouver",
-  "Europe/London",
-  "Europe/Istanbul",
-  "Asia/Hong_Kong",
-  "Asia/Tokyo",
-  "Australia/Brisbane",
-  "Australia/Sydney",
+  'America/New_York',
+  'America/Vancouver',
+  'Europe/London',
+  'Europe/Istanbul',
+  'Asia/Hong_Kong',
+  'Asia/Tokyo',
+  'Australia/Brisbane',
+  'Australia/Sydney',
 ];
 
 const Colors = {
-  white: "#FFFFFF",
-  black: "#000000",
-  dark: "#333333",
-  lighter: "#F5F5F5",
+  white: '#FFFFFF',
+  black: '#000000',
+  dark: '#333333',
+  lighter: '#F5F5F5',
 };
 
 // TODO vonovak: replace with native Picker from @expo/ui
@@ -76,7 +76,7 @@ function SegmentedButtons<T extends string>({
 }
 
 function ThemedText({ style, ...props }: React.ComponentProps<typeof Text>) {
-  const isDark = useColorScheme() === "dark";
+  const isDark = useColorScheme() === 'dark';
   return <Text style={[{ color: isDark ? Colors.white : Colors.black }, style]} {...props} />;
 }
 
@@ -96,30 +96,30 @@ export default function CommunityDateTimePickerScreen() {
   const [date, setDate] = useState(SOURCE_DATE);
   const [mode, setMode] = useState<ModeProp>(MODE_VALUES[0]);
   const [show, setShow] = useState(false);
-  const [accentColor, setAccentColor] = useState("");
+  const [accentColor, setAccentColor] = useState('');
   const [display, setDisplay] = useState<DisplayProp>(DISPLAY_VALUES[0]);
   const [minimumDate, setMinimumDate] = useState<Date | undefined>();
   const [maximumDate, setMaximumDate] = useState<Date | undefined>();
   const [disabled, setDisabled] = useState(false);
   const [is24Hour, setIs24Hour] = useState(false);
   const [timeZoneName, setTimeZoneName] = useState<string | undefined>();
-  const [positiveLabel, setPositiveLabel] = useState("");
-  const [negativeLabel, setNegativeLabel] = useState("");
-  const [presentation, setPresentation] = useState<"inline" | "dialog">(
-    Platform.OS === "android" ? "dialog" : "inline",
+  const [positiveLabel, setPositiveLabel] = useState('');
+  const [negativeLabel, setNegativeLabel] = useState('');
+  const [presentation, setPresentation] = useState<'inline' | 'dialog'>(
+    Platform.OS === 'android' ? 'dialog' : 'inline'
   );
 
-  const isDark = useColorScheme() === "dark";
+  const isDark = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDark ? Colors.dark : Colors.lighter,
   };
 
   const onChange = (event: DateTimePickerEvent, selectedDate?: Date) => {
-    if (Platform.OS === "android" && presentation === "dialog") {
+    if (Platform.OS === 'android' && presentation === 'dialog') {
       setShow(false);
     }
-    if (event.type === "dismissed") {
-      Alert.alert("picker was dismissed", undefined, [{ text: "ok" }], { cancelable: true });
+    if (event.type === 'dismissed') {
+      Alert.alert('picker was dismissed', undefined, [{ text: 'ok' }], { cancelable: true });
       return;
     }
     if (selectedDate) {
@@ -156,7 +156,7 @@ export default function CommunityDateTimePickerScreen() {
         {(minimumDate || maximumDate) && (
           <Info
             title="Min/Max:"
-            body={`${minimumDate?.toLocaleDateString() ?? "–"} / ${maximumDate?.toLocaleDateString() ?? "–"}`}
+            body={`${minimumDate?.toLocaleDateString() ?? '–'} / ${maximumDate?.toLocaleDateString() ?? '–'}`}
           />
         )}
 
@@ -173,11 +173,11 @@ export default function CommunityDateTimePickerScreen() {
         />
 
         {/* Presentation (Android) */}
-        {Platform.OS === "android" && (
+        {Platform.OS === 'android' && (
           <>
             <ThemedText style={styles.label}>presentation:</ThemedText>
             <SegmentedButtons
-              values={["inline", "dialog"]}
+              values={['inline', 'dialog']}
               selected={presentation}
               onSelect={(v) => setPresentation(v)}
             />
@@ -192,12 +192,12 @@ export default function CommunityDateTimePickerScreen() {
             value={accentColor}
             onChangeText={(t) => setAccentColor(t.toLowerCase())}
             placeholder="#E040FB"
-            placeholderTextColor={isDark ? "#999" : "#666"}
+            placeholderTextColor={isDark ? '#999' : '#666'}
           />
         </View>
 
         {/* disabled (iOS) */}
-        {Platform.OS === "ios" && (
+        {Platform.OS === 'ios' && (
           <View style={styles.row}>
             <ThemedText style={styles.label}>disabled:</ThemedText>
             <Switch value={disabled} onValueChange={setDisabled} />
@@ -205,7 +205,7 @@ export default function CommunityDateTimePickerScreen() {
         )}
 
         {/* is24Hour (Android) */}
-        {Platform.OS === "android" && (
+        {Platform.OS === 'android' && (
           <View style={styles.row}>
             <ThemedText style={styles.label}>is24Hour:</ThemedText>
             <Switch value={is24Hour} onValueChange={setIs24Hour} />
@@ -213,7 +213,7 @@ export default function CommunityDateTimePickerScreen() {
         )}
 
         {/* positiveButton / negativeButton labels (Android dialog) */}
-        {Platform.OS === "android" && (
+        {Platform.OS === 'android' && (
           <>
             <View style={styles.row}>
               <ThemedText style={styles.label}>positiveButton label:</ThemedText>
@@ -222,7 +222,7 @@ export default function CommunityDateTimePickerScreen() {
                 value={positiveLabel}
                 onChangeText={setPositiveLabel}
                 placeholder="OK"
-                placeholderTextColor={isDark ? "#999" : "#666"}
+                placeholderTextColor={isDark ? '#999' : '#666'}
               />
             </View>
             <View style={styles.row}>
@@ -232,14 +232,14 @@ export default function CommunityDateTimePickerScreen() {
                 value={negativeLabel}
                 onChangeText={setNegativeLabel}
                 placeholder="Cancel"
-                placeholderTextColor={isDark ? "#999" : "#666"}
+                placeholderTextColor={isDark ? '#999' : '#666'}
               />
             </View>
           </>
         )}
 
         {/* timeZoneName (iOS) */}
-        {Platform.OS === "ios" && (
+        {Platform.OS === 'ios' && (
           <>
             <ThemedText style={styles.label}>timeZoneName:</ThemedText>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.tzScroll}>
@@ -253,9 +253,8 @@ export default function CommunityDateTimePickerScreen() {
                     style={[
                       styles.segmentedItem,
                       tz === timeZoneName && styles.segmentedItemActive,
-                    ]}
-                  >
-                    <Button title={tz.split("/")[1]} onPress={() => setTimeZoneName(tz)} />
+                    ]}>
+                    <Button title={tz.split('/')[1]} onPress={() => setTimeZoneName(tz)} />
                   </View>
                 ))}
               </View>
@@ -266,7 +265,7 @@ export default function CommunityDateTimePickerScreen() {
         {/* Min/Max toggle */}
         <View style={styles.buttonRow}>
           <Button
-            title={minimumDate ? "Clear min/max" : "Set min/max (source day ± 1)"}
+            title={minimumDate ? 'Clear min/max' : 'Set min/max (source day ± 1)'}
             onPress={toggleMinMaxDate}
           />
         </View>
@@ -278,7 +277,7 @@ export default function CommunityDateTimePickerScreen() {
         </View>
 
         {/* Show and dismiss after 3s (Android dialog test) */}
-        {Platform.OS === "android" && (
+        {Platform.OS === 'android' && (
           <View style={styles.buttonRow}>
             <Button
               title="Show & dismiss after 3s"
@@ -318,33 +317,33 @@ export default function CommunityDateTimePickerScreen() {
 }
 
 CommunityDateTimePickerScreen.navigationOptions = {
-  title: "Community DateTimePicker",
+  title: 'Community DateTimePicker',
 };
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
   content: { padding: 12, paddingBottom: 80 },
-  header: { alignItems: "center", marginBottom: 12 },
-  headerText: { fontSize: 18, fontWeight: "bold" },
-  label: { marginTop: 10, marginBottom: 4, fontWeight: "600" },
-  row: { flexDirection: "row", alignItems: "center", gap: 8, marginVertical: 4 },
-  infoRow: { flexDirection: "row", paddingVertical: 2 },
-  infoTitle: { flex: 1, fontWeight: "600" },
+  header: { alignItems: 'center', marginBottom: 12 },
+  headerText: { fontSize: 18, fontWeight: 'bold' },
+  label: { marginTop: 10, marginBottom: 4, fontWeight: '600' },
+  row: { flexDirection: 'row', alignItems: 'center', gap: 8, marginVertical: 4 },
+  infoRow: { flexDirection: 'row', paddingVertical: 2 },
+  infoTitle: { flex: 1, fontWeight: '600' },
   infoBody: { flex: 2 },
   textInput: {
     flex: 1,
     height: 40,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: '#ccc',
     borderRadius: 6,
     paddingHorizontal: 8,
   },
-  segmented: { flexDirection: "row", flexWrap: "wrap", gap: 2 },
-  segmentedItem: { borderRadius: 6, overflow: "hidden" },
-  segmentedItemActive: { backgroundColor: "#ddd" },
+  segmented: { flexDirection: 'row', flexWrap: 'wrap', gap: 2 },
+  segmentedItem: { borderRadius: 6, overflow: 'hidden' },
+  segmentedItemActive: { backgroundColor: '#ddd' },
   buttonRow: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     marginVertical: 8,
   },
   tzScroll: { marginBottom: 6 },

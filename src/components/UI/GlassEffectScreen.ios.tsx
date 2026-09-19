@@ -7,7 +7,7 @@ import {
   VStack,
   Button,
   Text,
-} from "@expo/ui/swift-ui";
+} from '@expo/ui/swift-ui';
 import {
   padding,
   glassEffect,
@@ -18,9 +18,9 @@ import {
   cornerRadius,
   frame,
   foregroundStyle,
-} from "@expo/ui/swift-ui/modifiers";
-import { useId, useState } from "react";
-import { View } from "react-native";
+} from '@expo/ui/swift-ui/modifiers';
+import { useId, useState } from 'react';
+import { View } from 'react-native';
 
 export default function GlassEffect() {
   const [isGlassExpanded, setIsGlassExpanded] = useState(false);
@@ -31,13 +31,11 @@ export default function GlassEffect() {
       style={{
         flex: 1,
         experimental_backgroundImage: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`,
-      }}
-    >
+      }}>
       <Host style={{ flex: 1 }}>
         <VStack
           spacing={60}
-          modifiers={[animation(Animation.spring({ duration: 0.8 }), isGlassExpanded)]}
-        >
+          modifiers={[animation(Animation.spring({ duration: 0.8 }), isGlassExpanded)]}>
           <Namespace id={namespaceId}>
             <GlassEffectContainer
               spacing={30}
@@ -45,8 +43,7 @@ export default function GlassEffect() {
                 animation(Animation.spring({ duration: 0.8 }), isGlassExpanded),
                 padding({ all: 30 }),
                 cornerRadius(20),
-              ]}
-            >
+              ]}>
               <VStack spacing={25}>
                 <HStack spacing={25}>
                   <Image
@@ -57,10 +54,10 @@ export default function GlassEffect() {
                       padding({ all: 15 }),
                       glassEffect({
                         glass: {
-                          variant: "clear",
+                          variant: 'clear',
                         },
                       }),
-                      glassEffectId("paintbrush", namespaceId),
+                      glassEffectId('paintbrush', namespaceId),
                       cornerRadius(15),
                     ]}
                   />
@@ -72,10 +69,10 @@ export default function GlassEffect() {
                       padding({ all: 15 }),
                       glassEffect({
                         glass: {
-                          variant: "clear",
+                          variant: 'clear',
                         },
                       }),
-                      glassEffectId("scribble", namespaceId),
+                      glassEffectId('scribble', namespaceId),
                       cornerRadius(15),
                     ]}
                   />
@@ -87,10 +84,10 @@ export default function GlassEffect() {
                       padding({ all: 15 }),
                       glassEffect({
                         glass: {
-                          variant: "clear",
+                          variant: 'clear',
                         },
                       }),
-                      glassEffectId("pencil", namespaceId),
+                      glassEffectId('pencil', namespaceId),
                       cornerRadius(15),
                     ]}
                   />
@@ -106,10 +103,10 @@ export default function GlassEffect() {
                         padding({ all: 15 }),
                         glassEffect({
                           glass: {
-                            variant: "clear",
+                            variant: 'clear',
                           },
                         }),
-                        glassEffectId("eraser", namespaceId),
+                        glassEffectId('eraser', namespaceId),
                         cornerRadius(15),
                       ]}
                     />
@@ -121,10 +118,10 @@ export default function GlassEffect() {
                         padding({ all: 15 }),
                         glassEffect({
                           glass: {
-                            variant: "clear",
+                            variant: 'clear',
                           },
                         }),
-                        glassEffectId("highlighter", namespaceId),
+                        glassEffectId('highlighter', namespaceId),
                         cornerRadius(15),
                       ]}
                     />
@@ -136,10 +133,10 @@ export default function GlassEffect() {
                         padding({ all: 15 }),
                         glassEffect({
                           glass: {
-                            variant: "clear",
+                            variant: 'clear',
                           },
                         }),
-                        glassEffectId("heart.fill", namespaceId),
+                        glassEffectId('heart.fill', namespaceId),
                         cornerRadius(15),
                       ]}
                     />
@@ -154,17 +151,16 @@ export default function GlassEffect() {
               onPress={() => setIsGlassExpanded(!isGlassExpanded)}
               modifiers={[
                 padding({ horizontal: 30, vertical: 15 }),
-                background("#000"),
+                background('#000'),
                 cornerRadius(25),
                 glassEffect({
                   glass: {
-                    variant: "clear",
+                    variant: 'clear',
                   },
                 }),
-              ]}
-            >
-              <Text modifiers={[foregroundStyle("#fff")]}>
-                {isGlassExpanded ? "Hide Tools" : "Show More Tools"}
+              ]}>
+              <Text modifiers={[foregroundStyle('#fff')]}>
+                {isGlassExpanded ? 'Hide Tools' : 'Show More Tools'}
               </Text>
             </Button>
           </VStack>

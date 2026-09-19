@@ -1,4 +1,4 @@
-import { Host, HStack, Namespace, VStack, ZStack } from "@expo/ui/swift-ui";
+import { Host, HStack, Namespace, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
   padding,
   animation,
@@ -8,19 +8,19 @@ import {
   frame,
   matchedGeometryEffect,
   onTapGesture,
-} from "@expo/ui/swift-ui/modifiers";
-import { useId, useState } from "react";
-import { View } from "react-native";
+} from '@expo/ui/swift-ui/modifiers';
+import { useId, useState } from 'react';
+import { View } from 'react-native';
 
-const boxes = ["box1", "box2", "box3", "box4", "box5", "box6"];
-const colors = ["#FF3B30", "#007AFF", "#28CD41", "#FF9500", "#AF52DE", "#FF2D92"];
+const boxes = ['box1', 'box2', 'box3', 'box4', 'box5', 'box6'];
+const colors = ['#FF3B30', '#007AFF', '#28CD41', '#FF9500', '#AF52DE', '#FF2D92'];
 
 export default function MatchedGeometryEffectDemo() {
   const [selectedBox, setSelectedBox] = useState<string | null>(null);
   const namespaceId = useId();
 
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1 }}>
       <Host style={{ flex: 1 }}>
         <Namespace id={namespaceId}>
           <ZStack modifiers={[animation(Animation.spring(), !!selectedBox)]}>
@@ -66,8 +66,7 @@ export default function MatchedGeometryEffectDemo() {
                   modifiers={[
                     frame({ maxWidth: Infinity, maxHeight: Infinity }),
                     padding({ all: 40 }),
-                  ]}
-                >
+                  ]}>
                   <VStack>
                     {/* TODO: Add Rectangle component */}
                     {/* @ts-expect-error */}

@@ -1,6 +1,6 @@
-import { Button, Form, Host, Section, Slider, Text } from "@expo/ui/swift-ui";
-import { tint } from "@expo/ui/swift-ui/modifiers";
-import * as React from "react";
+import { Button, Form, Host, Section, Slider, Text } from '@expo/ui/swift-ui';
+import { tint } from '@expo/ui/swift-ui/modifiers';
+import * as React from 'react';
 
 export default function SliderScreen() {
   const [basicValue, setBasicValue] = React.useState(0.5);
@@ -54,7 +54,7 @@ export default function SliderScreen() {
 
         <Section title="Full Example (All Props)">
           <Text>
-            Value: {fullValue.toFixed(0)} {isEditing ? "(editing)" : ""}
+            Value: {fullValue.toFixed(0)} {isEditing ? '(editing)' : ''}
           </Text>
           <Slider
             value={fullValue}
@@ -88,7 +88,7 @@ export default function SliderScreen() {
           />
         </Section>
         <Section title="Red color Slider">
-          <Slider modifiers={[tint("red")]} />
+          <Slider modifiers={[tint('red')]} />
         </Section>
       </Form>
     </Host>
@@ -96,5 +96,5 @@ export default function SliderScreen() {
 }
 
 SliderScreen.navigationOptions = {
-  title: "Slider",
+  title: 'Slider',
 };

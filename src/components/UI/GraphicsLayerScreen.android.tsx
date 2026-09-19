@@ -1,4 +1,4 @@
-import { Host, Column, Box, Text } from "@expo/ui/jetpack-compose";
+import { Host, Column, Box, Text } from '@expo/ui/jetpack-compose';
 import {
   clickable,
   paddingAll,
@@ -12,8 +12,8 @@ import {
   animated,
   spring,
   tween,
-} from "@expo/ui/jetpack-compose/modifiers";
-import { useState } from "react";
+} from '@expo/ui/jetpack-compose/modifiers';
+import { useState } from 'react';
 
 export default function GraphicsLayerScreen() {
   const [flipped, setFlipped] = useState(false);
@@ -24,36 +24,33 @@ export default function GraphicsLayerScreen() {
         <Column
           horizontalAlignment="center"
           verticalArrangement="center"
-          modifiers={[paddingAll(24)]}
-        >
+          modifiers={[paddingAll(24)]}>
           <Box
             modifiers={[
               clickable(() => setFlipped((p) => !p), { indication: false }),
               fillMaxWidth(),
               height(200),
-            ]}
-          >
+            ]}>
             <Box
               contentAlignment="center"
               modifiers={[
                 graphicsLayer({
                   rotationY: animated(
                     flipped ? 180 : 0,
-                    spring({ stiffness: 20, dampingRatio: 1 }),
+                    spring({ stiffness: 20, dampingRatio: 1 })
                   ),
                   alpha: animated(
                     flipped ? 0.5 : 1,
-                    tween({ durationMillis: 300, easing: "linear" }),
+                    tween({ durationMillis: 300, easing: 'linear' })
                   ),
                   cameraDistance: 12,
                 }),
                 fillMaxSize(),
                 clip(Shapes.RoundedCorner(20)),
-                background("#007AFF"),
+                background('#007AFF'),
                 paddingAll(24),
-              ]}
-            >
-              <Text style={{ typography: "headlineMedium", textAlign: "center" }} color="#FFFFFF">
+              ]}>
+              <Text style={{ typography: 'headlineMedium', textAlign: 'center' }} color="#FFFFFF">
                 Tap to flip
               </Text>
             </Box>
@@ -64,5 +61,5 @@ export default function GraphicsLayerScreen() {
   );
 }
 GraphicsLayerScreen.navigationOptions = {
-  title: "graphicsLayer modifier",
+  title: 'graphicsLayer modifier',
 };

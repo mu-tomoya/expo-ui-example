@@ -1,8 +1,8 @@
-import { ColorPicker, Form, Host, Section, Toggle, Text } from "@expo/ui/swift-ui";
-import * as React from "react";
+import { ColorPicker, Form, Host, Section, Toggle, Text } from '@expo/ui/swift-ui';
+import * as React from 'react';
 
 export default function ColorPickerScreen() {
-  const [color, setColor] = React.useState<string | null>("blue");
+  const [color, setColor] = React.useState<string | null>('blue');
   const [supportsOpacity, setSupportsOpacity] = React.useState<boolean>(false);
   return (
     <Host style={{ flex: 1 }}>
@@ -27,5 +27,5 @@ export default function ColorPickerScreen() {
 }
 
 ColorPickerScreen.navigationOptions = {
-  title: "Color Picker",
+  title: 'Color Picker',
 };

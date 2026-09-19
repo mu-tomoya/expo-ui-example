@@ -1,21 +1,21 @@
 import {
   AnimatedVisibility,
-  Box,
-  Text as ComposeText,
   EnterTransition,
   ExitTransition,
   Host,
-} from "@expo/ui/jetpack-compose";
-import { background, fillMaxWidth, paddingAll, width } from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
-import { Button, ScrollView } from "react-native";
+  Box,
+  Text as ComposeText,
+} from '@expo/ui/jetpack-compose';
+import { background, fillMaxWidth, paddingAll, width } from '@expo/ui/jetpack-compose/modifiers';
+import * as React from 'react';
+import { ScrollView, Button } from 'react-native';
 
-import { Page, Section } from "../Page";
+import { Page, Section } from '../../components/Page';
 
 function ToggleButton({ visible, onToggle }: { visible: boolean; onToggle: () => void }) {
   return (
     <Host matchContents>
-      <Button onPress={onToggle} title={visible ? "Hide" : "Show"} />
+      <Button onPress={onToggle} title={visible ? 'Hide' : 'Show'} />
     </Host>
   );
 }
@@ -23,7 +23,7 @@ function ToggleButton({ visible, onToggle }: { visible: boolean; onToggle: () =>
 function DemoBox({ label, color }: { label: string; color: string }) {
   return (
     <Box contentAlignment="center" modifiers={[background(color), paddingAll(24), width(150)]}>
-      <ComposeText color="#FFFFFF" style={{ fontWeight: "600", fontSize: 16 }}>
+      <ComposeText color="#FFFFFF" style={{ fontWeight: '600', fontSize: 16 }}>
         {label}
       </ComposeText>
     </Box>
@@ -40,8 +40,8 @@ function TransitionSection({
   title: string;
   label: string;
   color: string;
-  enterTransition?: React.ComponentProps<typeof AnimatedVisibility>["enterTransition"];
-  exitTransition?: React.ComponentProps<typeof AnimatedVisibility>["exitTransition"];
+  enterTransition?: React.ComponentProps<typeof AnimatedVisibility>['enterTransition'];
+  exitTransition?: React.ComponentProps<typeof AnimatedVisibility>['exitTransition'];
 }) {
   const [visible, setVisible] = React.useState(false);
   return (
@@ -52,8 +52,7 @@ function TransitionSection({
           <AnimatedVisibility
             visible={visible}
             enterTransition={enterTransition}
-            exitTransition={exitTransition}
-          >
+            exitTransition={exitTransition}>
             <DemoBox label={label} color={color} />
           </AnimatedVisibility>
         </Box>
@@ -113,10 +112,10 @@ export default function AnimatedVisibilityScreen() {
           label="Fade + Slide"
           color="#3F51B5"
           enterTransition={EnterTransition.fadeIn().plus(
-            EnterTransition.slideInHorizontally({ initialOffsetX: -1.0 }),
+            EnterTransition.slideInHorizontally({ initialOffsetX: -1.0 })
           )}
           exitTransition={ExitTransition.fadeOut().plus(
-            ExitTransition.slideOutHorizontally({ targetOffsetX: 1.0 }),
+            ExitTransition.slideOutHorizontally({ targetOffsetX: 1.0 })
           )}
         />
       </ScrollView>
@@ -125,5 +124,5 @@ export default function AnimatedVisibilityScreen() {
 }
 
 AnimatedVisibilityScreen.navigationOptions = {
-  title: "AnimatedVisibility",
+  title: 'AnimatedVisibility',
 };

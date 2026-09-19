@@ -11,23 +11,27 @@ import {
   Toggle,
   VStack,
   Group,
-} from "@expo/ui/swift-ui";
+} from '@expo/ui/swift-ui';
 import {
   frame,
   padding,
   pickerStyle,
   presentationDetents,
   presentationDragIndicator,
+  presentationBackground,
   presentationBackgroundInteraction,
   interactiveDismissDisabled,
   tag,
   foregroundStyle,
-} from "@expo/ui/swift-ui/modifiers";
-import type { PresentationDetent } from "@expo/ui/swift-ui/modifiers";
-import * as React from "react";
-import { Pressable, Text as RNText, View } from "react-native";
+} from '@expo/ui/swift-ui/modifiers';
+import type { PresentationDetent } from '@expo/ui/swift-ui/modifiers';
+import { FlashList } from '@shopify/flash-list';
+import * as React from 'react';
+import { Pressable, StyleSheet, Text as RNText, View } from 'react-native';
 
-const dragIndicatorOptions = ["automatic", "visible", "hidden"] as const;
+const dragIndicatorOptions = ['automatic', 'visible', 'hidden'] as const;
+
+const LIST_DATA = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
 
 type DragIndicatorOption = (typeof dragIndicatorOptions)[number];
 
@@ -36,11 +40,17 @@ export default function BottomSheetScreen() {
 
   const [showFitsContent, setShowFitsContent] = React.useState(false);
 
+  const [showBackgroundColor, setShowBackgroundColor] = React.useState(false);
+
+  const [showBackgroundMaterial, setShowBackgroundMaterial] = React.useState(false);
+
+  const [showBackgroundGradient, setShowBackgroundGradient] = React.useState(false);
+
   const [showConfigured, setShowConfigured] = React.useState(false);
   const [useMedium, setUseMedium] = React.useState(true);
   const [useLarge, setUseLarge] = React.useState(true);
   const [useFraction, setUseFraction] = React.useState(false);
-  const [dragIndicator, setDragIndicator] = React.useState<DragIndicatorOption>("automatic");
+  const [dragIndicator, setDragIndicator] = React.useState<DragIndicatorOption>('automatic');
   const [backgroundInteractionEnabled, setBackgroundInteractionEnabled] = React.useState(false);
   const [dismissDisabled, setDismissDisabled] = React.useState(false);
 
@@ -48,28 +58,29 @@ export default function BottomSheetScreen() {
   const selectionDetents: PresentationDetent[] = [
     { height: 300 },
     { fraction: 0.3 },
-    "medium",
-    "large",
+    'medium',
+    'large',
   ];
-  const [selectedDetent, setSelectedDetent] = React.useState<PresentationDetent>("medium");
+  const [selectedDetent, setSelectedDetent] = React.useState<PresentationDetent>('medium');
 
   const [showRNContent, setShowRNContent] = React.useState(false);
   const [showRNContentWithFlex1, setShowRNContentWithFlex1] = React.useState(false);
+  const [showScrollableList, setShowScrollableList] = React.useState(false);
   const [counter, setCounter] = React.useState(0);
 
   const configuredDetents: PresentationDetent[] = (() => {
     const detents: PresentationDetent[] = [];
-    if (useMedium) detents.push("medium");
-    if (useLarge) detents.push("large");
+    if (useMedium) detents.push('medium');
+    if (useLarge) detents.push('large');
     if (useFraction) detents.push({ fraction: 0.3 });
-    return detents.length > 0 ? detents : ["large"];
+    return detents.length > 0 ? detents : ['large'];
   })();
 
   const configuredModifiers = (() => {
     const mods = [presentationDetents(configuredDetents), presentationDragIndicator(dragIndicator)];
 
     if (backgroundInteractionEnabled) {
-      mods.push(presentationBackgroundInteraction("enabled"));
+      mods.push(presentationBackgroundInteraction('enabled'));
     }
 
     if (dismissDisabled) {
@@ -80,23 +91,64 @@ export default function BottomSheetScreen() {
   })();
 
   const formatDetent = (detent: PresentationDetent): string => {
-    if (typeof detent === "string") return detent;
-    if ("fraction" in detent) return `${detent.fraction * 100}%`;
+    if (typeof detent === 'string') return detent;
+    if ('fraction' in detent) return `${detent.fraction * 100}%`;
     return `${detent.height}pt`;
   };
-
+  const [listDetent, setListDetent] = React.useState<PresentationDetent>('medium');
   return (
     <Host style={{ flex: 1 }}>
       <Form>
         <Section title="Basic">
-          <Button label="Open Basic Sheet" onPress={() => setShowBasic(true)} />
+          <Text modifiers={[foregroundStyle('secondaryLabel')]}>
+            The open button is passed as the `anchor` prop
+          </Text>
+          <BottomSheet
+            isPresented={showBasic}
+            onIsPresentedChange={setShowBasic}
+            anchor={<Button label="Open Basic Sheet" onPress={() => setShowBasic(true)} />}>
+            <Group modifiers={[presentationDetents(['medium', 'large'])]}>
+              <VStack modifiers={[padding({ all: 20 })]}>
+                <Text>Basic Bottom Sheet</Text>
+                <Text modifiers={[foregroundStyle('secondaryLabel')]}>
+                  Swipe down or tap outside to dismiss
+                </Text>
+                <Button label="Close" onPress={() => setShowBasic(false)} />
+              </VStack>
+            </Group>
+          </BottomSheet>
         </Section>
 
         <Section title="Fits Content">
-          <Text modifiers={[foregroundStyle("secondaryLabel")]}>
+          <Text modifiers={[foregroundStyle('secondaryLabel')]}>
             Sheet automatically sizes to fit its content
           </Text>
           <Button label="Open Fits Content Sheet" onPress={() => setShowFitsContent(true)} />
+        </Section>
+
+        <Section title="Solid Background Color">
+          <Text modifiers={[foregroundStyle('secondaryLabel')]}>
+            presentationBackground paints a solid sheet color and disables the translucent (Liquid
+            Glass) material
+          </Text>
+          <Button
+            label="Open Solid Background Sheet"
+            onPress={() => setShowBackgroundColor(true)}
+          />
+        </Section>
+
+        <Section title="Material and Gradient Background">
+          <Text modifiers={[foregroundStyle('secondaryLabel')]}>
+            presentationBackground takes any ShapeStyle, not just a color
+          </Text>
+          <Button
+            label="Open Material Background Sheet"
+            onPress={() => setShowBackgroundMaterial(true)}
+          />
+          <Button
+            label="Open Gradient Background Sheet"
+            onPress={() => setShowBackgroundGradient(true)}
+          />
         </Section>
 
         <Section title="Configured Sheet">
@@ -106,10 +158,9 @@ export default function BottomSheetScreen() {
           <Toggle isOn={useFraction} onIsOnChange={setUseFraction} label="30% (Fraction)" />
           <Picker
             label="Drag Indicator"
-            modifiers={[pickerStyle("menu")]}
+            modifiers={[pickerStyle('menu')]}
             selection={dragIndicatorOptions.indexOf(dragIndicator)}
-            onSelectionChange={(index) => setDragIndicator(dragIndicatorOptions[index])}
-          >
+            onSelectionChange={(index) => setDragIndicator(dragIndicatorOptions[index])}>
             {dragIndicatorOptions.map((option, index) => (
               <Text key={option} modifiers={[tag(index)]}>
                 {option}
@@ -136,7 +187,7 @@ export default function BottomSheetScreen() {
         </Section>
 
         <Section title="React Native Content">
-          <Text modifiers={[foregroundStyle("secondaryLabel")]}>
+          <Text modifiers={[foregroundStyle('secondaryLabel')]}>
             Sheet with React Native views inside
           </Text>
           <Button label="Open RN Content Sheet" onPress={() => setShowRNContent(true)} />
@@ -147,34 +198,84 @@ export default function BottomSheetScreen() {
             onPress={() => setShowRNContentWithFlex1(true)}
           />
         </Section>
+        <Section title="Scrollable List (FlashList)">
+          <Text modifiers={[foregroundStyle('secondaryLabel')]}>
+            Sheet with a nested React Native FlashList
+          </Text>
+          <Button label="Open Scrollable List Sheet" onPress={() => setShowScrollableList(true)} />
+        </Section>
       </Form>
-
-      {/* Basic Sheet */}
-      <BottomSheet isPresented={showBasic} onIsPresentedChange={setShowBasic}>
-        <Group modifiers={[presentationDetents(["medium", "large"])]}>
-          <VStack modifiers={[padding({ all: 20 })]}>
-            <Text>Basic Bottom Sheet</Text>
-            <Text modifiers={[foregroundStyle("secondaryLabel")]}>
-              Swipe down or tap outside to dismiss
-            </Text>
-            <Button label="Close" onPress={() => setShowBasic(false)} />
-          </VStack>
-        </Group>
-      </BottomSheet>
 
       {/* Fits Content Sheet */}
       <BottomSheet
         isPresented={showFitsContent}
         onIsPresentedChange={setShowFitsContent}
-        fitToContents
-      >
+        fitToContents>
         <Group>
           <VStack modifiers={[padding({ all: 20 })]}>
             <Text>Fits Content Sheet</Text>
-            <Text modifiers={[foregroundStyle("secondaryLabel")]}>
+            <Text modifiers={[foregroundStyle('secondaryLabel')]}>
               This sheet sizes to fit its content automatically
             </Text>
             <Button label="Close" onPress={() => setShowFitsContent(false)} />
+          </VStack>
+        </Group>
+      </BottomSheet>
+
+      {/* Solid Background Color Sheet */}
+      <BottomSheet isPresented={showBackgroundColor} onIsPresentedChange={setShowBackgroundColor}>
+        <Group
+          modifiers={[presentationDetents(['medium', 'large']), presentationBackground('#ffffff')]}>
+          <VStack modifiers={[padding({ all: 20 })]}>
+            <Text modifiers={[foregroundStyle('#000000')]}>Solid white sheet background</Text>
+            <Text modifiers={[foregroundStyle('#666666')]}>
+              presentationBackground replaces the default translucent material
+            </Text>
+            <Button label="Close" onPress={() => setShowBackgroundColor(false)} />
+          </VStack>
+        </Group>
+      </BottomSheet>
+
+      {/* Material Background Sheet */}
+      <BottomSheet
+        isPresented={showBackgroundMaterial}
+        onIsPresentedChange={setShowBackgroundMaterial}>
+        <Group
+          modifiers={[
+            presentationDetents(['medium', 'large']),
+            presentationBackground({ type: 'material', material: 'ultraThin' }),
+          ]}>
+          <VStack modifiers={[padding({ all: 20 })]}>
+            <Text>Ultra thin material sheet background</Text>
+            <Text modifiers={[foregroundStyle('secondaryLabel')]}>
+              The material follows the color scheme. iOS 26 renders it as a flat color rather than a
+              translucent blur
+            </Text>
+            <Button label="Close" onPress={() => setShowBackgroundMaterial(false)} />
+          </VStack>
+        </Group>
+      </BottomSheet>
+
+      {/* Gradient Background Sheet */}
+      <BottomSheet
+        isPresented={showBackgroundGradient}
+        onIsPresentedChange={setShowBackgroundGradient}>
+        <Group
+          modifiers={[
+            presentationDetents(['medium', 'large']),
+            presentationBackground({
+              type: 'linearGradient',
+              colors: ['#7B4DFF', '#00C2FF'],
+              startPoint: { x: 0, y: 0 },
+              endPoint: { x: 1, y: 1 },
+            }),
+          ]}>
+          <VStack modifiers={[padding({ all: 20 })]}>
+            <Text>Linear gradient sheet background</Text>
+            <Text modifiers={[foregroundStyle('secondaryLabel')]}>
+              The gradient paints the whole sheet surface, including the drag-indicator zone
+            </Text>
+            <Button label="Close" onPress={() => setShowBackgroundGradient(false)} />
           </VStack>
         </Group>
       </BottomSheet>
@@ -184,17 +285,17 @@ export default function BottomSheetScreen() {
         <Group modifiers={configuredModifiers}>
           <VStack modifiers={[padding({ all: 20 }), frame({ minHeight: 200 })]}>
             <Text>Configured Sheet</Text>
-            <Text modifiers={[foregroundStyle("secondaryLabel")]}>
-              Detents: {configuredDetents.map(formatDetent).join(", ")}
+            <Text modifiers={[foregroundStyle('secondaryLabel')]}>
+              Detents: {configuredDetents.map(formatDetent).join(', ')}
             </Text>
-            <Text modifiers={[foregroundStyle("secondaryLabel")]}>
+            <Text modifiers={[foregroundStyle('secondaryLabel')]}>
               Drag Indicator: {dragIndicator}
             </Text>
-            <Text modifiers={[foregroundStyle("secondaryLabel")]}>
-              Background Interaction: {backgroundInteractionEnabled ? "enabled" : "disabled"}
+            <Text modifiers={[foregroundStyle('secondaryLabel')]}>
+              Background Interaction: {backgroundInteractionEnabled ? 'enabled' : 'disabled'}
             </Text>
-            <Text modifiers={[foregroundStyle("secondaryLabel")]}>
-              Dismiss: {dismissDisabled ? "disabled" : "enabled"}
+            <Text modifiers={[foregroundStyle('secondaryLabel')]}>
+              Dismiss: {dismissDisabled ? 'disabled' : 'enabled'}
             </Text>
             <Button label="Close" onPress={() => setShowConfigured(false)} />
           </VStack>
@@ -204,26 +305,24 @@ export default function BottomSheetScreen() {
       {/* Selection Tracking Sheet */}
       <BottomSheet
         isPresented={showSelectionTracking}
-        onIsPresentedChange={setShowSelectionTracking}
-      >
+        onIsPresentedChange={setShowSelectionTracking}>
         <Group
           modifiers={[
             presentationDetents(selectionDetents, {
               selection: selectedDetent,
               onSelectionChange: setSelectedDetent,
             }),
-            presentationDragIndicator("visible"),
-          ]}
-        >
+            presentationDragIndicator('visible'),
+          ]}>
           <List>
             <Section title="Change Detent">
               <Button label="Height 300" onPress={() => setSelectedDetent({ height: 300 })} />
               <Button label="Fraction 0.3" onPress={() => setSelectedDetent({ fraction: 0.3 })} />
-              <Button label="Medium" onPress={() => setSelectedDetent("medium")} />
-              <Button label="Large" onPress={() => setSelectedDetent("large")} />
+              <Button label="Medium" onPress={() => setSelectedDetent('medium')} />
+              <Button label="Large" onPress={() => setSelectedDetent('large')} />
             </Section>
             <Section title="Current">
-              <Text modifiers={[foregroundStyle("secondaryLabel")]}>
+              <Text modifiers={[foregroundStyle('secondaryLabel')]}>
                 {formatDetent(selectedDetent)}
               </Text>
             </Section>
@@ -233,35 +332,33 @@ export default function BottomSheetScreen() {
 
       {/* React Native Content Sheet */}
       <BottomSheet isPresented={showRNContent} onIsPresentedChange={setShowRNContent} fitToContents>
-        <Group modifiers={[presentationDragIndicator("visible")]}>
+        <Group modifiers={[presentationDragIndicator('visible')]}>
           <RNHostView matchContents>
             <View style={{ padding: 24 }}>
-              <RNText style={{ fontSize: 18, fontWeight: "bold", marginBottom: 8 }}>
+              <RNText style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>
                 React Native Content
               </RNText>
-              <RNText style={{ color: "#666", marginBottom: 16 }}>Counter: {counter}</RNText>
+              <RNText style={{ color: '#666', marginBottom: 16 }}>Counter: {counter}</RNText>
               <Pressable
                 style={{
-                  backgroundColor: "#007AFF",
+                  backgroundColor: '#007AFF',
                   padding: 12,
                   borderRadius: 8,
-                  alignItems: "center",
+                  alignItems: 'center',
                   marginBottom: 12,
                 }}
-                onPress={() => setCounter(counter + 1)}
-              >
-                <RNText style={{ color: "white", fontWeight: "600" }}>Increment</RNText>
+                onPress={() => setCounter(counter + 1)}>
+                <RNText style={{ color: 'white', fontWeight: '600' }}>Increment</RNText>
               </Pressable>
               <Pressable
                 style={{
-                  backgroundColor: "#FF3B30",
+                  backgroundColor: '#FF3B30',
                   padding: 12,
                   borderRadius: 8,
-                  alignItems: "center",
+                  alignItems: 'center',
                 }}
-                onPress={() => setShowRNContent(false)}
-              >
-                <RNText style={{ color: "white", fontWeight: "600" }}>Close</RNText>
+                onPress={() => setShowRNContent(false)}>
+                <RNText style={{ color: 'white', fontWeight: '600' }}>Close</RNText>
               </Pressable>
             </View>
           </RNHostView>
@@ -271,19 +368,45 @@ export default function BottomSheetScreen() {
       {/* React Native Content Sheet with flex 1 children */}
       <BottomSheet
         isPresented={showRNContentWithFlex1}
-        onIsPresentedChange={setShowRNContentWithFlex1}
-      >
+        onIsPresentedChange={setShowRNContentWithFlex1}>
         <Group
           modifiers={[
-            presentationDetents(["medium", "large"]),
-            presentationDragIndicator("visible"),
-          ]}
-        >
+            presentationDetents(['medium', 'large']),
+            presentationDragIndicator('visible'),
+          ]}>
           <RNHostView>
-            <View style={{ flex: 1, backgroundColor: "blue" }}>
-              <RNText style={{ fontSize: 18, fontWeight: "bold", marginBottom: 8 }}>
+            <View style={{ flex: 1, backgroundColor: 'blue' }}>
+              <RNText style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>
                 React Native Content
               </RNText>
+            </View>
+          </RNHostView>
+        </Group>
+      </BottomSheet>
+
+      {/* Scrollable List Sheet (nested FlashList) */}
+      <BottomSheet isPresented={showScrollableList} onIsPresentedChange={setShowScrollableList}>
+        <Group
+          modifiers={[
+            presentationDetents(['medium', 'large'], {
+              selection: listDetent,
+              onSelectionChange: setListDetent,
+            }),
+            presentationDragIndicator('visible'),
+          ]}>
+          <RNHostView>
+            <View style={{ flex: 1, padding: 16 }}>
+              <FlashList
+                nestedScrollEnabled
+                style={styles.list}
+                data={LIST_DATA}
+                keyExtractor={(item) => item}
+                renderItem={({ item }) => (
+                  <View style={styles.listRow}>
+                    <RNText style={styles.listRowText}>{item}</RNText>
+                  </View>
+                )}
+              />
             </View>
           </RNHostView>
         </Group>
@@ -292,6 +415,16 @@ export default function BottomSheetScreen() {
   );
 }
 
+const styles = StyleSheet.create({
+  list: { flex: 1 },
+  listRow: {
+    paddingVertical: 16,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#cccccc',
+  },
+  listRowText: { fontSize: 16 },
+});
+
 BottomSheetScreen.navigationOptions = {
-  title: "BottomSheet",
+  title: 'BottomSheet',
 };

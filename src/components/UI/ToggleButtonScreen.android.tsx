@@ -11,11 +11,11 @@ import {
   LazyColumn,
   Icon,
   Spacer,
-} from "@expo/ui/jetpack-compose";
-import { fillMaxWidth, padding, width } from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
+} from '@expo/ui/jetpack-compose';
+import { fillMaxWidth, padding, width } from '@expo/ui/jetpack-compose/modifiers';
+import * as React from 'react';
 
-const starIcon = require("../../../assets/icons/api/Camera.png");
+const starIcon = require('../../../assets/icons/api/Camera.png');
 
 export default function ToggleButtonScreen() {
   const [checked1, setChecked1] = React.useState(false);
@@ -47,10 +47,9 @@ export default function ToggleButtonScreen() {
                 checked={checked2}
                 onCheckedChange={setChecked2}
                 colors={{
-                  checkedContainerColor: "#6200EE",
-                  checkedContentColor: "#FFFFFF",
-                }}
-              >
+                  checkedContainerColor: '#6200EE',
+                  checkedContentColor: '#FFFFFF',
+                }}>
                 <Icon source={starIcon} size={24} />
               </IconToggleButton>
               <FilledIconToggleButton checked={checked3} onCheckedChange={setChecked3}>
@@ -87,13 +86,12 @@ export default function ToggleButtonScreen() {
               checked={checked5}
               onCheckedChange={setChecked5}
               colors={{
-                checkedContainerColor: "#4CAF50",
-                checkedContentColor: "#FFFFFF",
-                containerColor: "#E0E0E0",
-                contentColor: "#333333",
-              }}
-            >
-              <ComposeText>{checked5 ? "ON" : "OFF"}</ComposeText>
+                checkedContainerColor: '#4CAF50',
+                checkedContentColor: '#FFFFFF',
+                containerColor: '#E0E0E0',
+                contentColor: '#333333',
+              }}>
+              <ComposeText>{checked5 ? 'ON' : 'OFF'}</ComposeText>
             </ToggleButton>
           </Column>
         </Card>
@@ -103,5 +101,5 @@ export default function ToggleButtonScreen() {
 }
 
 ToggleButtonScreen.navigationOptions = {
-  title: "ToggleButton",
+  title: 'ToggleButton',
 };

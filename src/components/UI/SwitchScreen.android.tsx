@@ -6,7 +6,7 @@ import {
   Column,
   Card,
   LazyColumn,
-} from "@expo/ui/jetpack-compose";
+} from '@expo/ui/jetpack-compose';
 import {
   fillMaxWidth,
   padding,
@@ -14,8 +14,8 @@ import {
   clip,
   background,
   Shapes,
-} from "@expo/ui/jetpack-compose/modifiers";
-import * as React from "react";
+} from '@expo/ui/jetpack-compose/modifiers';
+import * as React from 'react';
 
 export default function SwitchScreen() {
   const [checked, setChecked] = React.useState<boolean>(true);
@@ -37,22 +37,21 @@ export default function SwitchScreen() {
               value={checked}
               onCheckedChange={setChecked}
               colors={{
-                checkedBorderColor: "#7C3AED",
-                uncheckedBorderColor: "#D1D5DB",
-                checkedTrackColor: "#EDE9FE",
-                uncheckedTrackColor: "#F3F4F6",
-                checkedIconColor: "#7C3AED",
-                uncheckedIconColor: "#9CA3AF",
-                checkedThumbColor: "#7C3AED",
-                uncheckedThumbColor: "#9CA3AF",
-              }}
-            >
+                checkedBorderColor: '#7C3AED',
+                uncheckedBorderColor: '#D1D5DB',
+                checkedTrackColor: '#EDE9FE',
+                uncheckedTrackColor: '#F3F4F6',
+                checkedIconColor: '#7C3AED',
+                uncheckedIconColor: '#9CA3AF',
+                checkedThumbColor: '#7C3AED',
+                uncheckedThumbColor: '#9CA3AF',
+              }}>
               <Switch.ThumbContent>
                 <Box
                   modifiers={[
                     size(Switch.DefaultIconSize, Switch.DefaultIconSize),
                     clip(Shapes.Circle),
-                    background(checked ? "#FFFFFF" : "#E5E7EB"),
+                    background(checked ? '#FFFFFF' : '#E5E7EB'),
                   ]}
                 />
               </Switch.ThumbContent>
@@ -74,12 +73,12 @@ export default function SwitchScreen() {
               value={checked}
               enabled={false}
               colors={{
-                disabledUncheckedThumbColor: "#F87171",
-                disabledUncheckedTrackColor: "#FEE2E2",
-                disabledUncheckedBorderColor: "#FCA5A5",
-                disabledCheckedThumbColor: "#34D399",
-                disabledCheckedTrackColor: "#D1FAE5",
-                disabledCheckedBorderColor: "#6EE7B7",
+                disabledUncheckedThumbColor: '#F87171',
+                disabledUncheckedTrackColor: '#FEE2E2',
+                disabledUncheckedBorderColor: '#FCA5A5',
+                disabledCheckedThumbColor: '#34D399',
+                disabledCheckedTrackColor: '#D1FAE5',
+                disabledCheckedBorderColor: '#6EE7B7',
               }}
             />
           </Column>
@@ -90,5 +89,5 @@ export default function SwitchScreen() {
 }
 
 SwitchScreen.navigationOptions = {
-  title: "Switch",
+  title: 'Switch',
 };

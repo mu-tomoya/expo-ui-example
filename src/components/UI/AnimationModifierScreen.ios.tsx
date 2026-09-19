@@ -1,4 +1,4 @@
-import { Host, Section, Text, Form, VStack, HStack } from "@expo/ui/swift-ui";
+import { Host, Section, Text, Form, VStack, HStack } from '@expo/ui/swift-ui';
 import {
   background,
   cornerRadius,
@@ -11,8 +11,8 @@ import {
   onTapGesture,
   animation,
   Animation,
-} from "@expo/ui/swift-ui/modifiers";
-import { useState } from "react";
+} from '@expo/ui/swift-ui/modifiers';
+import { useState } from 'react';
 
 export default function AnimationModifierScreen() {
   const [animationState1, setAnimationState1] = useState(false);
@@ -37,9 +37,9 @@ export default function AnimationModifierScreen() {
                 <HStack
                   modifiers={[
                     frame({ width: 80, height: 80 }),
-                    background("#FF6B6B"),
+                    background('#FF6B6B'),
                     cornerRadius(16),
-                    shadow({ radius: 8, x: 0, y: 4, color: "#FF6B6B40" }),
+                    shadow({ radius: 8, x: 0, y: 4, color: '#FF6B6B40' }),
                     scaleEffect(animationState1 ? 1.3 : 1.0),
                     animation(Animation.easeInOut({ duration: 2.0 }), animationState1),
                     onTapGesture(() => setAnimationState1(!animationState1)),
@@ -53,9 +53,9 @@ export default function AnimationModifierScreen() {
                 <HStack
                   modifiers={[
                     frame({ width: 80, height: 80 }),
-                    background("#4ECDC4"),
+                    background('#4ECDC4'),
                     cornerRadius(16),
-                    shadow({ radius: 8, x: 0, y: 4, color: "#4ECDC440" }),
+                    shadow({ radius: 8, x: 0, y: 4, color: '#4ECDC440' }),
                     rotationEffect(animationState2 ? 180 : 0),
                     animation(Animation.linear({ duration: 0.5 }), animationState2),
                     onTapGesture(() => setAnimationState2(!animationState2)),
@@ -77,9 +77,9 @@ export default function AnimationModifierScreen() {
                 <HStack
                   modifiers={[
                     frame({ width: 90, height: 90 }),
-                    background("#9B59B6"),
+                    background('#9B59B6'),
                     cornerRadius(20),
-                    shadow({ radius: 10, x: 0, y: 6, color: "#9B59B640" }),
+                    shadow({ radius: 10, x: 0, y: 6, color: '#9B59B640' }),
                     scaleEffect(animationState4 ? 1.4 : 1.0),
                     animation(Animation.spring(), animationState4),
                     onTapGesture(() => setAnimationState4(!animationState4)),
@@ -93,13 +93,13 @@ export default function AnimationModifierScreen() {
                 <HStack
                   modifiers={[
                     frame({ width: 90, height: 90 }),
-                    background("#F39C12"),
+                    background('#F39C12'),
                     cornerRadius(20),
-                    shadow({ radius: 10, x: 0, y: 6, color: "#F39C1240" }),
+                    shadow({ radius: 10, x: 0, y: 6, color: '#F39C1240' }),
                     offset({ x: animationState4 ? 60 : 0, y: 0 }),
                     animation(
                       Animation.spring({ response: 0.8, dampingFraction: 0.6 }),
-                      animationState4,
+                      animationState4
                     ),
                     onTapGesture(() => setAnimationState4(!animationState4)),
                   ]}
@@ -120,9 +120,9 @@ export default function AnimationModifierScreen() {
                 <HStack
                   modifiers={[
                     frame({ width: 80, height: 80 }),
-                    background("#E74C3C"),
+                    background('#E74C3C'),
                     cornerRadius(12),
-                    shadow({ radius: 8, x: 0, y: 4, color: "#E74C3C40" }),
+                    shadow({ radius: 8, x: 0, y: 4, color: '#E74C3C40' }),
                     scaleEffect(animationState5 ? 1.5 : 1.0),
                     animation(
                       Animation.interpolatingSpring({
@@ -130,7 +130,7 @@ export default function AnimationModifierScreen() {
                         stiffness: 200,
                         damping: 5,
                       }),
-                      animationState5,
+                      animationState5
                     ),
                     onTapGesture(() => setAnimationState5(!animationState5)),
                   ]}
@@ -143,9 +143,9 @@ export default function AnimationModifierScreen() {
                 <HStack
                   modifiers={[
                     frame({ width: 80, height: 80 }),
-                    background("#2ECC71"),
+                    background('#2ECC71'),
                     cornerRadius(12),
-                    shadow({ radius: 8, x: 0, y: 4, color: "#2ECC7140" }),
+                    shadow({ radius: 8, x: 0, y: 4, color: '#2ECC7140' }),
                     rotationEffect(animationState5 ? 360 : 0),
                     animation(
                       Animation.interpolatingSpring({
@@ -153,7 +153,7 @@ export default function AnimationModifierScreen() {
                         stiffness: 100,
                         damping: 20,
                       }),
-                      animationState5,
+                      animationState5
                     ),
                     onTapGesture(() => setAnimationState5(!animationState5)),
                   ]}
@@ -174,9 +174,9 @@ export default function AnimationModifierScreen() {
                 <HStack
                   modifiers={[
                     frame({ width: 80, height: 80 }),
-                    background("#3498DB"),
+                    background('#3498DB'),
                     cornerRadius(16),
-                    shadow({ radius: 8, x: 0, y: 4, color: "#3498DB40" }),
+                    shadow({ radius: 8, x: 0, y: 4, color: '#3498DB40' }),
                     scaleEffect(animationState6 ? 1.3 : 1.0),
                     animation(Animation.easeInOut({ duration: 0.8 }).delay(1.0), animationState6),
                     onTapGesture(() => setAnimationState6(!animationState6)),
@@ -190,16 +190,16 @@ export default function AnimationModifierScreen() {
                 <HStack
                   modifiers={[
                     frame({ width: 80, height: 80 }),
-                    background("#E67E22"),
+                    background('#E67E22'),
                     cornerRadius(16),
-                    shadow({ radius: 8, x: 0, y: 4, color: "#E67E2240" }),
+                    shadow({ radius: 8, x: 0, y: 4, color: '#E67E2240' }),
                     rotationEffect(animationState7 ? 180 : 0),
                     animation(
                       Animation.easeInOut({ duration: 0.6 }).repeat({
                         repeatCount: 3,
                         autoreverses: true,
                       }),
-                      animationState7,
+                      animationState7
                     ),
                     onTapGesture(() => setAnimationState7(!animationState7)),
                   ]}
@@ -217,15 +217,15 @@ export default function AnimationModifierScreen() {
             <HStack
               modifiers={[
                 frame({ width: 120, height: 120 }),
-                background("#8E44AD"),
+                background('#8E44AD'),
                 cornerRadius(24),
-                shadow({ radius: 16, x: 0, y: 8, color: "#8E44AD30" }),
+                shadow({ radius: 16, x: 0, y: 8, color: '#8E44AD30' }),
                 scaleEffect(animationState3 % 2 === 0 ? 1.0 : 1.2),
                 rotationEffect(animationState3 * 45),
                 opacity(animationState3 % 4 === 0 ? 1.0 : 0.7),
                 animation(
                   Animation.spring({ response: 0.7, dampingFraction: 0.8 }),
-                  animationState3,
+                  animationState3
                 ),
                 onTapGesture(() => setAnimationState3(animationState3 + 1)),
               ]}
@@ -240,9 +240,9 @@ export default function AnimationModifierScreen() {
             <HStack
               modifiers={[
                 frame({ width: 250, height: 50 }),
-                background("#34495E"),
+                background('#34495E'),
                 cornerRadius(16),
-                shadow({ radius: 6, x: 0, y: 3, color: "#34495E40" }),
+                shadow({ radius: 6, x: 0, y: 3, color: '#34495E40' }),
                 onTapGesture(() => {
                   setAnimationState3(0);
                   setAnimationState2(false);

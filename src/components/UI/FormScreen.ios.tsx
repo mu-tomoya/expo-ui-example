@@ -11,18 +11,18 @@ import {
   DisclosureGroup,
   ContentUnavailableView,
   LabeledContent,
-} from "@expo/ui/swift-ui";
-import { buttonStyle, font, pickerStyle, tag } from "@expo/ui/swift-ui/modifiers";
-import { useState } from "react";
+} from '@expo/ui/swift-ui';
+import { buttonStyle, font, pickerStyle, tag } from '@expo/ui/swift-ui/modifiers';
+import { useState } from 'react';
 
 export default function FormScreen() {
-  const [color, setColor] = useState<string | null>("blue");
+  const [color, setColor] = useState<string | null>('blue');
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const options = ["$", "$$", "$$$", "$$$$"];
+  const options = ['$', '$$', '$$$', '$$$$'];
   const [sliderValue, setSliderValue] = useState<number>(0.5);
   const [toggleValue, setToggleValue] = useState<boolean>(true);
 
-  const profileImageSizes = ["Large", "Medium", "Small"];
+  const profileImageSizes = ['Large', 'Medium', 'Small'];
   const [disclosureGroupExpanded, setDisclosureGroupExpanded] = useState<boolean>(false);
   const [selectedProfileImageSizeIndex, setSelectedProfileImageSizeIndex] = useState<number>(0);
 
@@ -33,12 +33,12 @@ export default function FormScreen() {
           <Text modifiers={[font({ size: 17 })]} testID="test-id-from-expo-ui!">
             Some text!
           </Text>
-          <Button onPress={() => alert("Clicked!")} label="I'm a button" />
+          <Button onPress={() => alert('Clicked!')} label="I'm a button" />
           <LabeledContent label="Labeled Content">
             <Button
               label="Labeled Content Button"
-              modifiers={[buttonStyle("borderless")]}
-              onPress={() => alert("Clicked!")}
+              modifiers={[buttonStyle('borderless')]}
+              onPress={() => alert('Clicked!')}
             />
           </LabeledContent>
           <LabeledContent label="Name">
@@ -50,8 +50,7 @@ export default function FormScreen() {
                 <Text>Single Subtitle</Text>
                 <Text>Subtitle</Text>
               </>
-            }
-          >
+            }>
             <Text>Single Subtitle Value</Text>
           </LabeledContent>
           <LabeledContent
@@ -62,8 +61,7 @@ export default function FormScreen() {
                 <Text>Subtitle 2</Text>
                 <Text>Subtitle 3</Text>
               </>
-            }
-          >
+            }>
             <Text>Value</Text>
           </LabeledContent>
           <LabeledContent label="Labeled Slider">
@@ -78,12 +76,11 @@ export default function FormScreen() {
           />
           <Picker
             label="Menu picker"
-            modifiers={[pickerStyle("menu")]}
+            modifiers={[pickerStyle('menu')]}
             selection={selectedIndex}
             onSelectionChange={(selection) => {
               setSelectedIndex(selection);
-            }}
-          >
+            }}>
             {options.map((option, index) => (
               <Text key={index} modifiers={[tag(index)]}>
                 {option}
@@ -96,12 +93,11 @@ export default function FormScreen() {
         <Section title="User Profiles">
           <Picker
             label="Profile Image Size"
-            modifiers={[pickerStyle("menu")]}
+            modifiers={[pickerStyle('menu')]}
             selection={selectedProfileImageSizeIndex}
             onSelectionChange={(selection) => {
               setSelectedProfileImageSizeIndex(selection);
-            }}
-          >
+            }}>
             {profileImageSizes.map((size, index) => (
               <Text key={index} modifiers={[tag(index)]}>
                 {size}
@@ -110,15 +106,14 @@ export default function FormScreen() {
           </Picker>
           <Button
             onPress={() => {
-              alert("Fake cache cleared");
+              alert('Fake cache cleared');
             }}
             label="Clear Image Cache"
           />
           <DisclosureGroup
             onIsExpandedChange={setDisclosureGroupExpanded}
             isExpanded={disclosureGroupExpanded}
-            label="Show User Profile Details"
-          >
+            label="Show User Profile Details">
             <Text>Name: John Doe</Text>
             <Text>Email: john.doe@example.com</Text>
             <Text>Role: Administrator</Text>
@@ -135,5 +130,5 @@ export default function FormScreen() {
 }
 
 FormScreen.navigationOptions = {
-  title: "Form",
+  title: 'Form',
 };

@@ -6,12 +6,12 @@ import {
   LargeFloatingActionButton,
   SmallFloatingActionButton,
   Text as ComposeText,
-} from "@expo/ui/jetpack-compose";
-import { useState } from "react";
-import { Alert, ScrollView, StyleSheet, Text, View } from "react-native";
+} from '@expo/ui/jetpack-compose';
+import { useState } from 'react';
+import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-const addIcon = require("../../../assets/icons/ui/add.xml");
-const editIcon = require("../../../assets/icons/ui/edit.xml");
+const addIcon = require('../../../assets/icons/ui/add.xml');
+const editIcon = require('../../../assets/icons/ui/edit.xml');
 
 export default function FloatingActionButtonScreen() {
   const [extended, setExtended] = useState(true);
@@ -29,7 +29,7 @@ export default function FloatingActionButtonScreen() {
             <View style={styles.fabWrapper}>
               <Text style={styles.label}>small</Text>
               <Host matchContents>
-                <SmallFloatingActionButton onClick={() => Alert.alert("Small FAB pressed")}>
+                <SmallFloatingActionButton onClick={() => Alert.alert('Small FAB pressed')}>
                   <SmallFloatingActionButton.Icon>
                     <Icon source={addIcon} />
                   </SmallFloatingActionButton.Icon>
@@ -39,7 +39,7 @@ export default function FloatingActionButtonScreen() {
             <View style={styles.fabWrapper}>
               <Text style={styles.label}>medium</Text>
               <Host matchContents>
-                <FloatingActionButton onClick={() => Alert.alert("Medium FAB pressed")}>
+                <FloatingActionButton onClick={() => Alert.alert('Medium FAB pressed')}>
                   <FloatingActionButton.Icon>
                     <Icon source={addIcon} />
                   </FloatingActionButton.Icon>
@@ -49,7 +49,7 @@ export default function FloatingActionButtonScreen() {
             <View style={styles.fabWrapper}>
               <Text style={styles.label}>large</Text>
               <Host matchContents>
-                <LargeFloatingActionButton onClick={() => Alert.alert("Large FAB pressed")}>
+                <LargeFloatingActionButton onClick={() => Alert.alert('Large FAB pressed')}>
                   <LargeFloatingActionButton.Icon>
                     <Icon source={addIcon} />
                   </LargeFloatingActionButton.Icon>
@@ -66,7 +66,7 @@ export default function FloatingActionButtonScreen() {
             <View style={styles.fabWrapper}>
               <Text style={styles.label}>default</Text>
               <Host matchContents>
-                <FloatingActionButton onClick={() => Alert.alert("Default FAB pressed")}>
+                <FloatingActionButton onClick={() => Alert.alert('Default FAB pressed')}>
                   <FloatingActionButton.Icon>
                     <Icon source={addIcon} />
                   </FloatingActionButton.Icon>
@@ -78,8 +78,7 @@ export default function FloatingActionButtonScreen() {
               <Host matchContents>
                 <FloatingActionButton
                   containerColor="#E8DEF8"
-                  onClick={() => Alert.alert("Custom color FAB pressed")}
-                >
+                  onClick={() => Alert.alert('Custom color FAB pressed')}>
                   <FloatingActionButton.Icon>
                     <Icon source={addIcon} />
                   </FloatingActionButton.Icon>
@@ -91,8 +90,7 @@ export default function FloatingActionButtonScreen() {
               <Host matchContents>
                 <FloatingActionButton
                   containerColor="#FFD8E4"
-                  onClick={() => Alert.alert("Custom color FAB pressed")}
-                >
+                  onClick={() => Alert.alert('Custom color FAB pressed')}>
                   <FloatingActionButton.Icon>
                     <Icon source={addIcon} />
                   </FloatingActionButton.Icon>
@@ -113,8 +111,7 @@ export default function FloatingActionButtonScreen() {
             <Host matchContents>
               <ExtendedFloatingActionButton
                 expanded={extended}
-                onClick={() => Alert.alert("Extended FAB pressed")}
-              >
+                onClick={() => Alert.alert('Extended FAB pressed')}>
                 <ExtendedFloatingActionButton.Icon>
                   <Icon source={editIcon} />
                 </ExtendedFloatingActionButton.Icon>
@@ -126,7 +123,7 @@ export default function FloatingActionButtonScreen() {
           </View>
           <View style={styles.row}>
             <Text style={styles.toggleButton} onPress={() => setExtended((v) => !v)}>
-              {extended ? "Collapse label" : "Expand label"}
+              {extended ? 'Collapse label' : 'Expand label'}
             </Text>
           </View>
         </View>
@@ -139,8 +136,7 @@ export default function FloatingActionButtonScreen() {
               <Host matchContents>
                 <ExtendedFloatingActionButton
                   containerColor="#E8DEF8"
-                  onClick={() => Alert.alert("Extended FAB pressed")}
-                >
+                  onClick={() => Alert.alert('Extended FAB pressed')}>
                   <ExtendedFloatingActionButton.Icon>
                     <Icon source={addIcon} />
                   </ExtendedFloatingActionButton.Icon>
@@ -154,8 +150,7 @@ export default function FloatingActionButtonScreen() {
               <Host matchContents>
                 <ExtendedFloatingActionButton
                   containerColor="#FFD8E4"
-                  onClick={() => Alert.alert("Extended FAB pressed")}
-                >
+                  onClick={() => Alert.alert('Extended FAB pressed')}>
                   <ExtendedFloatingActionButton.Icon>
                     <Icon source={editIcon} />
                   </ExtendedFloatingActionButton.Icon>
@@ -172,7 +167,7 @@ export default function FloatingActionButtonScreen() {
       {/* Floating FAB — positioned over content like in a real app */}
       <View style={styles.floatingFab}>
         <Host matchContents>
-          <FloatingActionButton onClick={() => Alert.alert("Floating FAB pressed")}>
+          <FloatingActionButton onClick={() => Alert.alert('Floating FAB pressed')}>
             <FloatingActionButton.Icon>
               <Icon source={addIcon} />
             </FloatingActionButton.Icon>
@@ -184,7 +179,7 @@ export default function FloatingActionButtonScreen() {
 }
 
 FloatingActionButtonScreen.navigationOptions = {
-  title: "FloatingActionButton",
+  title: 'FloatingActionButton',
 };
 
 const styles = StyleSheet.create({
@@ -193,7 +188,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#f5f5f5',
   },
   content: {
     padding: 16,
@@ -201,23 +196,23 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
     marginBottom: 8,
-    color: "#333",
+    color: '#333',
   },
   subtitle: {
     fontSize: 16,
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: 24,
-    color: "#666",
+    color: '#666',
   },
   section: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 12,
     padding: 20,
     marginBottom: 20,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
@@ -225,45 +220,45 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "600",
+    fontWeight: '600',
     marginBottom: 12,
-    color: "#333",
+    color: '#333',
   },
   description: {
     fontSize: 14,
-    color: "#666",
+    color: '#666',
     marginBottom: 16,
     lineHeight: 20,
   },
   row: {
-    flexDirection: "row",
-    flexWrap: "wrap",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 16,
-    alignItems: "center",
+    alignItems: 'center',
   },
   column: {
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   fabWrapper: {
-    alignItems: "center",
+    alignItems: 'center',
     gap: 6,
   },
   label: {
     fontSize: 12,
-    color: "#666",
+    color: '#666',
   },
   toggleButton: {
-    color: "#007AFF",
+    color: '#007AFF',
     fontSize: 14,
-    fontWeight: "500",
+    fontWeight: '500',
     paddingVertical: 8,
     paddingHorizontal: 16,
-    backgroundColor: "#e8f0fe",
+    backgroundColor: '#e8f0fe',
     borderRadius: 8,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   floatingFab: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 24,
     right: 24,
   },
