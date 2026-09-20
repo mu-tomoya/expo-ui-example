@@ -148,6 +148,7 @@ export const UIScreens = [
   {
     name: 'NavigationStack component',
     route: 'ui/navigationstack',
+    disabled: true,
     options: {},
     getComponent() {
       return optionalRequire(() => require('./NavigationStackScreen'));
@@ -156,6 +157,7 @@ export const UIScreens = [
   {
     name: 'NavigationSplitView component',
     route: 'ui/navigationsplitview',
+    disabled: true,
     options: {},
     getComponent() {
       return optionalRequire(() => require('./NavigationSplitViewScreen'));
