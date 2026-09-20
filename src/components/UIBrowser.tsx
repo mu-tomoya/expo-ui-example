@@ -1,7 +1,7 @@
-import { Host, Icon, List, ListItem, Row, Text as ExpoText } from "@expo/ui";
+import { Column, Host, Icon, List, ListItem, Row, Text, TextInput } from "@expo/ui";
 import { type Href, Link } from "expo-router";
 import { type ComponentType, useMemo, useState } from "react";
-import { Platform, StyleSheet, Text, TextInput, useColorScheme, View } from "react-native";
+import { Platform, StyleSheet, useColorScheme } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const CHEVRON = Icon.select({
@@ -41,32 +41,36 @@ export default function UIBrowser({
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
-      <View style={styles.titleContainer}>
-        <Text style={[styles.title, { color: colors.text }]}>{title}</Text>
-        <Text style={[styles.subtitle, { color: colors.secondaryText }]}>
-          {screens.length} examples · Universal works across platforms
-        </Text>
-      </View>
-      {showSearch && (
-        <TextInput
-          accessibilityLabel="Search components"
-          autoCapitalize="none"
-          autoCorrect={false}
-          clearButtonMode="while-editing"
-          onChangeText={setQuery}
-          placeholder="Search components"
-          placeholderTextColor={colors.secondaryText}
-          style={[styles.search, { backgroundColor: colors.searchBackground, color: colors.text }]}
-          value={query}
-        />
-      )}
-      <Host style={styles.listHost}>
+      <Host style={styles.host}>
         <List>
+          <Column spacing={6} style={styles.header}>
+            <Text textStyle={{ color: colors.text, fontSize: 26, fontWeight: "700" }}>{title}</Text>
+            <Text textStyle={{ color: colors.secondaryText, fontSize: 13 }}>
+              {`${screens.length} examples · Universal works across platforms`}
+            </Text>
+            {showSearch && (
+              <TextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                onChangeText={setQuery}
+                placeholder="Search components"
+                selectionColor={colors.text}
+                textStyle={{ color: colors.text, fontSize: 16 }}
+                style={{
+                  padding: 8,
+                  borderRadius: 8,
+                  backgroundColor: colors.searchBackground,
+                  borderWidth: 1,
+                  borderColor: colors.searchBorder,
+                }}
+              />
+            )}
+          </Column>
           {visibleScreens.length > 0 ? (
             visibleScreens.map((screen) => <ScreenListItem key={screen.route} screen={screen} />)
           ) : (
             <ListItem>
-              <ExpoText textStyle={{ color: colors.secondaryText }}>No components found.</ExpoText>
+              <Text textStyle={{ color: colors.secondaryText }}>No components found.</Text>
             </ListItem>
           )}
         </List>
@@ -81,17 +85,15 @@ function ScreenListItem({ screen }: { screen: ExampleScreen }) {
       trailing={
         <Row alignment="center" spacing={8}>
           {screen.universal && (
-            <ExpoText textStyle={{ color: "#1769AA", fontSize: 12, fontWeight: "600" }}>
-              Universal
-            </ExpoText>
+            <Text textStyle={{ color: "#1769AA", fontSize: 12, fontWeight: "600" }}>Universal</Text>
           )}
           <Icon name={CHEVRON} size={14} color="gray" />
         </Row>
       }
     >
-      <ExpoText numberOfLines={1} textStyle={screen.disabled ? { color: "#9CA3AF" } : undefined}>
+      <Text numberOfLines={1} textStyle={screen.disabled ? { color: "#9CA3AF" } : undefined}>
         {screen.name}
-      </ExpoText>
+      </Text>
     </ListItem>
   );
 
@@ -111,26 +113,18 @@ const lightColors = {
   text: "#151515",
   secondaryText: "#6B7280",
   searchBackground: "#F1F3F5",
+  searchBorder: "#D1D5DB",
 };
 const darkColors = {
   background: "#111214",
   text: "#F9FAFB",
   secondaryText: "#9CA3AF",
   searchBackground: "#25282D",
+  searchBorder: "#4B5563",
 };
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  titleContainer: { paddingHorizontal: 20, paddingBottom: 12, paddingTop: 12 },
-  title: { fontSize: 26, fontWeight: "700" },
-  subtitle: { fontSize: 13, marginTop: 4 },
-  search: {
-    borderRadius: 12,
-    fontSize: 16,
-    marginBottom: 8,
-    marginHorizontal: 16,
-    paddingHorizontal: 14,
-    paddingVertical: Platform.OS === "ios" ? 10 : 8,
-  },
-  listHost: { flex: 1 },
+  host: { flex: 1 },
+  header: { paddingHorizontal: 4, paddingVertical: 8 },
 });
