@@ -10,6 +10,14 @@
 
 [expo/native-component-list](https://github.com/expo/expo/tree/main/apps/native-component-list/src/screens/UI) から UI スクリーンを抽出して、一覧形式で閲覧できるようにしています。
 
+## EAS Update プレビュー
+
+`preview` チャンネルの最新Updateは、以下のQRコードからExpo Goで確認できます。
+
+<img src="https://qr.expo.dev/eas-update?projectId=2ee1accb-0ea2-4de1-aa65-ad82521052e8&amp;channelId=01a0bde0-254e-7331-b9c0-9c7ff92cd514" alt="EAS Update preview QR code" width="220px">
+
+> Expo Goを端末にインストールしてから、カメラで読み取ってください。QRコードは`preview`チャンネルに公開された最新Updateを開きます。
+
 ## 注意事項
 
 `@expo/ui` はまだ実験的なパッケージであり、安定版ではありません。一部のコンポーネントで不具合が発生する可能性があります。
@@ -38,7 +46,7 @@ bun ios
 bun android
 ```
 
-> `@expo/ui` はネイティブコードを含むため、Expo Go では動作しません。`expo run:ios` または `expo run:android` で development build を使用してください。
+> Expo Go内蔵の`@expo/ui`とプロジェクトのバージョンが異なる場合、一部の機能が正しく動作しないことがあります。プロジェクトと同じネイティブバージョンで確認する場合は、`expo run:ios`または`expo run:android`でDevelopment Buildを使用してください。
 
 ## 収録コンポーネント
 
