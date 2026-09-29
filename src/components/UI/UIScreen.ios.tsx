@@ -2,6 +2,14 @@ import { optionalRequire } from '../../navigation/routeBuilder';
 
 export const UIScreens = [
   {
+    name: 'useNativeState',
+    route: 'ui/native-state',
+    options: {},
+    getComponent() {
+      return optionalRequire(() => require('./NativeStateDemoScreen'));
+    },
+  },
+  {
     name: 'Label component',
     route: 'ui/label',
     options: {},
